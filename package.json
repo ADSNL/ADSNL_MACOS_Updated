@@ -2,10 +2,12 @@
   "name": "express_crash_course",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "start": "node index",
-    "dev": "nodemon index"
+    "start": "node server",
+    "server": "nodemon server",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "keywords": [],
   "author": "",
@@ -17,6 +19,7 @@
     "express-handlebars": "^3.0.1",
     "moment": "^2.24.0",
     "mssql": "^6.1.0",
+    "nodemon": "^2.0.2",
     "uuid": "^3.3.2"
   },
   "devDependencies": {}
