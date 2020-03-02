@@ -22,7 +22,7 @@ app.get('/api/response', (req, res) => {
       console.log(err);
       return;
     }
-    req.query('SELECT Top 3 * FROM Books', function(err, recordset) {
+    req.query('SELECT Top 4 * FROM Books', function(err, recordset) {
       if (err) {
         console.log(err);
         return;
