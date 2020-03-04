@@ -14,7 +14,7 @@ var dbConfig = {
   Port: 1433
 };
 
-app.get('/api/response', (req, res) => {
+app.get('/api/books', (req, res) => {
   var conn = new sql.ConnectionPool(dbConfig);
   var req = new sql.Request(conn);
   conn.connect(function(err) {
@@ -22,7 +22,29 @@ app.get('/api/response', (req, res) => {
       console.log(err);
       return;
     }
-    req.query('SELECT Top 4 * FROM Books', function(err, recordset) {
+    req.query('SELECT Top 4 * FROM Books', (err, recordset) => {
+      if (err) {
+        console.log(err);
+        return;
+      } else {
+        const data = recordset;
+
+        res.send(data.recordset);
+      }
+      conn.close(recordset);
+    });
+  });
+});
+
+app.get('/api/clothing', (req, res) => {
+  var conn = new sql.ConnectionPool(dbConfig);
+  var req = new sql.Request(conn);
+  conn.connect(function(err) {
+    if (err) {
+      console.log(err);
+      return;
+    }
+    req.query('SELECT Top 4 * FROM Clothing', (err, recordset) => {
       if (err) {
         console.log(err);
         return;
