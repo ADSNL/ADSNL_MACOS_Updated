@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import TopSellingBooks from "./components/TopSelling/TopSellingBooks";
 import TopSellingClothing from "./components/TopSelling/TopSellingClothing";
+import ProductModal from "./components/ProductModal";
 
 class App extends Component {
   constructor(props) {
@@ -47,13 +48,14 @@ class App extends Component {
     const datas = this.state.books;
     const clothingData = this.state.clothing;
     const datasList = datas.length ? (
-        <div>
-          <TopSellingBooks  data={datas} />
-          <TopSellingClothing clothing={clothingData} />
-        </div>
+      <div>
+        <TopSellingBooks data={datas} />
+        <TopSellingClothing clothing={clothingData} />
+        <ProductModal />
+      </div>
     ) : (
-      <h1>Loading</h1>
-    );
+        <h1>Loading</h1>
+      );
 
     return <div>{datasList}</div>;
   }
