@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+
 import {
     Collapse,
     Navbar,
@@ -24,7 +25,10 @@ const Example = (props) => {
             <Collapse isOpen={isOpen} navbar>
                 <Nav color="light" className="mr-auto" navbar>
                     <NavItem>
+                       
+                            
                         <NavLink href="/components/"><b>Clothing</b></NavLink >
+                        
                     </NavItem>
                     <NavItem>
                         <NavLink href="/components/"><b>Movies</b></NavLink >

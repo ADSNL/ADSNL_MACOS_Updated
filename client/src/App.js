@@ -4,6 +4,7 @@ import TopSellingBooks from "./components/TopSelling/TopSellingBooks";
 import TopSellingClothing from "./components/TopSelling/TopSellingClothing";
 import ProductModal from "./components/ProductModal";
 
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -48,11 +49,16 @@ class App extends Component {
     const datas = this.state.books;
     const clothingData = this.state.clothing;
     const datasList = datas.length ? (
-      <div>
-        <TopSellingBooks data={datas} />
-        <TopSellingClothing clothing={clothingData} />
-        <ProductModal />
+
+        <div>
+          <Navbar clothing={clothingData}/>
+          <TopSellingBooks  data={datas} />
+          <TopSellingClothing style='' clothing={clothingData} style={{marginTop:'500px'}} />
+          <ProductModal />
+          <Footer style={{marginTop:'500px'}}/>
+       
       </div>
+
     ) : (
         <h1>Loading</h1>
       );
