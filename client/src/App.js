@@ -7,41 +7,50 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      renderedResponse: []
+      books: [],
+      clothing: []
     };
   }
 
-  getResponse = async () => {
-    fetch("http://localhost:5000/api/response")
+  getBooks = async () => {
+    fetch("http://localhost:5000/api/books")
       .then(res => {
         return res.json();
       })
       .then(data => {
-        //let _DataArray = [];
         this.setState({
-          renderedResponse: data
+          books: data
         });
       })
-
       .catch(err => err);
-    // console.log(this.state.renderedResponse);
+  };
+
+  getClothing = async () => {
+    fetch("http://localhost:5000/api/clothing")
+      .then(res => {
+        return res.json()
+      })
+      .then(data => {
+        this.setState({
+          clothing: data
+        });
+      })
+      .catch(err => err);
   };
 
   componentDidMount() {
-    this.getResponse();
+    this.getBooks();
+    this.getClothing();
   }
 
   render() {
-    const datas = this.state.renderedResponse;
+    const datas = this.state.books;
+    const clothingData = this.state.clothing;
     const datasList = datas.length ? (
-  
         <div>
           <TopSellingBooks  data={datas} />
-          
-       
-          {/* <TopSellingClothing /> */}
+          <TopSellingClothing clothing={clothingData} />
         </div>
-      
     ) : (
       <h1>Loading</h1>
     );

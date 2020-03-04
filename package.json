@@ -13,6 +13,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bootstrap": "^4.4.1",
     "concurrently": "^5.1.0",
     "cors": "^2.8.5",
     "express": "^4.16.4",
@@ -20,6 +21,7 @@
     "moment": "^2.24.0",
     "mssql": "^6.1.0",
     "nodemon": "^2.0.2",
+    "react-bootstrap": "^1.0.0-beta.17",
     "uuid": "^3.3.2"
   },
   "devDependencies": {}

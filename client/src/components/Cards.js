@@ -21,8 +21,7 @@ class Cards extends Component {
     const datas = this.state.myData;
     const datasList = datas.length ? ( datas.map( item  => {
       return(
-
-             <Card>
+      <Card>
       <CardImg
         top
         width="50"
@@ -33,9 +32,11 @@ class Cards extends Component {
       <CardBody>
         <CardTitle>
           <b>{item.Book_Title}</b>
-          {console.log(item.Book_Title)}
+          
+          {/* {console.log(item.Book_Title)} */}
           
         </CardTitle>
+   
         <CardSubtitle>{item.ISBN_10}</CardSubtitle>
   
         <Button>Add to Cart</Button>
@@ -47,7 +48,7 @@ class Cards extends Component {
     ) : (
       <h1>Loading</h1>
     );
-    {console.log(datasList)}
+    // {console.log(datasList)}
   
     return <div>
       {datasList}
