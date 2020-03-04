@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import "./App.css";
 import TopSellingBooks from "./components/TopSelling/TopSellingBooks";
 import TopSellingClothing from "./components/TopSelling/TopSellingClothing";
-import Footer from './components/BaseLayout/Footer/Footer';
-import Navbar from './components/BaseLayout/Navbar/Navbar';
+import ProductModal from "./components/ProductModal";
+
 
 class App extends Component {
   constructor(props) {
@@ -49,15 +49,19 @@ class App extends Component {
     const datas = this.state.books;
     const clothingData = this.state.clothing;
     const datasList = datas.length ? (
+
         <div>
           <Navbar clothing={clothingData}/>
           <TopSellingBooks  data={datas} />
           <TopSellingClothing style='' clothing={clothingData} style={{marginTop:'500px'}} />
+          <ProductModal />
           <Footer style={{marginTop:'500px'}}/>
-        </div>
+       
+      </div>
+
     ) : (
-      <h1>Loading</h1>
-    );
+        <h1>Loading</h1>
+      );
 
     return <div>{datasList}</div>;
   }
