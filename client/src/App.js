@@ -3,7 +3,8 @@ import "./App.css";
 import TopSellingBooks from "./components/TopSelling/TopSellingBooks";
 import TopSellingClothing from "./components/TopSelling/TopSellingClothing";
 import ProductModal from "./components/ProductModal";
-
+import Footer from './components/BaseLayout/Footer/Footer'
+import Navbar from './components/BaseLayout/Navbar/Navbar'
 
 class App extends Component {
   constructor(props) {
