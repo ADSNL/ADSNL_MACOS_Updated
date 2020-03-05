@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+
 
 //import './Footer.css';
 import {
@@ -17,9 +17,9 @@ const TopSellingClothing = props => (
                 <Card>
                     <CardImg top width="50" height="200" src="https://cdn.shopify.com/s/files/1/2143/3217/products/500_dfd0333e-0632-42d0-a891-f065d5ef1d5d_1024x1024.png?v=1568080856" alt="Card image cap" />
                     <CardBody>
-                    <Link to={'/' + props.clothing[0]}>
-                        <CardTitle><b>{props.clothing[0].Clothing_Name}</b></CardTitle>
-                        </Link>
+                  
+                        <CardTitle onClick={activateLasers}><b>{props.clothing[0].Clothing_Name}</b></CardTitle>
+                      
                         <CardSubtitle> $ {props.clothing[0].Price}</CardSubtitle>
                         {/* <CardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CardText> */}
                         <Button>Add to Cart</Button>

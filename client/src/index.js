@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.css';
 import './index.css';
 
+
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import App from './App';
@@ -12,7 +13,9 @@ ReactDOM.render(
   <BrowserRouter>
    
       <Switch>
-        <Route exact component={App} />
+      
+        <Route exact path='/' component ={App} />
+     
       </Switch>
     
   </BrowserRouter>
