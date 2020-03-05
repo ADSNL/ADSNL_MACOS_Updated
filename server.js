@@ -22,7 +22,7 @@ app.get('/api/books', (req, res) => {
       console.log(err);
       return;
     }
-    req.query('SELECT Top 4 * FROM Books', (err, recordset) => {
+    req.query('SELECT TOP 4 Books.Book_ID,Book_Title,ISBN_10,ISBN_13,Book_Genre_ID,Book_Publisher_ID,min(Unit_Price) as Unit_Price FROM  Books JOIN dbo.Book_Media_Lookup ON Books.Book_ID=Book_Media_Lookup.Book_ID GROUP BY Books.Book_ID,Book_Title,ISBN_10,ISBN_13,Book_Genre_ID,Book_Publisher_ID    ', (err, recordset) => {
       if (err) {
         console.log(err);
         return;
