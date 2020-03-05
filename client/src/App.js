@@ -5,6 +5,9 @@ import TopSellingClothing from "./components/TopSelling/TopSellingClothing";
 import ProductModal from "./components/ProductModal";
 import Footer from './components/BaseLayout/Footer/Footer'
 import Navbar from './components/BaseLayout/Navbar/Navbar'
+import TileView from './components/TileView/TileView'
+
+import {CardDeck} from 'reactstrap'; //0305 test remove later
 
 class App extends Component {
   constructor(props) {
@@ -55,7 +58,10 @@ class App extends Component {
           <Navbar clothing={clothingData}/>
           <TopSellingBooks  data={datas} />
           <TopSellingClothing style='' clothing={clothingData} style={{marginTop:'500px'}} />
-          <ProductModal />
+          <CardDeck>
+          <TileView productName={datas.Book_Title} productPrice={datas.Unit_Price}/>
+          </CardDeck>
+          <ProductModal buttonLabel="Add to Cart" modalText="Test 1"/>
           <Footer style={{marginTop:'500px'}}/>
        
       </div>
