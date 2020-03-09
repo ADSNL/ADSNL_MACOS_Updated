@@ -58,9 +58,9 @@ class App extends Component {
           <Navbar clothing={clothingData}/>
           <TopSellingBooks  data={datas} />
           <TopSellingClothing style='' clothing={clothingData} style={{marginTop:'500px'}} />
-          <CardDeck>
+          {/* <CardDeck>
           <TileView productName={datas.Book_Title} productPrice={datas.Unit_Price}/>
-          </CardDeck>
+          </CardDeck> */}
           <ProductModal buttonLabel="Add to Cart" modalText="Test 1"/>
           <Footer style={{marginTop:'500px'}}/>
        
