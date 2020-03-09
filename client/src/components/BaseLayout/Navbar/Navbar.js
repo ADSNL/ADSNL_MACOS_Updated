@@ -22,7 +22,12 @@ import {CardDeck} from 'reactstrap'; //0305 test remove later
 
 import TileView from '../../TileView/TileView';
 
+import TopSellingBooks from "../../TopSelling/TopSellingBooks";
+
+
 const Example = (props) => {
+
+    
     const [isOpen, setIsOpen] = useState(false);
 
     const toggle = () => setIsOpen(!isOpen);
@@ -32,12 +37,12 @@ const Example = (props) => {
     <div>
         <Navbar color="light"
             light expand="md">
-            <NavbarBrand href="/"><b>ADSNL</b></NavbarBrand>
+            <NavbarBrand href="/"><Link to="/home"><b>ADSNL</b></Link ></NavbarBrand>
             <NavbarToggler onClick={toggle} />
             <Collapse isOpen={isOpen} navbar>
                 <Nav color="light" className="mr-auto" navbar>
                     <NavItem>
-                        <Link to="books"><b>Books</b></Link >
+                        <NavLink href="/components/"><Link to="/books"><b>Books</b></Link ></NavLink >
                     </NavItem>
                     <NavItem>
                        
@@ -63,9 +68,23 @@ const Example = (props) => {
     <Switch>
         <Route path="/books">
         
+
           <TileView/>
         
         </Route>
+        {/* <Route path="/">
+        
+        <TopSellingBooks  data={props} />
+        {console.log(props)}
+        
+      </Route> */}
+      {/* <Route exact path="/home"> */}
+       
+
+       {/* <h1> hello</h1> */}
+       {/* <TopSellingClothing  /> */}
+       
+       {/* </Route> */}
 
     </Switch>
     </Router>

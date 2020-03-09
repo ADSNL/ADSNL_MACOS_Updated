@@ -6,6 +6,13 @@ import ProductModal from "./components/ProductModal";
 import Footer from './components/BaseLayout/Footer/Footer'
 import Navbar from './components/BaseLayout/Navbar/Navbar'
 import TileView from './components/TileView/TileView'
+import Landing from './components/LandingPage/Landing'
+import {
+  BrowserRouter,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 import {CardDeck} from 'reactstrap'; //0305 test remove later
 
@@ -53,18 +60,54 @@ class App extends Component {
     const datas = this.state.books;
     const clothingData = this.state.clothing;
     const datasList = datas.length ? (
-
+      
         <div>
-          <Navbar clothing={clothingData}/>
-          <TopSellingBooks  data={datas} />
-          <TopSellingClothing style='' clothing={clothingData} style={{marginTop:'500px'}} />
+          {/* <BrowserRouter> */}
+          {/* <Route exact path='/TileView' component={TileView} /> */}
+          {/* <Route exact path='/' component={TopSellingBooks} /> */}
+
+
+          {/* </BrowserRouter> */}
+          {/* <Navbar/> */}
+          {/* <TopSellingBooks  data={datas} /> */}
+
+          {/* <Navbar data={datas}/> */}
+          
+          {/* <TopSellingClothing style='' clothing={clothingData} style={{marginTop:'500px'}} /> */}
           {/* <CardDeck>
           <TileView productName={datas.Book_Title} productPrice={datas.Unit_Price}/>
           </CardDeck> */}
-          <ProductModal buttonLabel="Add to Cart" modalText="Test 1"/>
-          <Footer style={{marginTop:'500px'}}/>
+          
+      <BrowserRouter>
+        <Link to="/"><b><Navbar/></b></Link >
+        <Link to="/booksT"><b>booksT</b></Link >
+      <Switch>
+       <Route path="/booksT">
        
-      </div>
+
+         <TileView/>
+       
+       </Route>
+       {/* <Route exact path="/" component={Landing} /> */}
+       <Route path="/">
+          
+          {/* <TopSellingBooks  data={datas} /> */}
+         <Landing data={datas}/>
+       
+       </Route>
+
+       {/* <TopSellingBooks  data={datas} /> */}
+       {/* <TopSellingClothing style='' clothing={clothingData} style={{marginTop:'500px'}} /> */}
+       
+       
+       
+
+      </Switch>
+    </BrowserRouter>
+    <ProductModal buttonLabel="Cart" modalText="Test 1"/>
+    <Footer style={{marginTop:'500px'}}/>
+       
+    </div>
 
     ) : (
         <h1>Loading</h1>
