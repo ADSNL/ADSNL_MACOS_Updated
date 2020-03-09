@@ -36,6 +36,7 @@ const TileRow = (props) => {
             <CardBody>
               <CardTitle>{productName[j]}</CardTitle>
               <CardSubtitle> $ {productPrice[j]}</CardSubtitle>
+              <ProductModal buttonLabel="Add to Cart"/>
               {/* <ProductModal buttonLabel="Add to Cart" modalTitle={props.data[0].Book_Title} modalText={props.data[0].ISBN_10} modalImg="https://dictionary.cambridge.org/us/images/thumb/book_noun_001_01679.jpg?version=5.0.70"/> */}
             </CardBody>
       </Card>
