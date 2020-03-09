@@ -3,9 +3,8 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter,Media, Card, CardImg
     CardSubtitle, CardBody, Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import ProductModal from "../ProductModal";
 // import { ModalTitle } from 'react-bootstrap';
-import TileRow from "../TileRow/TileRow";
 
-const TileView = (props) => {
+const TileRow = (props) => {
   const {
    productName=[],
    productPrice=[],
@@ -13,14 +12,7 @@ const TileView = (props) => {
   } = props;
 
   let tiles = []
-  tiles.push(
-    
-    <Breadcrumb tag="nav" listTag="div">
-    <BreadcrumbItem className="container" tag="a" href="#">
-      <b>Books</b>
-    </BreadcrumbItem>
-    </Breadcrumb>
-  )
+  
 //   for(let i =0; i <5; i+5){
 //       let elements =[]
 //       for (let j=i; j<i+5; j++){
@@ -39,17 +31,15 @@ const TileView = (props) => {
 //     tiles.push(<CardDeck>)
     for (let j=0; j<5; j++){
       tiles.push(
-      // <Card>
-      //     <CardImg top width="50" height="200" src="https://dictionary.cambridge.org/us/images/thumb/book_noun_001_01679.jpg?version=5.0.70" alt="Card image cap" /> 
-      //       <CardBody>
-      //         <CardTitle>{productName[j]}</CardTitle>
-      //         <CardSubtitle> $ {productPrice[j]}</CardSubtitle>
-      //         {/* <ProductModal buttonLabel="Add to Cart" modalTitle={props.data[0].Book_Title} modalText={props.data[0].ISBN_10} modalImg="https://dictionary.cambridge.org/us/images/thumb/book_noun_001_01679.jpg?version=5.0.70"/> */}
-      //       </CardBody>
-      // </Card>
-        <CardDeck>
-          <TileRow />
-        </CardDeck>
+      <Card>
+          <CardImg top width="50" height="200" src="https://dictionary.cambridge.org/us/images/thumb/book_noun_001_01679.jpg?version=5.0.70" alt="Card image cap" /> 
+            <CardBody>
+              <CardTitle>{productName[j]}</CardTitle>
+              <CardSubtitle> $ {productPrice[j]}</CardSubtitle>
+              <ProductModal buttonLabel="Add to Cart"/>
+              {/* <ProductModal buttonLabel="Add to Cart" modalTitle={props.data[0].Book_Title} modalText={props.data[0].ISBN_10} modalImg="https://dictionary.cambridge.org/us/images/thumb/book_noun_001_01679.jpg?version=5.0.70"/> */}
+            </CardBody>
+      </Card>
       )
     
       {/* tiles.push(</CardDeck>) */}
@@ -60,4 +50,4 @@ const TileView = (props) => {
   return tiles
 }
 
-export default TileView;
+export default TileRow;
