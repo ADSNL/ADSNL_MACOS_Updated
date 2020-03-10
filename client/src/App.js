@@ -6,8 +6,29 @@ import ProductModal from "./components/ProductModal";
 import Footer from './components/BaseLayout/Footer/Footer'
 import Navbar from './components/BaseLayout/Navbar/Navbar'
 import TileView from './components/TileView/TileView'
+import Landing from './components/LandingPage/Landing'
+import {
+  BrowserRouter,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 import {CardDeck} from 'reactstrap'; //0305 test remove later
+
+import Routes from './components/routing/Routes'
+
+import {
+  Collapse,
+  Navbar as NavbarB, //Navbar from bootstrap
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink,
+  NavbarText
+} from 'reactstrap';
+import './components/BaseLayout/Navbar/Navbar.css';
 
 class App extends Component {
   constructor(props) {
@@ -53,18 +74,90 @@ class App extends Component {
     const datas = this.state.books;
     const clothingData = this.state.clothing;
     const datasList = datas.length ? (
-
+      
         <div>
-          <Navbar clothing={clothingData}/>
-          <TopSellingBooks  data={datas} />
-          <TopSellingClothing style='' clothing={clothingData} style={{marginTop:'500px'}} />
+          {/* <BrowserRouter> */}
+          {/* <Route exact path='/TileView' component={TileView} /> */}
+          {/* <Route exact path='/' component={TopSellingBooks} /> */}
+
+
+          {/* </BrowserRouter> */}
+          {/* <Navbar/> */}
+          {/* <TopSellingBooks  data={datas} /> */}
+
+          {/* <Navbar data={datas}/> */}
+          
+          {/* <TopSellingClothing style='' clothing={clothingData} style={{marginTop:'500px'}} /> */}
           {/* <CardDeck>
           <TileView productName={datas.Book_Title} productPrice={datas.Unit_Price}/>
           </CardDeck> */}
-          <ProductModal buttonLabel="Add to Cart" modalText="Test 1"/>
-          <Footer style={{marginTop:'500px'}}/>
+          
+      <BrowserRouter>
+        {/* <Navbar/>
+        <Link to="/"><b>ADSNL</b></Link >
+        <Link to="/booksT"><b>booksT</b></Link > */}
+
+    <div>
+        <NavbarB color="light"
+            light expand="md">
+            <NavbarBrand href="/"><Link to="/"><b>ADSNL</b></Link ></NavbarBrand>
+            {/* <NavbarToggler onClick={toggle} />
+            <Collapse isOpen={isOpen} navbar> */}
+                <Nav color="light" className="mr-auto" navbar>
+                    <NavItem>
+                        <NavLink href="/components/"><Link to="/books"><b>Books</b></Link ></NavLink >
+                    </NavItem>
+                    <NavItem>
+                       
+                            
+                        <NavLink href="/components/"><b>Clothing</b></NavLink >
+                        
+                    </NavItem>
+                    <NavItem>
+                        <NavLink href="/components/"><b>Movies</b></NavLink >
+                    </NavItem><NavItem>
+                        <NavLink href="/components/"><b>Books</b></NavLink >
+                    </NavItem><NavItem>
+                        <NavLink href="/components/"><b>Kitchen</b></NavLink>
+                    </NavItem>
+                    <NavItem>
+                        <NavLink href="/components/"> <b> Make up </b></NavLink >
+                    </NavItem>
+                    <NavItem>
+                        <NavLink href="/components/"><b>Pets</b></NavLink >
+                    </NavItem></Nav> <NavbarText><b>Login</b></NavbarText>
+                    {/* </Collapse> */}
+        </NavbarB>
+    </div>
+        
+      {/* <Switch> */}
+      <Route exact path="/">
+          {/* <TopSellingBooks  data={datas} /> */}
+         <Landing data={datas}/>   
+       </Route>
+        <Route component={Routes}/>
+       {/* <Route exact path="/booksT">
+         <TileView/>
+       </Route>
+
+       <Route exact path="/books" component={Navbar}>
+         <TileView/>
+       </Route> */}
+       {/* <Route exact path="/" component={Landing} /> */}
        
-      </div>
+
+       {/* <TopSellingBooks  data={datas} /> */}
+       {/* <TopSellingClothing style='' clothing={clothingData} style={{marginTop:'500px'}} /> */}
+       
+       
+       
+
+      {/* </Switch> */}
+    </BrowserRouter>
+    <ProductModal buttonLabel="Cart" modalText="Test 1"/>
+    <Footer style={{marginTop:'500px'}}/>
+       
+    </div>
 
     ) : (
         <h1>Loading</h1>

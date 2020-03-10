@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import {
     Collapse,
-    Navbar,
+    Navbar as NavbarB, //Navbar from bootstrap
     NavbarToggler,
     NavbarBrand,
     Nav,
@@ -22,7 +22,12 @@ import {CardDeck} from 'reactstrap'; //0305 test remove later
 
 import TileView from '../../TileView/TileView';
 
-const Example = (props) => {
+import TopSellingBooks from "../../TopSelling/TopSellingBooks";
+
+
+const Navbar = (props) => {
+
+    
     const [isOpen, setIsOpen] = useState(false);
 
     const toggle = () => setIsOpen(!isOpen);
@@ -30,14 +35,14 @@ const Example = (props) => {
     return (
     <Router>
     <div>
-        <Navbar color="light"
+        <NavbarB color="light"
             light expand="md">
-            <NavbarBrand href="/"><b>ADSNL</b></NavbarBrand>
+            <NavbarBrand href="/"><Link to="/"><b>ADSNL</b></Link ></NavbarBrand>
             <NavbarToggler onClick={toggle} />
             <Collapse isOpen={isOpen} navbar>
                 <Nav color="light" className="mr-auto" navbar>
                     <NavItem>
-                        <Link to="books"><b>Books</b></Link >
+                        <NavLink href="/components/"><Link to="/books"><b>Books</b></Link ></NavLink >
                     </NavItem>
                     <NavItem>
                        
@@ -58,18 +63,32 @@ const Example = (props) => {
                     <NavItem>
                         <NavLink href="/components/"><b>Pets</b></NavLink >
                     </NavItem></Nav> <NavbarText><b>Login</b></NavbarText></Collapse>
-        </Navbar>
+        </NavbarB>
     </div>
-    <Switch>
+    {/* <Switch>
         <Route path="/books">
         
+
           <TileView/>
         
-        </Route>
+        </Route> */}
+        {/* <Route path="/">
+        
+        <TopSellingBooks  data={props} />
+        {console.log(props)}
+        
+      </Route> */}
+      {/* <Route exact path="/home"> */}
+       
 
-    </Switch>
+       {/* <h1> hello</h1> */}
+       {/* <TopSellingClothing  /> */}
+       
+       {/* </Route> */}
+
+    {/* </Switch> */}
     </Router>
     );
 }
 
-export default Example;
+export default Navbar;
