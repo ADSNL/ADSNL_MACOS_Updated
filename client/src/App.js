@@ -16,6 +16,20 @@ import {
 
 import {CardDeck} from 'reactstrap'; //0305 test remove later
 
+import Routes from './components/routing/Routes'
+
+import {
+  Collapse,
+  Navbar as NavbarB, //Navbar from bootstrap
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink,
+  NavbarText
+} from 'reactstrap';
+import './components/BaseLayout/Navbar/Navbar.css';
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -79,22 +93,58 @@ class App extends Component {
           </CardDeck> */}
           
       <BrowserRouter>
-        <Link to="/"><b><Navbar/></b></Link >
-        <Link to="/booksT"><b>booksT</b></Link >
-      <Switch>
-       <Route path="/booksT">
-       
+        {/* <Navbar/>
+        <Link to="/"><b>ADSNL</b></Link >
+        <Link to="/booksT"><b>booksT</b></Link > */}
 
-         <TileView/>
-       
-       </Route>
-       {/* <Route exact path="/" component={Landing} /> */}
-       <Route path="/">
-          
+    <div>
+        <NavbarB color="light"
+            light expand="md">
+            <NavbarBrand href="/"><Link to="/"><b>ADSNL</b></Link ></NavbarBrand>
+            {/* <NavbarToggler onClick={toggle} />
+            <Collapse isOpen={isOpen} navbar> */}
+                <Nav color="light" className="mr-auto" navbar>
+                    <NavItem>
+                        <NavLink href="/components/"><Link to="/books"><b>Books</b></Link ></NavLink >
+                    </NavItem>
+                    <NavItem>
+                       
+                            
+                        <NavLink href="/components/"><b>Clothing</b></NavLink >
+                        
+                    </NavItem>
+                    <NavItem>
+                        <NavLink href="/components/"><b>Movies</b></NavLink >
+                    </NavItem><NavItem>
+                        <NavLink href="/components/"><b>Books</b></NavLink >
+                    </NavItem><NavItem>
+                        <NavLink href="/components/"><b>Kitchen</b></NavLink>
+                    </NavItem>
+                    <NavItem>
+                        <NavLink href="/components/"> <b> Make up </b></NavLink >
+                    </NavItem>
+                    <NavItem>
+                        <NavLink href="/components/"><b>Pets</b></NavLink >
+                    </NavItem></Nav> <NavbarText><b>Login</b></NavbarText>
+                    {/* </Collapse> */}
+        </NavbarB>
+    </div>
+        
+      {/* <Switch> */}
+      <Route exact path="/">
           {/* <TopSellingBooks  data={datas} /> */}
-         <Landing data={datas}/>
-       
+         <Landing data={datas}/>   
        </Route>
+        <Route component={Routes}/>
+       {/* <Route exact path="/booksT">
+         <TileView/>
+       </Route>
+
+       <Route exact path="/books" component={Navbar}>
+         <TileView/>
+       </Route> */}
+       {/* <Route exact path="/" component={Landing} /> */}
+       
 
        {/* <TopSellingBooks  data={datas} /> */}
        {/* <TopSellingClothing style='' clothing={clothingData} style={{marginTop:'500px'}} /> */}
@@ -102,7 +152,7 @@ class App extends Component {
        
        
 
-      </Switch>
+      {/* </Switch> */}
     </BrowserRouter>
     <ProductModal buttonLabel="Cart" modalText="Test 1"/>
     <Footer style={{marginTop:'500px'}}/>

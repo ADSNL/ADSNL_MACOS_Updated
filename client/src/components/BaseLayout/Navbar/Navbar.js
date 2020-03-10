@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import {
     Collapse,
-    Navbar,
+    Navbar as NavbarB, //Navbar from bootstrap
     NavbarToggler,
     NavbarBrand,
     Nav,
@@ -25,7 +25,7 @@ import TileView from '../../TileView/TileView';
 import TopSellingBooks from "../../TopSelling/TopSellingBooks";
 
 
-const Example = (props) => {
+const Navbar = (props) => {
 
     
     const [isOpen, setIsOpen] = useState(false);
@@ -35,9 +35,9 @@ const Example = (props) => {
     return (
     <Router>
     <div>
-        <Navbar color="light"
+        <NavbarB color="light"
             light expand="md">
-            <NavbarBrand href="/"><Link to="/home"><b>ADSNL</b></Link ></NavbarBrand>
+            <NavbarBrand href="/"><Link to="/"><b>ADSNL</b></Link ></NavbarBrand>
             <NavbarToggler onClick={toggle} />
             <Collapse isOpen={isOpen} navbar>
                 <Nav color="light" className="mr-auto" navbar>
@@ -63,15 +63,15 @@ const Example = (props) => {
                     <NavItem>
                         <NavLink href="/components/"><b>Pets</b></NavLink >
                     </NavItem></Nav> <NavbarText><b>Login</b></NavbarText></Collapse>
-        </Navbar>
+        </NavbarB>
     </div>
-    <Switch>
+    {/* <Switch>
         <Route path="/books">
         
 
           <TileView/>
         
-        </Route>
+        </Route> */}
         {/* <Route path="/">
         
         <TopSellingBooks  data={props} />
@@ -86,9 +86,9 @@ const Example = (props) => {
        
        {/* </Route> */}
 
-    </Switch>
+    {/* </Switch> */}
     </Router>
     );
 }
 
-export default Example;
+export default Navbar;
