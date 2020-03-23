@@ -154,7 +154,7 @@ class App extends Component {
 
       {/* </Switch> */}
     </BrowserRouter>
-    <ProductModal buttonLabel="Cart" modalText="Test 1"/>
+    {/*<ProductModal buttonLabel="Cart" modalText="Test 1"/>*/}
     <Footer style={{marginTop:'500px'}}/>
        
     </div>
