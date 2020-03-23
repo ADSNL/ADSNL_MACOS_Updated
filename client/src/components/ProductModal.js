@@ -35,8 +35,8 @@ const ProductModal = (props) => {
           </Media>
         </ModalBody>
         <ModalFooter>
-          <Button color="primary" onClick={toggle}>Do Something</Button>{' '}
-          <Button color="secondary" onClick={toggle}>Cancel</Button>
+          <Button color="primary" onClick={toggle}>Add to Cart</Button>{' '}
+          <Button color="secondary" onClick={toggle}>Close</Button>
         </ModalFooter>
       </Modal>
     </div>
