@@ -32,7 +32,7 @@ const TopSellingBooks = props => (
               <CardTitle>{props.data[0].Book_Title}</CardTitle>
               <CardSubtitle> $ {props.data[0].Unit_Price}</CardSubtitle>
               
-              <ProductModal buttonLabel="Add to Cart" modalTitle={props.data[0].Book_Title} modalText={props.data[0].ISBN_10} modalImg="https://dictionary.cambridge.org/us/images/thumb/book_noun_001_01679.jpg?version=5.0.70"/>
+              <ProductModal buttonLabel="View Details" modalTitle={props.data[0].Book_Title} modalText={props.data[0].ISBN_10} modalImg="https://dictionary.cambridge.org/us/images/thumb/book_noun_001_01679.jpg?version=5.0.70"/>
               
             </CardBody>
         </Card>
@@ -42,7 +42,7 @@ const TopSellingBooks = props => (
             <CardBody>
               <CardTitle>{props.data[1].Book_Title}</CardTitle>
               <CardSubtitle> $ {props.data[1].Unit_Price}</CardSubtitle>
-              <ProductModal buttonLabel="Add to Cart" modalTitle={props.data[1].Book_Title} modalText={props.data[1].ISBN_10} modalImg="https://dictionary.cambridge.org/us/images/thumb/book_noun_001_01679.jpg?version=5.0.70"/>
+              <ProductModal buttonLabel="View Details" modalTitle={props.data[1].Book_Title} modalText={props.data[1].ISBN_10} modalImg="https://dictionary.cambridge.org/us/images/thumb/book_noun_001_01679.jpg?version=5.0.70"/>
             </CardBody>
         </Card> 
 
@@ -51,7 +51,7 @@ const TopSellingBooks = props => (
             <CardBody>
               <CardTitle>{props.data[2].Book_Title}</CardTitle>
               <CardSubtitle> $ {props.data[2].Unit_Price}</CardSubtitle>
-              <ProductModal buttonLabel="Add to Cart" modalTitle={props.data[2].Book_Title} modalText={props.data[2].ISBN_10} modalImg="https://dictionary.cambridge.org/us/images/thumb/book_noun_001_01679.jpg?version=5.0.70"/>
+              <ProductModal buttonLabel="View Details" modalTitle={props.data[2].Book_Title} modalText={props.data[2].ISBN_10} modalImg="https://dictionary.cambridge.org/us/images/thumb/book_noun_001_01679.jpg?version=5.0.70"/>
             </CardBody>
         </Card> 
 
@@ -60,7 +60,7 @@ const TopSellingBooks = props => (
             <CardBody>
               <CardTitle>{props.data[3].Book_Title}</CardTitle>
               <CardSubtitle> $ {props.data[3].Unit_Price}</CardSubtitle>
-              <ProductModal buttonLabel="Add to Cart" modalTitle={props.data[3].Book_Title} modalText={props.data[3].ISBN_10} modalImg="https://dictionary.cambridge.org/us/images/thumb/book_noun_001_01679.jpg?version=5.0.70"/>
+              <ProductModal buttonLabel="View Details" modalTitle={props.data[3].Book_Title} modalText={props.data[3].ISBN_10} modalImg="https://dictionary.cambridge.org/us/images/thumb/book_noun_001_01679.jpg?version=5.0.70"/>
             </CardBody>
         </Card> 
       </CardDeck>
