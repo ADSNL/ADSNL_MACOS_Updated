@@ -17,7 +17,7 @@ var dbConfig = {
 app.get('/api/books', (req, res) => {
   var conn = new sql.ConnectionPool(dbConfig);
   var req = new sql.Request(conn);
-  conn.connect(function(err) {
+  conn.connect(function (err) {
     if (err) {
       console.log(err);
       return;
@@ -39,7 +39,7 @@ app.get('/api/books', (req, res) => {
 app.get('/api/clothing', (req, res) => {
   var conn = new sql.ConnectionPool(dbConfig);
   var req = new sql.Request(conn);
-  conn.connect(function(err) {
+  conn.connect(function (err) {
     if (err) {
       console.log(err);
       return;
@@ -61,12 +61,12 @@ app.get('/api/clothing', (req, res) => {
 app.get('/api/viewBooks', (req, res) => {
   var conn = new sql.ConnectionPool(dbConfig);
   var req = new sql.Request(conn);
-  conn.connect(function(err) {
+  conn.connect(function (err) {
     if (err) {
       console.log(err);
       return;
     }
-    req.query('SELECT TOP 25 Books.Book_ID,Book_Title,ISBN_10,ISBN_13,Book_Genre_ID,Book_Publisher_ID,min(Unit_Price) as Unit_Price FROM  Books JOIN dbo.Book_Media_Lookup ON Books.Book_ID=Book_Media_Lookup.Book_ID GROUP BY Books.Book_ID,Book_Title,ISBN_10,ISBN_13,Book_Genre_ID,Book_Publisher_ID    ', (err, recordset) => {
+    req.query('SELECT TOP 25 Books.Book_ID,Book_Title as Title,ISBN_10 as Number,ISBN_13,Book_Genre_ID,Book_Publisher_ID,min(Unit_Price) as Price FROM  Books JOIN dbo.Book_Media_Lookup ON Books.Book_ID=Book_Media_Lookup.Book_ID GROUP BY Books.Book_ID,Book_Title,ISBN_10,ISBN_13,Book_Genre_ID,Book_Publisher_ID', (err, recordset) => {
       if (err) {
         console.log(err);
         return;

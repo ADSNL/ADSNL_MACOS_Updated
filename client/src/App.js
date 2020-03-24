@@ -14,7 +14,7 @@ import {
   Link
 } from "react-router-dom";
 
-import {CardDeck} from 'reactstrap'; //0305 test remove later
+import { CardDeck } from 'reactstrap'; //0305 test remove later
 
 import Routes from './components/routing/Routes'
 
@@ -74,90 +74,88 @@ class App extends Component {
     const datas = this.state.books;
     const clothingData = this.state.clothing;
     const datasList = datas.length ? (
-      
-        <div>
-          {/* <BrowserRouter> */}
-          {/* <Route exact path='/TileView' component={TileView} /> */}
-          {/* <Route exact path='/' component={TopSellingBooks} /> */}
+
+      <div>
+        {/* <BrowserRouter> */}
+        {/* <Route exact path='/TileView' component={TileView} /> */}
+        {/* <Route exact path='/' component={TopSellingBooks} /> */}
 
 
-          {/* </BrowserRouter> */}
-          {/* <Navbar/> */}
-          {/* <TopSellingBooks  data={datas} /> */}
+        {/* </BrowserRouter> */}
+        {/* <Navbar/> */}
+        {/* <TopSellingBooks  data={datas} /> */}
 
-          {/* <Navbar data={datas}/> */}
-          
-          {/* <TopSellingClothing style='' clothing={clothingData} style={{marginTop:'500px'}} /> */}
-          {/* <CardDeck>
+        {/* <Navbar data={datas}/> */}
+
+        {/* <TopSellingClothing style='' clothing={clothingData} style={{marginTop:'500px'}} /> */}
+        {/* <CardDeck>
           <TileView productName={datas.Book_Title} productPrice={datas.Unit_Price}/>
           </CardDeck> */}
-          
-      <BrowserRouter>
-        {/* <Navbar/>
+
+        <BrowserRouter>
+          {/* <Navbar/>
         <Link to="/"><b>ADSNL</b></Link >
         <Link to="/booksT"><b>booksT</b></Link > */}
 
-    <div>
-        <NavbarB color="light"
-            light expand="md">
-            <NavbarBrand href="/"><Link to="/"><b>ADSNL</b></Link ></NavbarBrand>
-            {/* <NavbarToggler onClick={toggle} />
+          <div>
+            <NavbarB color="light"
+              light expand="md">
+              <NavbarBrand href="/"><Link to="/"><b>ADSNL</b></Link></NavbarBrand>
+              {/* <NavbarToggler onClick={toggle} />
             <Collapse isOpen={isOpen} navbar> */}
-                <Nav color="light" className="mr-auto" navbar>
-                    <NavItem>
-                        <NavLink href="/components/"><Link to="/books"><b>Books</b></Link ></NavLink >
-                    </NavItem>
-                    <NavItem>
-                       
-                            
-                        <NavLink href="/components/"><b>Clothing</b></NavLink >
-                        
-                    </NavItem>
-                    <NavItem>
-                        <NavLink href="/components/"><b>Movies</b></NavLink >
-                    </NavItem><NavItem>
-                        <NavLink href="/components/"><b>Books</b></NavLink >
-                    </NavItem><NavItem>
-                        <NavLink href="/components/"><b>Kitchen</b></NavLink>
-                    </NavItem>
-                    <NavItem>
-                        <NavLink href="/components/"> <b> Make up </b></NavLink >
-                    </NavItem>
-                    <NavItem>
-                        <NavLink href="/components/"><b>Pets</b></NavLink >
-                    </NavItem></Nav> <NavbarText><b>Login</b></NavbarText>
-                    {/* </Collapse> */}
-        </NavbarB>
-    </div>
-        
-      {/* <Switch> */}
-      <Route exact path="/">
-          {/* <TopSellingBooks  data={datas} /> */}
-         <Landing data={datas}/>   
-       </Route>
-        <Route component={Routes}/>
-       {/* <Route exact path="/booksT">
+              <Nav color="light" className="mr-auto" navbar>
+                <NavItem>
+                  <NavLink><Link to="/books"><b>Books</b></Link></NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink><Link to="/clothing"><b>Clothing</b></Link></NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink><Link to="/movies"><b>Movies</b></Link></NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink><Link to="/kitchen"><b>Kitchen</b></Link></NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink><Link to="/makeup"><b>Make up</b></Link></NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink><Link to="/pets"><b>Pets</b></Link></NavLink>
+                </NavItem>
+              </Nav>
+              <NavbarText><b>Login</b></NavbarText>
+              {/* </Collapse> */}
+            </NavbarB>
+          </div>
+
+          {/* <Switch> */}
+          <Route exact path="/">
+            {/* <TopSellingBooks  data={datas} /> */}
+            <Landing data={datas} />
+          </Route>
+          <Route component={Routes} />
+          {/* <Route exact path="/booksT">
          <TileView/>
        </Route>
 
        <Route exact path="/books" component={Navbar}>
          <TileView/>
        </Route> */}
-       {/* <Route exact path="/" component={Landing} /> */}
-       
+          {/* <Route exact path="/" component={Landing} /> */}
 
-       {/* <TopSellingBooks  data={datas} /> */}
-       {/* <TopSellingClothing style='' clothing={clothingData} style={{marginTop:'500px'}} /> */}
-       
-       
-       
 
-      {/* </Switch> */}
-    </BrowserRouter>
-    {/*<ProductModal buttonLabel="Cart" modalText="Test 1"/>*/}
-    <Footer style={{marginTop:'500px'}}/>
-       
-    </div>
+          {/* <TopSellingBooks  data={datas} /> */}
+          {/* <TopSellingClothing style='' clothing={clothingData} style={{marginTop:'500px'}} /> */}
+
+
+
+
+          {/* </Switch> */}
+        </BrowserRouter>
+        {/*<ProductModal buttonLabel="Cart" modalText="Test 1"/>*/}
+        <Footer style={{ marginTop: '500px' }} />
+
+      </div>
 
     ) : (
         <h1>Loading</h1>
