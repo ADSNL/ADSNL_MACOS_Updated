@@ -24,7 +24,7 @@ const ProductModal = (props) => {
           <Media>
             <Media left href="#">
               {/* <Media object data-src="https://dictionary.cambridge.org/us/images/thumb/book_noun_001_01679.jpg?version=5.0.70" alt={modalImg} /> */}
-              <img src={modalImg}/>
+              <img width="200" height="200" src={modalImg}/>
             </Media>
             <Media body>
               <Media heading>
