@@ -3,6 +3,7 @@ import {
   Card, CardImg, CardTitle, CardSubtitle, CardBody, Col
 } from 'reactstrap';
 import ProductModal from "../ProductModal";
+import "./TileRow.css";
 
 class TileRow extends Component {
 
@@ -120,17 +121,16 @@ class TileRow extends Component {
   }
 
   render() {
-
     let tiles = []
     const datas = this.state.data;
 
     for (let j = 0; j < datas.length; j++) {
       tiles.push(
-        <Col md="3">
+        <Col md="3" style={{ marginTop: "15px" }}>
           <Card>
             <CardImg top width="50" height="200" src={this.state.imageURL} alt="Card image cap" />
             <CardBody>
-              <CardTitle>{datas[j].Title}</CardTitle>
+              <CardTitle className="colorText">{datas[j].Title}</CardTitle>
               <CardSubtitle> $ {datas[j].Price}</CardSubtitle>
               <ProductModal buttonLabel="View Details" modalTitle={datas[j].Title} modalText={datas[j].Number} modalImg={this.state.imageURL} />
             </CardBody>
