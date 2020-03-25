@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import "./App.css";
 import TopSellingBooks from "./components/TopSelling/TopSellingBooks";
 import TopSellingClothing from "./components/TopSelling/TopSellingClothing";
-import ProductModal from "./components/ProductModal";
 import Footer from './components/BaseLayout/Footer/Footer'
 import Navbar from './components/BaseLayout/Navbar/Navbar'
 import TileView from './components/TileView/TileView'
@@ -152,7 +151,6 @@ class App extends Component {
 
           {/* </Switch> */}
         </BrowserRouter>
-        {/*<ProductModal buttonLabel="Cart" modalText="Test 1"/>*/}
         <Footer style={{ marginTop: '500px' }} />
 
       </div>
