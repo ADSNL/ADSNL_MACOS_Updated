@@ -34,7 +34,8 @@ class App extends Component {
     super(props);
     this.state = {
       books: [],
-      clothing: []
+      clothing: [],
+      searchTerm: ''
     };
   }
 
@@ -67,6 +68,10 @@ class App extends Component {
   componentDidMount() {
     this.getBooks();
     this.getClothing();
+  }
+
+  handleChange = (e) => {
+    console.log(e.target.value);
   }
 
   render() {
@@ -122,7 +127,8 @@ class App extends Component {
                   <NavLink><Link to="/pets"><b>Pets</b></Link></NavLink>
                 </NavItem>
               </Nav>
-              <NavbarText><b>Login</b></NavbarText>
+              {/* <NavbarText><b>Login</b></NavbarText> */}
+              <input type="text" className="input" onChange={this.handleChange} placeholder="Search..." />
               {/* </Collapse> */}
             </NavbarB>
           </div>
@@ -142,12 +148,8 @@ class App extends Component {
        </Route> */}
           {/* <Route exact path="/" component={Landing} /> */}
 
-
           {/* <TopSellingBooks  data={datas} /> */}
           {/* <TopSellingClothing style='' clothing={clothingData} style={{marginTop:'500px'}} /> */}
-
-
-
 
           {/* </Switch> */}
         </BrowserRouter>
