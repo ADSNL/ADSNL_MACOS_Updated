@@ -1,6 +1,10 @@
 const express = require('express');
 var sql = require('mssql');
 const router = express.Router();
+var bodyParser = require('body-parser');
+var app = express();
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 var dbConfig = {
     server: 'localhost\\MSSQLSERVER',
@@ -165,6 +169,28 @@ router.get('/api/viewMakeUp', (req, res) => {
 });
 
 router.get('/api/viewPets', (req, res) => {
+    var conn = new sql.ConnectionPool(dbConfig);
+    var req = new sql.Request(conn);
+    conn.connect(function (err) {
+        if (err) {
+            console.log(err);
+            return;
+        }
+        req.query('SELECT TOP 24 Pets_ID as Number, Item_Model_Number as Title, Price as Price FROM Pets', (err, recordset) => {
+            if (err) {
+                console.log(err);
+                return;
+            } else {
+                const data = recordset;
+
+                res.send(data.recordset);
+            }
+            conn.close(recordset);
+        });
+    });
+});
+
+router.get('/api/search/:searchTerm', (req, res) => {
     var conn = new sql.ConnectionPool(dbConfig);
     var req = new sql.Request(conn);
     conn.connect(function (err) {

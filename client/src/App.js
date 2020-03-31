@@ -65,12 +65,26 @@ class App extends Component {
       .catch(err => err);
   };
 
+  getSearchResults = async () => {
+    fetch(`http://localhost:5000/api/search/${this.searchTerm}`)
+      .then(res => {
+        return res.json()
+      })
+      .then(data => {
+        this.setState({
+          clothing: data
+        });
+      })
+      .catch(err => err);
+  };
+
   componentDidMount() {
     this.getBooks();
     this.getClothing();
   }
 
   handleChange = (e) => {
+    this.searchTerm = e.target.value;
     console.log(e.target.value);
   }
 
@@ -128,7 +142,7 @@ class App extends Component {
                 </NavItem>
               </Nav>
               {/* <NavbarText><b>Login</b></NavbarText> */}
-              <input type="text" className="input" onChange={this.handleChange} placeholder="Search..." />
+              <input type="text" className="input" onChange={this.handleChange} searchResults={this.getSearchResults} placeholder="Search..." />
               {/* </Collapse> */}
             </NavbarB>
           </div>
