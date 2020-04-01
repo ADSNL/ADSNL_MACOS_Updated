@@ -62,6 +62,7 @@ class TileRow extends Component {
         this.setState({
           data: data
         });
+
       })
       .catch(err => err);
   };
@@ -73,8 +74,7 @@ class TileRow extends Component {
       })
       .then(data => {
         this.setState({
-          data: data,
-          imageURL: ''
+          data: data
         });
       })
       .catch(err => err);
@@ -112,7 +112,7 @@ class TileRow extends Component {
     }
     else if (this.props.catType == "Make up") {
       this.getMakeUp();
-      this.setState({ imageURL: "https://www.vector-eps.com/wp-content/gallery/electric-household-appliances-vectors/electric-household-appliance-vector5.jpg" });
+      this.setState({ imageURL: "https://www.psypost.org/wp-content/uploads/2020/01/woman-putting-on-makeup.jpg" });
     }
     else if (this.props.catType == "Pets") {
       this.getPets();
@@ -131,7 +131,7 @@ class TileRow extends Component {
             <CardImg top width="50" height="200" src={this.state.imageURL} alt="Card image cap" />
             <CardBody>
               <CardTitle className="colorText">{datas[j].Title}</CardTitle>
-              <CardSubtitle> $ {datas[j].Price}</CardSubtitle>
+              <CardSubtitle>$ {datas[j].Price}</CardSubtitle>
               <ProductModal buttonLabel="View Details" modalTitle={datas[j].Title} modalText={datas[j].Number} modalImg={this.state.imageURL} />
             </CardBody>
           </Card>
