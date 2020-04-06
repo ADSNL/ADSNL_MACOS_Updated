@@ -17,8 +17,8 @@ var dbConfig = {
     encrypt: true,
     enableArithAbort: true
   },
-  user: 'sa',
-  password: 'SypSoft#1',
+  user: 'ADSN',
+  password: 'ADSNL2020',
   Port: 1433
 };
 
@@ -78,9 +78,10 @@ app.get('/api/viewBooks', (req, res) => {
       console.log(err);
       return;
     }
-    req.query(`SELECT BD.Book_ID, BD.Title, BD.Number, BD.ISBN_13, BD.Book_Genre_ID, BD.Book_Publisher_ID, BD.Price, BD.CatCount
+    req.query(`SELECT BD.Book_ID, BD.Title, BD.Number, BD.ISBN_13, BD.Book_Genre_ID, BD.Book_Publisher_ID, BD.Price,
+    (SELECT COUNT(DISTINCT Books.Book_ID) FROM Books JOIN dbo.Book_Media_Lookup ON Books.Book_ID = Book_Media_Lookup.Book_ID) AS CatCount
     FROM (
-        SELECT Books.Book_ID,Book_Title as Title,ISBN_10 as Number,ISBN_13,Book_Genre_ID,Book_Publisher_ID,min(Unit_Price) as Price, (SElECT Count(*) FROM Books) AS CatCount, ROW_NUMBER() OVER (ORDER BY Books.Book_ID) AS RowNum
+        SELECT Books.Book_ID,Book_Title as Title,ISBN_10 as Number,ISBN_13,Book_Genre_ID,Book_Publisher_ID,min(Unit_Price) as Price, ROW_NUMBER() OVER (ORDER BY Books.Book_ID) AS RowNum
         FROM  Books JOIN dbo.Book_Media_Lookup ON Books.Book_ID=Book_Media_Lookup.Book_ID GROUP BY Books.Book_ID,Book_Title,ISBN_10,ISBN_13,Book_Genre_ID,Book_Publisher_ID
     ) AS BD
     WHERE BD.RowNum BETWEEN `+ startRange + `and ` + endRange, (err, recordset) => {
@@ -172,7 +173,7 @@ app.get('/api/viewKitchen', (req, res) => {
     }
     req.query(`SELECT K.Number, K.Title, K.Price, K.CatCount
     FROM (
-        SELECT K.Kitchen_Product_ID as Number, K.Kitchen_Product_Name as Title, KT.Price as Price, (SElECT Count(*) FROM Kitchen) AS CatCount, ROW_NUMBER() OVER (ORDER BY k.Kitchen_Product_ID) AS RowNum
+        SELECT K.Kitchen_Product_ID as Number, K.Kitchen_Product_Name as Title, KT.Price as Price, (SElECT Count(DISTINCT K.Kitchen_Product_ID) FROM Kitchen AS K JOIN Kitchen_Types_Lookup AS KT ON K.Kitchen_Product_ID = KT.Kitchen_Product_ID) AS CatCount, ROW_NUMBER() OVER (ORDER BY k.Kitchen_Product_ID) AS RowNum
         FROM Kitchen AS K JOIN Kitchen_Types_Lookup AS KT ON K.Kitchen_Product_ID = KT.Kitchen_Product_ID
     ) AS K
     WHERE K.RowNum BETWEEN `+ startRange + `and ` + endRange, (err, recordset) => {
@@ -234,7 +235,7 @@ app.get('/api/viewPets', (req, res) => {
     }
     req.query(`SELECT P.Number, P.Title, P.Price, P.CatCount
     FROM (
-        SELECT Pets_ID as Number, Item_Model_Number as Title, Price, (SElECT Count(*) FROM Makeup) AS CatCount, ROW_NUMBER() OVER (ORDER BY Pets_ID) AS RowNum
+        SELECT Pets_ID as Number, Item_Model_Number as Title, Price, (SElECT Count(*) FROM Pets) AS CatCount, ROW_NUMBER() OVER (ORDER BY Pets_ID) AS RowNum
         FROM Pets
     ) AS P
     WHERE P.RowNum BETWEEN `+ startRange + `and ` + endRange, (err, recordset) => {
