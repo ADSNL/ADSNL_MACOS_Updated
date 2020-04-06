@@ -7,9 +7,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 var dbConfig = {
-    server: 'localhost\\MSSQLSERVER',
-    database: 'MACOS_4mil',
-    user: 'ADSN',
+    server: 'localhost\\SQLEXPRESS',
+    database: 'Customer',
+    user: 'ADSNL',
     password: 'ADSNL_2020',
     Port: 1433
 };
@@ -191,7 +191,7 @@ router.get('/api/viewPets', (req, res) => {
 });
 
 router.get('/api/search/:searchTerm', (req, res) => {
-    console.log("Node : " + req.params.searchTerm);
+    var parameter = req.params.searchTerm;
     var conn = new sql.ConnectionPool(dbConfig);
     var req = new sql.Request(conn);
     conn.connect(function (err) {
@@ -199,14 +199,14 @@ router.get('/api/search/:searchTerm', (req, res) => {
             console.log(err);
             return;
         }
-        req.query('SELECT TOP 24 Pets_ID as Number, Item_Model_Number as Title, Price as Price FROM Pets', (err, recordset) => {
+        req.query("select * from Books where Book_Title like '%" + parameter + "%'", (err, recordset) => {
             if (err) {
                 console.log(err);
                 return;
             } else {
                 const data = recordset;
-
                 res.send(data.recordset);
+                console.log(data);
             }
             conn.close(recordset);
         });

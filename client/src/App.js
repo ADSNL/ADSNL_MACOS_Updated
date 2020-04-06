@@ -6,6 +6,7 @@ import Footer from './components/BaseLayout/Footer/Footer'
 import Navbar from './components/BaseLayout/Navbar/Navbar'
 import TileView from './components/TileView/TileView'
 import Landing from './components/LandingPage/Landing'
+import SearchResults from './components/SearchResults';
 import {
   BrowserRouter,
   Switch,
@@ -35,7 +36,8 @@ class App extends Component {
     this.state = {
       books: [],
       clothing: [],
-      searchTerm: ''
+      searchTerm: '',
+      searchResults: []
     };
   }
 
@@ -67,14 +69,14 @@ class App extends Component {
 
   handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("REACT : " + this.searchTerm);
+    console.log(this.searchTerm);
     fetch(`http://localhost:5000/api/search/${this.searchTerm}`)
       .then(res => {
         return res.json()
       })
       .then(data => {
         this.setState({
-          clothing: data
+          searchResults: data
         });
       })
       .catch(err => err);
@@ -154,6 +156,7 @@ class App extends Component {
           <Route exact path="/">
             {/* <TopSellingBooks  data={datas} /> */}
             <Landing data={datas} />
+            <SearchResults searchData={this.state.searchResults} />
           </Route>
           <Route component={Routes} />
           {/* <Route exact path="/booksT">
