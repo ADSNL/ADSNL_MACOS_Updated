@@ -65,7 +65,9 @@ class App extends Component {
       .catch(err => err);
   };
 
-  getSearchResults = async () => {
+  handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log("REACT : " + this.searchTerm);
     fetch(`http://localhost:5000/api/search/${this.searchTerm}`)
       .then(res => {
         return res.json()
@@ -85,7 +87,6 @@ class App extends Component {
 
   handleChange = (e) => {
     this.searchTerm = e.target.value;
-    console.log(e.target.value);
   }
 
   render() {
@@ -142,7 +143,9 @@ class App extends Component {
                 </NavItem>
               </Nav>
               {/* <NavbarText><b>Login</b></NavbarText> */}
-              <input type="text" className="input" onChange={this.handleChange} searchResults={this.getSearchResults} placeholder="Search..." />
+              <form action="" onSubmit={this.handleSubmit}>
+                <input type="text" className="input" onChange={this.handleChange} placeholder="Search..." />
+              </form>
               {/* </Collapse> */}
             </NavbarB>
           </div>

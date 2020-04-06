@@ -191,6 +191,7 @@ router.get('/api/viewPets', (req, res) => {
 });
 
 router.get('/api/search/:searchTerm', (req, res) => {
+    console.log("Node : " + req.params.searchTerm);
     var conn = new sql.ConnectionPool(dbConfig);
     var req = new sql.Request(conn);
     conn.connect(function (err) {
