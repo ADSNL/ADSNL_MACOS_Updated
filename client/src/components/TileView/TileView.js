@@ -115,12 +115,12 @@ class TileView extends Component {
   };
 
   paginationRange(data) {
-    console.log(data);
     this.setState({
       totalPage: TotalPage,
       data: data,
       totalItems: data[0].CatCount
     });
+
     let Total = this.state.totalItems;
     let TotalPage = Math.ceil(Total / 24);
 
@@ -132,36 +132,42 @@ class TileView extends Component {
   DisplayData(index) {
 
     let LastItem = index * 24;
+    if (LastItem > this.state.totalItems) {
+      LastItem = this.state.totalItems;
+    }
+
     let FirstItem = LastItem - 23;
+
     this.setState({
       startRange: FirstItem,
       endRange: LastItem,
       currentPage: index
+    }, () => {
+      if (this.props.catName == "Books") {
+        this.setState({ imageURL: "https://dictionary.cambridge.org/us/images/thumb/book_noun_001_01679.jpg?version=5.0.70" });
+        this.getBooks();
+      }
+      else if (this.props.catName == "Clothing") {
+        this.getClothing();
+        this.setState({ imageURL: "https://cdn.shopify.com/s/files/1/2143/3217/products/500_d31b0b14-cf17-4c44-8501-9f640df27ac5_grande.png?v=1583268433" });
+      }
+      else if (this.props.catName == "Movies") {
+        this.getviewMovies();
+        this.setState({ imageURL: "https://freedesignfile.com/upload/2015/10/Cinema-movie-vector-background-graphics-02.jpg" });
+      }
+      else if (this.props.catName == "Kitchen") {
+        this.getviewKitchen();
+        this.setState({ imageURL: "https://www.vector-eps.com/wp-content/gallery/electric-household-appliances-vectors/electric-household-appliance-vector5.jpg" });
+      }
+      else if (this.props.catName == "Make up") {
+        this.getMakeUp();
+        this.setState({ imageURL: "https://www.psypost.org/wp-content/uploads/2020/01/woman-putting-on-makeup.jpg" });
+      }
+      else if (this.props.catName == "Pets") {
+        this.getPets();
+        this.setState({ imageURL: "http://yourdost-blog-images.s3-ap-southeast-1.amazonaws.com/wp-content/uploads/2016/01/03165939/Dogs.jpg" });
+      }
     });
-    if (this.props.catName == "Books") {
-      this.setState({ imageURL: "https://dictionary.cambridge.org/us/images/thumb/book_noun_001_01679.jpg?version=5.0.70" });
-      this.getBooks();
-    }
-    else if (this.props.catName == "Clothing") {
-      this.getClothing();
-      this.setState({ imageURL: "https://cdn.shopify.com/s/files/1/2143/3217/products/500_d31b0b14-cf17-4c44-8501-9f640df27ac5_grande.png?v=1583268433" });
-    }
-    else if (this.props.catName == "Movies") {
-      this.getviewMovies();
-      this.setState({ imageURL: "https://freedesignfile.com/upload/2015/10/Cinema-movie-vector-background-graphics-02.jpg" });
-    }
-    else if (this.props.catName == "Kitchen") {
-      this.getviewKitchen();
-      this.setState({ imageURL: "https://www.vector-eps.com/wp-content/gallery/electric-household-appliances-vectors/electric-household-appliance-vector5.jpg" });
-    }
-    else if (this.props.catName == "Make up") {
-      this.getMakeUp();
-      this.setState({ imageURL: "https://www.psypost.org/wp-content/uploads/2020/01/woman-putting-on-makeup.jpg" });
-    }
-    else if (this.props.catName == "Pets") {
-      this.getPets();
-      this.setState({ imageURL: "http://yourdost-blog-images.s3-ap-southeast-1.amazonaws.com/wp-content/uploads/2016/01/03165939/Dogs.jpg" });
-    }
   }
 
   render() {
