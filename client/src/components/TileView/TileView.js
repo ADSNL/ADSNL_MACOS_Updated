@@ -199,6 +199,26 @@ class TileView extends Component {
     let { currentPage } = this.state;
     let datas = this.state.data;
     let PaginationRange = this.state.totalPage;
+    const searchDataResults = this.state.searchResults;
+    const searchTiles = [];
+
+    for (let j = 0; j < searchDataResults.length; j++) {
+      searchTiles.push(
+        <Col md="3" style={{ marginTop: "15px" }}>
+          <Card>
+            <CardImg top width="50" height="200" src={this.state.imageURL} alt="Card image cap" />
+            <CardBody>
+              <CardTitle style={{ textAlign: 'center' }} className="colorText">{datas[j].Title}</CardTitle>
+              <CardSubtitle style={{ textAlign: 'center' }}>$ {(searchDataResults[j].Price).toFixed(2)}</CardSubtitle>
+              <ProductModal buttonLabel="View Details"
+                productData={searchDataResults[j]}
+                modalImg={this.state.imageURL} />
+            </CardBody>
+          </Card>
+        </Col>
+      )
+    }
+
     for (let j = 0; j < datas.length; j++) {
       tiles.push(
         <Col md="3" style={{ marginTop: "15px" }}>
@@ -271,7 +291,9 @@ class TileView extends Component {
             </PaginationItem>
           </Pagination>
           <Row>
-            {tiles}
+            {
+              this.searchTerm == undefined ? tiles : searchTiles
+            }
           </Row>
           <Pagination style={{ marginTop: '10px' }} aria-label="Page navigation example">
             <PaginationItem>
