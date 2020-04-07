@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {
   Breadcrumb, BreadcrumbItem, Row, Container, Pagination, PaginationItem, PaginationLink,
-  Card, CardImg, CardTitle, CardSubtitle, CardBody, Col
+  Card, CardImg, CardTitle, CardSubtitle, CardBody, Col, FormGroup, Form, Input
 } from 'reactstrap';
 import ProductModal from "../ProductModal";
 import "./TileView.css";
@@ -17,7 +17,9 @@ class TileView extends Component {
       startRange: 1,
       endRange: 24,
       totalPage: 1,
-      totalItems: 0
+      totalItems: 0,
+      searchTerm: '',
+      searchResults: []
     };
   }
 
@@ -114,6 +116,27 @@ class TileView extends Component {
       .catch(err => err);
   };
 
+  getSearchResults = async (e) => {
+    e.preventDefault();
+    console.log(this.searchTerm);
+    fetch(`http://localhost:5000/api/search/${this.searchTerm}`)
+      .then(res => {
+        return res.json()
+      })
+      .then(data => {
+        this.setState({
+          searchResults: data
+        });
+        console.log(this.state.searchResults);
+      })
+      .catch(err => err);
+  }
+
+  handleChange = (e) => {
+    this.searchTerm = e.target.value;
+    console.log(this.searchTerm);
+  }
+
   paginationRange(data) {
     this.setState({
       totalPage: TotalPage,
@@ -176,7 +199,6 @@ class TileView extends Component {
     let { currentPage } = this.state;
     let datas = this.state.data;
     let PaginationRange = this.state.totalPage;
-
     for (let j = 0; j < datas.length; j++) {
       tiles.push(
         <Col md="3" style={{ marginTop: "15px" }}>
@@ -219,6 +241,20 @@ class TileView extends Component {
         </Breadcrumb>
 
         <Container>
+          <Form action="" onSubmit={this.getSearchResults} >
+            <Col>
+              <FormGroup>
+                <Input type="text" name="search"
+                  placeholder="Search..."
+                  className="search-input"
+                  autoComplete="on"
+                  onChange={this.handleChange} />
+              </FormGroup>
+            </Col>
+          </Form>
+        </Container>
+
+        <Container>
           <Pagination aria-label="Page navigation example">
             <PaginationItem>
               <PaginationLink first onClick={() => this.DisplayData(1)} />
@@ -253,7 +289,7 @@ class TileView extends Component {
             </PaginationItem>
           </Pagination>
         </Container>
-      </div>
+      </div >
     );
   }
 }
