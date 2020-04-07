@@ -199,7 +199,7 @@ router.get('/api/search/:searchTerm', (req, res) => {
             console.log(err);
             return;
         }
-        req.query("select * from Books where Book_Title like '%" + parameter + "%'", (err, recordset) => {
+        req.query("SELECT Books.Book_ID,Book_Title as Title,ISBN_10 as Number,ISBN_13,Book_Genre_ID,Book_Publisher_ID,min(Unit_Price) as Price FROM  Books JOIN dbo.Book_Media_Lookup ON Books.Book_ID=Book_Media_Lookup.Book_ID where Books.Book_Title like '%" + parameter + "%' GROUP BY Books.Book_ID,Book_Title,ISBN_10,ISBN_13,Book_Genre_ID,Book_Publisher_ID", (err, recordset) => {
             if (err) {
                 console.log(err);
                 return;

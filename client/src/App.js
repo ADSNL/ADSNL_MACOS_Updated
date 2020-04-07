@@ -155,8 +155,7 @@ class App extends Component {
           {/* <Switch> */}
           <Route exact path="/">
             {/* <TopSellingBooks  data={datas} /> */}
-            <Landing data={datas} />
-            <SearchResults searchData={this.state.searchResults} />
+            <Landing data={datas} searchParameter={this.searchTerm} searchData={this.state.searchResults} />
           </Route>
           <Route component={Routes} />
           {/* <Route exact path="/booksT">
