@@ -17,8 +17,8 @@ var dbConfig = {
     encrypt: true,
     enableArithAbort: true
   },
-  user: 'ADSN',
-  password: 'ADSNL2020',
+  user: 'ADSNL',
+  password: 'ADSNL_2020',
   Port: 1433
 };
 

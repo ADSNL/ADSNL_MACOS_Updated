@@ -185,7 +185,10 @@ class TileView extends Component {
             <CardBody>
               <CardTitle style={{ textAlign: 'center' }} className="colorText">{datas[j].Title}</CardTitle>
               <CardSubtitle style={{ textAlign: 'center' }}>$ {(datas[j].Price).toFixed(2)}</CardSubtitle>
-              <ProductModal buttonLabel="View Details" modalTitle={datas[j].Title} modalText={datas[j].Number} modalImg={this.state.imageURL} />
+              <ProductModal buttonLabel="View Details"
+                modalTitle={datas[j].Title}
+                modalText={datas[j].Number}
+                modalImg={this.state.imageURL} />
             </CardBody>
           </Card>
         </Col>
