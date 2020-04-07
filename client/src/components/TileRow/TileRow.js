@@ -133,8 +133,7 @@ class TileRow extends Component {
               <CardTitle className="colorText">{datas[j].Title}</CardTitle>
               <CardSubtitle>$ {datas[j].Price}</CardSubtitle>
               <ProductModal buttonLabel="View Details"
-                modalTitle={datas[j].Title}
-                modalText={datas[j].Number}
+                productData={datas[j]}
                 modalImg={this.state.imageURL} />
             </CardBody>
           </Card>
