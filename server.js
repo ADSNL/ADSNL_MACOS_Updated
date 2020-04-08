@@ -11,8 +11,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 var dbConfig = {
-  server: 'localhost\\SQLEXPRESS',
-  database: 'Customer',
+  server: 'adsndb.c0yzxuhp43yb.us-east-2.rds.amazonaws.com',
+  database: 'MACOS',
   options: {
     encrypt: true,
     enableArithAbort: true
