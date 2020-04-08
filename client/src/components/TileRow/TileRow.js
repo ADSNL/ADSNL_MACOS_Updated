@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {
-  Card, CardImg, CardTitle, CardSubtitle, CardBody, Col
+  Card, CardImg, CardTitle, CardSubtitle, CardBody, Col,
+  Form, FormGroup, Input
 } from 'reactstrap';
 import ProductModal from "../ProductModal";
 import "./TileRow.css";
@@ -123,7 +124,9 @@ class TileRow extends Component {
   render() {
     let tiles = []
     const datas = this.state.data;
-
+    <div>
+      Sample
+    </div>
     for (let j = 0; j < datas.length; j++) {
       tiles.push(
         <Col md="3" style={{ marginTop: "15px" }}>
@@ -132,7 +135,9 @@ class TileRow extends Component {
             <CardBody>
               <CardTitle className="colorText">{datas[j].Title}</CardTitle>
               <CardSubtitle>$ {datas[j].Price}</CardSubtitle>
-              <ProductModal buttonLabel="View Details" modalTitle={datas[j].Title} modalText={datas[j].Number} modalImg={this.state.imageURL} />
+              <ProductModal buttonLabel="View Details"
+                productData={datas[j]}
+                modalImg={this.state.imageURL} />
             </CardBody>
           </Card>
         </Col>

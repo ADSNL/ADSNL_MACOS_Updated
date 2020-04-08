@@ -4,3 +4,8 @@
     overflow: hidden;
     font-weight: bold;
 }
+
+.search-input {
+    max-width: 500px;
+    margin-left: 25%;
+}

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {
   Breadcrumb, BreadcrumbItem, Row, Container, Pagination, PaginationItem, PaginationLink,
-  Card, CardImg, CardTitle, CardSubtitle, CardBody, Col
+  Card, CardImg, CardTitle, CardSubtitle, CardBody, Col, FormGroup, Form, Input
 } from 'reactstrap';
 import ProductModal from "../ProductModal";
 import "./TileView.css";
@@ -18,7 +18,8 @@ class TileView extends Component {
       endRange: 24,
       totalPage: 1,
       totalItems: 0,
-      categoryName: ''
+      searchTerm: '',
+      searchResults: []
     };
   }
 
@@ -147,6 +148,27 @@ class TileView extends Component {
       .catch(err => err);
   };
 
+  getSearchResults = async (e) => {
+    e.preventDefault();
+    console.log(this.searchTerm);
+    fetch(`http://localhost:5000/api/search/${this.searchTerm}`)
+      .then(res => {
+        return res.json()
+      })
+      .then(data => {
+        this.setState({
+          searchResults: data
+        });
+        console.log(this.state.searchResults);
+      })
+      .catch(err => err);
+  }
+
+  handleChange = (e) => {
+    this.searchTerm = e.target.value;
+    console.log(this.searchTerm);
+  }
+
   paginationRange(data) {
     this.setState({
       totalPage: TotalPage,
@@ -184,6 +206,25 @@ class TileView extends Component {
     let { currentPage } = this.state;
     let datas = this.state.data;
     let PaginationRange = this.state.totalPage;
+    const searchDataResults = this.state.searchResults;
+    const searchTiles = [];
+
+    for (let j = 0; j < searchDataResults.length; j++) {
+      searchTiles.push(
+        <Col md="3" style={{ marginTop: "15px" }}>
+          <Card>
+            <CardImg top width="50" height="200" src={this.state.imageURL} alt="Card image cap" />
+            <CardBody>
+              <CardTitle style={{ textAlign: 'center' }} className="colorText">{datas[j].Title}</CardTitle>
+              <CardSubtitle style={{ textAlign: 'center' }}>$ {(searchDataResults[j].Price).toFixed(2)}</CardSubtitle>
+              <ProductModal buttonLabel="View Details"
+                productData={searchDataResults[j]}
+                modalImg={this.state.imageURL} />
+            </CardBody>
+          </Card>
+        </Col>
+      )
+    }
 
     for (let j = 0; j < datas.length; j++) {
       tiles.push(
@@ -193,7 +234,9 @@ class TileView extends Component {
             <CardBody>
               <CardTitle style={{ textAlign: 'center' }} className="colorText">{datas[j].Title}</CardTitle>
               <CardSubtitle style={{ textAlign: 'center' }}>$ {(datas[j].Price).toFixed(2)}</CardSubtitle>
-              <ProductModal buttonLabel="View Details" modalTitle={datas[j].Title} modalText={datas[j].Number} modalImg={this.state.imageURL} />
+              <ProductModal buttonLabel="View Details"
+                productData={datas[j]}
+                modalImg={this.state.imageURL} />
             </CardBody>
           </Card>
         </Col>
@@ -225,6 +268,20 @@ class TileView extends Component {
         </Breadcrumb>
 
         <Container>
+          <Form action="" onSubmit={this.getSearchResults} >
+            <Col>
+              <FormGroup>
+                <Input type="text" name="search"
+                  placeholder="Search..."
+                  className="search-input"
+                  autoComplete="on"
+                  onChange={this.handleChange} />
+              </FormGroup>
+            </Col>
+          </Form>
+        </Container>
+
+        <Container>
           <Pagination aria-label="Page navigation example">
             <PaginationItem>
               <PaginationLink first onClick={() => this.DisplayData(1)} />
@@ -241,7 +298,9 @@ class TileView extends Component {
             </PaginationItem>
           </Pagination>
           <Row>
-            {tiles}
+            {
+              this.searchTerm == undefined ? tiles : searchTiles
+            }
           </Row>
           <Pagination style={{ marginTop: '10px' }} aria-label="Page navigation example">
             <PaginationItem>
@@ -259,7 +318,7 @@ class TileView extends Component {
             </PaginationItem>
           </Pagination>
         </Container>
-      </div>
+      </div >
     );
   }
 }
