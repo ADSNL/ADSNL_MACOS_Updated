@@ -43,7 +43,7 @@ class TileView extends Component {
           this.LoadCatData();
           this._isMounted = false;
         }
-      });     
+      });
     }
   }
   componentWillReceiveProps() {
@@ -215,7 +215,7 @@ class TileView extends Component {
           <Card>
             <CardImg top width="50" height="200" src={this.state.imageURL} alt="Card image cap" />
             <CardBody>
-              <CardTitle style={{ textAlign: 'center' }} className="colorText">{datas[j].Title}</CardTitle>
+              <CardTitle style={{ textAlign: 'center' }} className="colorText">{searchDataResults[j].Title}</CardTitle>
               <CardSubtitle style={{ textAlign: 'center' }}>$ {(searchDataResults[j].Price).toFixed(2)}</CardSubtitle>
               <ProductModal buttonLabel="View Details"
                 productData={searchDataResults[j]}
