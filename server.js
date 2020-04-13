@@ -252,8 +252,8 @@ app.get('/api/viewPets', (req, res) => {
   });
 });
 
-app.get('/api/search/:searchTerm', (req, res) => {
-  var parameter = req.params.searchTerm;
+app.get('/api/search/', (req, res) => {
+  let parameter = req.query.search;
   var conn = new sql.ConnectionPool(dbConfig);
   var req = new sql.Request(conn);
   conn.connect(function (err) {

@@ -151,7 +151,7 @@ class TileView extends Component {
   getSearchResults = async (e) => {
     e.preventDefault();
     console.log(this.searchTerm);
-    fetch(`http://localhost:5000/api/search/${this.searchTerm}`)
+    fetch("http://localhost:5000/api/search/?search=" + this.searchTerm)
       .then(res => {
         return res.json()
       })
