@@ -298,7 +298,7 @@ class TileView extends Component {
           </Pagination>
           <Row>
             {
-              this.searchTerm == undefined ? tiles : searchTiles
+              ((this.searchTerm == undefined) || (this.searchTerm == '')) ? tiles : searchTiles
             }
           </Row>
           <Pagination style={{ marginTop: '10px' }} aria-label="Page navigation example">
