@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {
   Breadcrumb, BreadcrumbItem, Row, Container, Pagination, PaginationItem, PaginationLink,
-  Card, CardImg, CardTitle, CardSubtitle, CardBody, Col, FormGroup, Form, Input
+  Card, CardImg, CardTitle, CardSubtitle, CardBody, Col, FormGroup, Form, Input, Button
 } from 'reactstrap';
 import ProductModal from "../ProductModal";
 import "./TileView.css";
@@ -268,15 +268,20 @@ class TileView extends Component {
 
         <Container>
           <Form action="" onSubmit={this.getSearchResults} >
-            <Col>
-              <FormGroup>
-                <Input type="text" name="search"
-                  placeholder="Search..."
-                  className="search-input"
-                  autoComplete="on"
-                  onChange={this.handleChange} />
-              </FormGroup>
-            </Col>
+            <Row>
+              <Col>
+                <FormGroup>
+                  <Input type="text" name="search"
+                    placeholder="Search..."
+                    className="search-input"
+                    autoComplete="on"
+                    onChange={this.handleChange} />
+                </FormGroup>
+              </Col>
+              <Col>
+                <Button className="search-btn">Submit</Button>
+              </Col>
+            </Row>
           </Form>
         </Container>
 

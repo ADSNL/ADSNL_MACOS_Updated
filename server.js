@@ -256,7 +256,6 @@ app.get('/api/search/', (req, res) => {
 
   let parameter = req.query.search;
   let category = req.query.category;
-  console.log("server side : ", category);
   var conn = new sql.ConnectionPool(dbConfig);
   var req = new sql.Request(conn);
   conn.connect(function (err) {
