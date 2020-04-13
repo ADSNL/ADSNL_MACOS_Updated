@@ -253,7 +253,10 @@ app.get('/api/viewPets', (req, res) => {
 });
 
 app.get('/api/search/', (req, res) => {
+
   let parameter = req.query.search;
+  let category = req.query.category;
+  console.log("server side : ", category);
   var conn = new sql.ConnectionPool(dbConfig);
   var req = new sql.Request(conn);
   conn.connect(function (err) {
@@ -268,7 +271,6 @@ app.get('/api/search/', (req, res) => {
       } else {
         const data = recordset;
         res.send(data.recordset);
-        console.log(data);
       }
       conn.close(recordset);
     });
