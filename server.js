@@ -280,6 +280,7 @@ app.get('/api/search/', (req, res) => {
         conn.close(recordset);
       });
     }
+
     if (category == 'Clothing') {
       req.query(`SELECT C.Number, C.Title, C.Price, C.CatCount
       FROM (
@@ -287,6 +288,78 @@ app.get('/api/search/', (req, res) => {
           FROM Clothing
       ) AS C
     WHERE C.Title like '%` + parameter + `%'`, (err, recordset) => {
+        if (err) {
+          console.log(err);
+          return;
+        } else {
+          const data = recordset;
+          res.send(data.recordset);
+        }
+        conn.close(recordset);
+      });
+    }
+
+    if (category == "Movies") {
+      req.query(`SELECT M.Number, M.Title, M.Price, M.CatCount
+      FROM (
+          SELECT Movie_ID as Number, Movie_Title as Title, 25 as Price, (SElECT Count(*) FROM Movies) AS CatCount, ROW_NUMBER() OVER (ORDER BY Movie_ID) AS RowNum
+          FROM Movies
+      ) AS M
+    WHERE M.Title like '%` + parameter + `%'`, (err, recordset) => {
+        if (err) {
+          console.log(err);
+          return;
+        } else {
+          const data = recordset;
+          res.send(data.recordset);
+        }
+        conn.close(recordset);
+      });
+    }
+
+    if (category == "Kitchen") {
+      req.query(`SELECT K.Number, K.Title, K.Price, K.CatCount
+      FROM (
+          SELECT K.Kitchen_Product_ID as Number, K.Kitchen_Product_Name as Title, KT.Price as Price, (SElECT Count(DISTINCT K.Kitchen_Product_ID) FROM Kitchen AS K JOIN Kitchen_Types_Lookup AS KT ON K.Kitchen_Product_ID = KT.Kitchen_Product_ID) AS CatCount, ROW_NUMBER() OVER (ORDER BY k.Kitchen_Product_ID) AS RowNum
+          FROM Kitchen AS K JOIN Kitchen_Types_Lookup AS KT ON K.Kitchen_Product_ID = KT.Kitchen_Product_ID
+      ) AS K
+    WHERE K.Title like '%` + parameter + `%'`, (err, recordset) => {
+        if (err) {
+          console.log(err);
+          return;
+        } else {
+          const data = recordset;
+          res.send(data.recordset);
+        }
+        conn.close(recordset);
+      });
+    }
+
+    if (category == "Make up") {
+      req.query(`SELECT M.Number, M.Title, M.Price, M.CatCount
+      FROM (
+          SELECT Makeup_ID as Number, Makeup_Name as Title, 29 as Price, (SElECT Count(*) FROM Makeup) AS CatCount, ROW_NUMBER() OVER (ORDER BY Makeup_ID) AS RowNum
+          FROM Makeup
+      ) AS M
+    WHERE M.Title like '%` + parameter + `%'`, (err, recordset) => {
+        if (err) {
+          console.log(err);
+          return;
+        } else {
+          const data = recordset;
+          res.send(data.recordset);
+        }
+        conn.close(recordset);
+      });
+    }
+
+    if (category == "Pets") {
+      req.query(`SELECT P.Number, P.Title, P.Price, P.CatCount
+      FROM (
+          SELECT Pets_ID as Number, Item_Model_Number as Title, Price, (SElECT Count(*) FROM Pets) AS CatCount, ROW_NUMBER() OVER (ORDER BY Pets_ID) AS RowNum
+          FROM Pets
+      ) AS P
+    WHERE P.Title like '%` + parameter + `%'`, (err, recordset) => {
         if (err) {
           console.log(err);
           return;
