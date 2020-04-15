@@ -253,7 +253,6 @@ app.get('/api/viewPets', (req, res) => {
 });
 
 app.get('/api/search/', (req, res) => {
-
   let parameter = req.query.search;
   let category = req.query.category;
   var conn = new sql.ConnectionPool(dbConfig);
@@ -263,22 +262,41 @@ app.get('/api/search/', (req, res) => {
       console.log(err);
       return;
     }
-    req.query(`SELECT BD.Book_ID, BD.Title, BD.Number, BD.ISBN_13, BD.Book_Genre_ID, BD.Book_Publisher_ID, BD.Price,
+    if (category == 'Books') {
+      req.query(`SELECT BD.Book_ID, BD.Title, BD.Number, BD.ISBN_13, BD.Book_Genre_ID, BD.Book_Publisher_ID, BD.Price,
     (SELECT COUNT(DISTINCT Books.Book_ID) FROM Books JOIN dbo.Book_Media_Lookup ON Books.Book_ID = Book_Media_Lookup.Book_ID) AS CatCount
     FROM (
         SELECT Books.Book_ID,Book_Title as Title,ISBN_10 as Number,ISBN_13,Book_Genre_ID,Book_Publisher_ID,min(Unit_Price) as Price, ROW_NUMBER() OVER (ORDER BY Books.Book_ID) AS RowNum
         FROM  Books JOIN dbo.Book_Media_Lookup ON Books.Book_ID=Book_Media_Lookup.Book_ID GROUP BY Books.Book_ID,Book_Title,ISBN_10,ISBN_13,Book_Genre_ID,Book_Publisher_ID
     ) AS BD
     WHERE BD.Title like '%` + parameter + `%'`, (err, recordset) => {
-      if (err) {
-        console.log(err);
-        return;
-      } else {
-        const data = recordset;
-        res.send(data.recordset);
-      }
-      conn.close(recordset);
-    });
+        if (err) {
+          console.log(err);
+          return;
+        } else {
+          const data = recordset;
+          res.send(data.recordset);
+        }
+        conn.close(recordset);
+      });
+    }
+    if (category == 'Clothing') {
+      req.query(`SELECT C.Number, C.Title, C.Price, C.CatCount
+      FROM (
+          SELECT Clothing_ID as Number, Clothing_Name as Title, Price, (SElECT Count(*) FROM Clothing) AS CatCount, ROW_NUMBER() OVER (ORDER BY Clothing.Clothing_ID) AS RowNum
+          FROM Clothing
+      ) AS C
+    WHERE C.Title like '%` + parameter + `%'`, (err, recordset) => {
+        if (err) {
+          console.log(err);
+          return;
+        } else {
+          const data = recordset;
+          res.send(data.recordset);
+        }
+        conn.close(recordset);
+      });
+    }
   });
 });
 
