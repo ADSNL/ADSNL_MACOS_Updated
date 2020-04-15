@@ -122,6 +122,9 @@ class App extends Component {
                 <NavItem>
                   <NavLink><Link to="/pets"><b>Pets</b></Link></NavLink>
                 </NavItem>
+                <NavItem>
+                  <NavLink><Link to="/dashboard"><b>Dashboard</b></Link></NavLink>
+                </NavItem>
               </Nav>
               <NavbarText><b>Login</b></NavbarText>
               {/* </Collapse> */}

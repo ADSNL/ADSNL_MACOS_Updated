@@ -4,6 +4,8 @@
   "private": true,
   "proxy": "http://localhost:5000/",
   "dependencies": {
+    "@material-ui/core": "^4.9.10",
+    "@material-ui/icons": "^4.9.1",
     "bootstrap": "^4.4.1",
     "concurrently": "^5.1.0",
     "nodemon": "^2.0.2",
