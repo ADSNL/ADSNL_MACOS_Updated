@@ -79,7 +79,7 @@ class TileView extends Component {
     else if (this.props.catName == "Make up") {
       this.searchTerm = '';
       this.getMakeUp();
-      this.setState({ imageURL: "https://www.psypost.org/wp-content/uploads/2020/01/woman-putting-on-makeup.jpg" });
+      this.setState({ imageURL: "https://img.jakpost.net/c/2019/12/09/2019_12_09_83333_1575827116._large.jpg" });
     }
     else if (this.props.catName == "Pets") {
       this.searchTerm = '';
