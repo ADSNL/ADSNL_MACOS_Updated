@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Bar, Line, Pie, Doughnut } from 'react-chartjs-2';
-import {Row, Col } from 'reactstrap';
+import { Row, Col } from 'reactstrap';
 
 class Chart extends Component {
     constructor(props) {
@@ -23,7 +23,8 @@ class Chart extends Component {
                         ]
                     }
                 ]
-            }
+            },
+            books: []
         }
     }
 
@@ -32,6 +33,24 @@ class Chart extends Component {
         displayLegend: true,
         legendPosition: 'right',
         location: 'City'
+    }
+
+    getBooks = async () => {
+        await fetch("http://localhost:5000/api/books")
+            .then(res => {
+                return res.json();
+            })
+            .then(data => {
+                this.setState({
+                    books: data
+                });
+                console.log("Books Data", data.length);
+            })
+            .catch(err => err);
+    };
+
+    componentDidMount() {
+        this.getBooks();
     }
 
     render() {
