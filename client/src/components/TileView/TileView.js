@@ -164,7 +164,6 @@ class TileView extends Component {
         this.setState({
           searchResults: data
         });
-        console.log(this.state.searchResults);
       })
       .catch(err => err);
   }
