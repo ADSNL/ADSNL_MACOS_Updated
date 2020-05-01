@@ -31,7 +31,7 @@ class Chart extends Component {
     static defaultProps = {
         displayTitle: true,
         displayLegend: true,
-        legendPosition: 'right',
+        legendPosition: 'left',
         location: 'City'
     }
 
@@ -44,7 +44,6 @@ class Chart extends Component {
                 this.setState({
                     books: data
                 });
-                console.log("Books Data", data.length);
             })
             .catch(err => err);
     };
@@ -54,16 +53,62 @@ class Chart extends Component {
     }
 
     render() {
+        const booksData = this.state.books;
+        const price = {
+            priceAboveTen: [],
+            priceBelowTen: []
+        }
+
+        for (let i = 0; i < booksData.length; i++) {
+            if (booksData[i].Price >= 10) {
+                price.priceAboveTen.push(booksData[i].Price);
+            }
+            else {
+                price.priceBelowTen.push(booksData[i].Price);
+            }
+        }
+
+        var data = {
+            labels: ["Genre 1", "Genre 2", "Genre 3", "Genre 4", "Genre 5", "Genre 5", "Genre 6", "Genre 7", "Genre 8"],
+            datasets: [
+                {
+                    label: "Price Above $10",
+                    data: price.priceAboveTen,
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.6)',
+                        'rgba(54, 162, 235, 0.6)',
+                        'rgba(255, 206, 86, 0.6)',
+                        'rgba(75, 192, 192, 0.6)',
+                        'rgba(153, 102, 255, 0.6)',
+                        'rgba(255, 159, 64, 0.6)',
+                        'rgba(255, 99, 132, 0.6)'
+                    ]
+                },
+                {
+                    label: "Price Below $10",
+                    data: price.priceBelowTen,
+                    backgroundColor: [
+                        'rgba(13, 7, 126, 1)',
+                        'rgba(245, 66, 141, 1)',
+                        'rgba(66, 189, 125, 1)',
+                        'rgba(172, 189, 66, 1)',
+                        'rgba(189, 66, 66, 1)',
+                        'rgba(66, 105, 189, 1)',
+                        'rgba(31, 255, 184, 1)'
+                    ]
+                }
+            ]
+        }
         return (
             <div>
                 <Row>
                     <Col sm="6">
                         <Bar
-                            data={this.state.chartData}
+                            data={data}
                             options={{
                                 title: {
                                     display: this.props.displayTitle,
-                                    text: 'Largest Cities In ' + this.props.location,
+                                    text: 'Books data based on price',
                                     fontSize: 25
                                 },
                                 legend: {
@@ -75,11 +120,11 @@ class Chart extends Component {
                     </Col>
                     <Col sm="6">
                         <Line
-                            data={this.state.chartData}
+                            data={data}
                             options={{
                                 title: {
                                     display: this.props.displayTitle,
-                                    text: 'Largest Cities In ' + this.props.location,
+                                    text: 'Books data based on price',
                                     fontSize: 25
                                 },
                                 legend: {
@@ -93,7 +138,7 @@ class Chart extends Component {
                 <Row>
                     <Col sm="6">
                         <Pie
-                            data={this.state.chartData}
+                            data={data}
                             options={{
                                 title: {
                                     display: this.props.displayTitle,
@@ -109,7 +154,7 @@ class Chart extends Component {
                     </Col>
                     <Col sm="6">
                         <Doughnut
-                            data={this.state.chartData}
+                            data={data}
                             options={{
                                 title: {
                                     display: this.props.displayTitle,
