@@ -7,19 +7,15 @@ class Chart extends Component {
         super(props);
         this.state = {
             chartData: {
-                labels: ['Boston', 'Worcester', 'Springfield', 'Lowell', 'Cambridge', 'New Bedford'],
+                labels: ['2000', '2001', '2002'],
                 datasets: [
                     {
-                        label: 'Population',
-                        data: [617594, 181045, 153060, 106519, 105162, 95072],
+                        label: 'Item',
+                        data: [120000, 120000, 420464],
                         backgroundColor: [
                             'rgba(255, 99, 132, 0.6)',
                             'rgba(54, 162, 235, 0.6)',
-                            'rgba(255, 206, 86, 0.6)',
-                            'rgba(75, 192, 192, 0.6)',
-                            'rgba(153, 102, 255, 0.6)',
-                            'rgba(255, 159, 64, 0.6)',
-                            'rgba(255, 99, 132, 0.6)'
+                            'rgba(255, 206, 86, 0.6)'
                         ]
                     }
                 ]
@@ -39,62 +35,12 @@ class Chart extends Component {
             <div>
                 <Row>
                     <Col sm="6">
-                        <Bar
-                            data={this.state.chartData}
-                            options={{
-                                title: {
-                                    display: this.props.displayTitle,
-                                    text: 'Largest Cities In ' + this.props.location,
-                                    fontSize: 25
-                                },
-                                legend: {
-                                    display: this.props.displayLegend,
-                                    position: this.props.legendPosition
-                                }
-                            }}
-                        />
-                    </Col>
-                    <Col sm="6">
                         <Line
                             data={this.state.chartData}
                             options={{
                                 title: {
                                     display: this.props.displayTitle,
-                                    text: 'Largest Cities In ' + this.props.location,
-                                    fontSize: 25
-                                },
-                                legend: {
-                                    display: this.props.displayLegend,
-                                    position: this.props.legendPosition
-                                }
-                            }}
-                        />
-                    </Col>
-                </Row>
-                <Row>
-                    <Col sm="6">
-                        <Pie
-                            data={this.state.chartData}
-                            options={{
-                                title: {
-                                    display: this.props.displayTitle,
-                                    text: 'Largest Cities In ' + this.props.location,
-                                    fontSize: 25
-                                },
-                                legend: {
-                                    display: this.props.displayLegend,
-                                    position: this.props.legendPosition
-                                }
-                            }}
-                        />
-                    </Col>
-                    <Col sm="6">
-                        <Doughnut
-                            data={this.state.chartData}
-                            options={{
-                                title: {
-                                    display: this.props.displayTitle,
-                                    text: 'Largest Cities In ' + this.props.location,
+                                    text: 'Total Item purchased per year',
                                     fontSize: 25
                                 },
                                 legend: {
