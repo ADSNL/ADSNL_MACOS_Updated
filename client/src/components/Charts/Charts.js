@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import { Bar, Line, Pie, Doughnut } from 'react-chartjs-2';
-import {Row, Col } from 'reactstrap';
+import { Row, Col } from 'reactstrap';
 
 class Chart extends Component {
     constructor(props) {
         super(props);
         this.state = {
             chartData: {
-                labels: ['2000', '2001', '2002'],
+                labels: [],
                 datasets: [
                     {
                         label: 'Item',
-                        data: [120000, 120000, 420464],
+                        data: [],
                         backgroundColor: [
                             'rgba(255, 99, 132, 0.6)',
                             'rgba(54, 162, 235, 0.6)',
@@ -22,6 +22,36 @@ class Chart extends Component {
             }
         }
     }
+
+    componentDidMount() {
+        this.getClothing();
+    }
+
+    getClothing = async () => {
+        await fetch("http://localhost:5000/api/chartData")
+            .then(res => {
+                return res.json();
+            })
+            .then(data => {
+
+                let chartData = this.state.chartData;
+                let _label = [];
+                let _data = [];
+
+                data.forEach(i => {
+                    _label.push(i.year);
+                    _data.push(i.order_count);
+                });
+
+                chartData.labels = _label;
+                chartData.datasets[0].data = _data;
+
+                this.setState({
+                    chartData: chartData
+                });
+            })
+            .catch(err => err);
+    };
 
     static defaultProps = {
         displayTitle: true,
