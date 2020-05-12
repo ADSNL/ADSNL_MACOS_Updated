@@ -16,8 +16,9 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
+import HomeRoundedIcon from '@material-ui/icons/HomeRounded';
 import Chart from '../Charts/Charts';
+import { Link } from 'react-router-dom';
 
 const drawerWidth = 240;
 
@@ -82,6 +83,7 @@ export default function PersistentDrawerLeft() {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+  let redirect = false;
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -131,12 +133,12 @@ export default function PersistentDrawerLeft() {
         </div>
         <Divider />
         <List>
-          {['Purchase by Age per Category', 'Dashboard 2', 'Dashboard 3', 'Dashboard 4'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
+          <Link to="/" >
+            <ListItem>
+              <ListItemIcon><HomeRoundedIcon /></ListItemIcon>
+              <ListItemText style={{ color: '#000000' }} primary="Home" />
             </ListItem>
-          ))}
+          </Link>
         </List>
       </Drawer>
       <main

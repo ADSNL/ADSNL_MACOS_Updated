@@ -373,6 +373,29 @@ app.get('/api/search/', (req, res) => {
   });
 });
 
+app.get('/api/chartData', (req, res) => {
+
+  var conn = new sql.ConnectionPool(dbConfig);
+  var req = new sql.Request(conn);
+  conn.connect(function (err) {
+    if (err) {
+      console.log(err);
+      return;
+    }
+    req.query(`SELECT data_id, [year], order_count FROM Chart_Data`, (err, recordset) => {
+      if (err) {
+        console.log(err);
+        return;
+      } else {
+        const data = recordset;
+
+        res.send(data.recordset);
+      }
+      conn.close(recordset);
+    });
+  });
+});
+
 const PORT = process.env.PORT || 5000;
 //const PORT = 6000;
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
