@@ -129,69 +129,12 @@ class Chart extends Component {
             <div>
                 <Row>
                     <Col sm="6">
-<<<<<<< HEAD
-                        <Bar
-                            data={data}
-                            options={{
-                                title: {
-                                    display: this.props.displayTitle,
-                                    text: 'Books data based on price',
-                                    fontSize: 25
-                                },
-                                legend: {
-                                    display: this.props.displayLegend,
-                                    position: this.props.legendPosition
-                                }
-                            }}
-                        />
-                    </Col>
-                    <Col sm="6">
-=======
->>>>>>> master
                         <Line
                             data={data}
                             options={{
                                 title: {
                                     display: this.props.displayTitle,
-<<<<<<< HEAD
-                                    text: 'Books data based on price',
-                                    fontSize: 25
-                                },
-                                legend: {
-                                    display: this.props.displayLegend,
-                                    position: this.props.legendPosition
-                                }
-                            }}
-                        />
-                    </Col>
-                </Row>
-                <Row>
-                    <Col sm="6">
-                        <Pie
-                            data={data}
-                            options={{
-                                title: {
-                                    display: this.props.displayTitle,
-                                    text: 'Largest Cities In ' + this.props.location,
-                                    fontSize: 25
-                                },
-                                legend: {
-                                    display: this.props.displayLegend,
-                                    position: this.props.legendPosition
-                                }
-                            }}
-                        />
-                    </Col>
-                    <Col sm="6">
-                        <Doughnut
-                            data={data}
-                            options={{
-                                title: {
-                                    display: this.props.displayTitle,
-                                    text: 'Largest Cities In ' + this.props.location,
-=======
                                     text: 'Total Item purchased per year',
->>>>>>> master
                                     fontSize: 25
                                 },
                                 legend: {
