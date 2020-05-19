@@ -1,20 +1,12 @@
 import React, { Component } from "react";
 import "./App.css";
-import TopSellingBooks from "./components/TopSelling/TopSellingBooks";
-import TopSellingClothing from "./components/TopSelling/TopSellingClothing";
-import ProductModal from "./components/ProductModal";
-import Footer from './components/BaseLayout/Footer/Footer'
-import Navbar from './components/BaseLayout/Navbar/Navbar'
-import TileView from './components/TileView/TileView'
-import Landing from './components/LandingPage/Landing'
+import Footer from './components/BaseLayout/Footer/Footer';
+import Landing from './components/LandingPage/Landing';
 import {
   BrowserRouter,
-  Switch,
   Route,
   Link
 } from "react-router-dom";
-
-import { CardDeck } from 'reactstrap'; //0305 test remove later
 
 import Routes from './components/routing/Routes'
 
@@ -76,33 +68,11 @@ class App extends Component {
     const datasList = datas.length ? (
 
       <div>
-        {/* <BrowserRouter> */}
-        {/* <Route exact path='/TileView' component={TileView} /> */}
-        {/* <Route exact path='/' component={TopSellingBooks} /> */}
-
-
-        {/* </BrowserRouter> */}
-        {/* <Navbar/> */}
-        {/* <TopSellingBooks  data={datas} /> */}
-
-        {/* <Navbar data={datas}/> */}
-
-        {/* <TopSellingClothing style='' clothing={clothingData} style={{marginTop:'500px'}} /> */}
-        {/* <CardDeck>
-          <TileView productName={datas.Book_Title} productPrice={datas.Unit_Price}/>
-          </CardDeck> */}
-
         <BrowserRouter>
-          {/* <Navbar/>
-        <Link to="/"><b>ADSNL</b></Link >
-        <Link to="/booksT"><b>booksT</b></Link > */}
-
           <div>
             <NavbarB color="light"
               light expand="md">
               <NavbarBrand href="/"><Link to="/"><b>ADSNL</b></Link></NavbarBrand>
-              {/* <NavbarToggler onClick={toggle} />
-            <Collapse isOpen={isOpen} navbar> */}
               <Nav color="light" className="mr-auto" navbar>
                 <NavItem>
                   <NavLink><Link to="/books"><b>Books</b></Link></NavLink>
@@ -127,35 +97,13 @@ class App extends Component {
                 </NavItem>
               </Nav>
               <NavbarText><b>Login</b></NavbarText>
-              {/* </Collapse> */}
             </NavbarB>
           </div>
-
-          {/* <Switch> */}
           <Route exact path="/">
-            {/* <TopSellingBooks  data={datas} /> */}
             <Landing data={datas} />
           </Route>
           <Route component={Routes} />
-          {/* <Route exact path="/booksT">
-         <TileView/>
-       </Route>
-
-       <Route exact path="/books" component={Navbar}>
-         <TileView/>
-       </Route> */}
-          {/* <Route exact path="/" component={Landing} /> */}
-
-
-          {/* <TopSellingBooks  data={datas} /> */}
-          {/* <TopSellingClothing style='' clothing={clothingData} style={{marginTop:'500px'}} /> */}
-
-
-
-
-          {/* </Switch> */}
         </BrowserRouter>
-        {/*<ProductModal buttonLabel="Cart" modalText="Test 1"/>*/}
         <Footer style={{ marginTop: '500px' }} />
 
       </div>

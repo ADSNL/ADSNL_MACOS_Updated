@@ -9,28 +9,25 @@ const Routes = () => {
     return (
         // <Route exact path='/TileView' component={TileView} />
         <Switch>
-            <Route exact path="/booksT">
-                <TileView />
-            </Route>
-            <Route exact path="/books" component={Navbar}>
+            <Route path="/books" component={Navbar}>
                 <TileView catName={"Books"} />
             </Route>
-            <Route exact path="/clothing" component={Navbar}>
+            <Route path="/clothing" component={Navbar}>
                 <TileView catName={"Clothing"} />
             </Route>
-            <Route exact path="/movies" component={Navbar}>
+            <Route path="/movies" component={Navbar}>
                 <TileView catName={"Movies"} />
             </Route>
-            <Route exact path="/kitchen" component={Navbar}>
+            <Route path="/kitchen" component={Navbar}>
                 <TileView catName={"Kitchen"} />
             </Route>
-            <Route exact path="/makeup" component={Navbar}>
+            <Route path="/makeup" component={Navbar}>
                 <TileView catName={"Make up"} />
             </Route>
-            <Route exact path="/pets" component={Navbar}>
+            <Route path="/pets" component={Navbar}>
                 <TileView catName={"Pets"} />
             </Route>
-            <Route exact path="/dashboard" component={Navbar}>
+            <Route path="/dashboard" component={Navbar}>
                 <Dashboard />
             </Route>
         </Switch>
