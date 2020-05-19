@@ -56,32 +56,32 @@ class TileView extends Component {
 
   LoadCatData() {
 
-    if (this.props.catName == "Books") {
+    if (this.props.catName == "Books" || this.state.categoryName == "Books") {
       this.setState({ imageURL: "https://dictionary.cambridge.org/us/images/thumb/book_noun_001_01679.jpg?version=5.0.70" });
       this.searchTerm = '';
       this.getBooks();
     }
-    else if (this.props.catName == "Clothing") {
+    else if (this.props.catName == "Clothing" || this.state.categoryName == "Clothing") {
       this.searchTerm = '';
       this.getClothing();
       this.setState({ imageURL: "https://cdn.shopify.com/s/files/1/2143/3217/products/500_d31b0b14-cf17-4c44-8501-9f640df27ac5_grande.png?v=1583268433" });
     }
-    else if (this.props.catName == "Movies") {
+    else if (this.props.catName == "Movies" || this.state.categoryName == "Movies") {
       this.searchTerm = '';
       this.getviewMovies();
       this.setState({ imageURL: "https://freedesignfile.com/upload/2015/10/Cinema-movie-vector-background-graphics-02.jpg" });
     }
-    else if (this.props.catName == "Kitchen") {
+    else if (this.props.catName == "Kitchen" || this.state.categoryName == "Kitchen") {
       this.searchTerm = '';
       this.getviewKitchen();
       this.setState({ imageURL: "https://www.vector-eps.com/wp-content/gallery/electric-household-appliances-vectors/electric-household-appliance-vector5.jpg" });
     }
-    else if (this.props.catName == "Make up") {
+    else if (this.props.catName == "Make up" || this.state.categoryName == "Make up") {
       this.searchTerm = '';
       this.getMakeUp();
       this.setState({ imageURL: "https://img.jakpost.net/c/2019/12/09/2019_12_09_83333_1575827116._large.jpg" });
     }
-    else if (this.props.catName == "Pets") {
+    else if (this.props.catName == "Pets" || this.state.categoryName == "Pets") {
       this.searchTerm = '';
       this.getPets();
       this.setState({ imageURL: "http://yourdost-blog-images.s3-ap-southeast-1.amazonaws.com/wp-content/uploads/2016/01/03165939/Dogs.jpg" });
