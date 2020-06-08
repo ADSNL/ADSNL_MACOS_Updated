@@ -2,9 +2,8 @@ import React, { Component } from "react";
 import "./App.css";
 import Footer from './components/BaseLayout/Footer/Footer';
 import Landing from './components/LandingPage/Landing';
-import UserStore from './stores/UserStore';
+import UserStore from './components/stores/UserStore';
 import LoginForm from './components/Login/LoginForm';
-import InputField from './components/Login/InputField';
 import SubmitButton from './components/Login/SubmitButton';
 import { observer } from 'mobx-react';
 
@@ -71,7 +70,7 @@ class App extends Component {
         method: 'post',
         headers: {
           'Accept': 'application/json',
-          'Content-type': 'application/json'
+          'Content-Type': 'application/json'
         }
       });
 
@@ -101,7 +100,7 @@ class App extends Component {
         method: 'post',
         headers: {
           'Accept': 'application/json',
-          'Content-type': 'application/json'
+          'Content-Type': 'application/json'
         }
       });
 
@@ -124,7 +123,7 @@ class App extends Component {
       return (
         <div className="app">
           <div className="container">
-            Loading please wait...
+            <h1>Loading please wait...</h1>
           </div>
         </div>
       );
@@ -149,54 +148,61 @@ class App extends Component {
 
     const datas = this.state.books;
     const clothingData = this.state.clothing;
-    const datasList = datas.length ? (
-
-      <div>
-        <BrowserRouter>
-          <div>
-            <NavbarB color="light"
-              light expand="md">
-              <NavbarBrand href="/"><Link to="/"><b>ADSNL</b></Link></NavbarBrand>
-              <Nav color="light" className="mr-auto" navbar>
-                <NavItem>
-                  <NavLink><Link to="/books"><b>Books</b></Link></NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink><Link to="/clothing"><b>Clothing</b></Link></NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink><Link to="/movies"><b>Movies</b></Link></NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink><Link to="/kitchen"><b>Kitchen</b></Link></NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink><Link to="/makeup"><b>Make up</b></Link></NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink><Link to="/pets"><b>Pets</b></Link></NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink><Link to="/dashboard"><b>Dashboard</b></Link></NavLink>
-                </NavItem>
-              </Nav>
-              <NavbarText><b>Login</b></NavbarText>
-            </NavbarB>
-          </div>
-          <Route exact path="/">
-            <Landing data={datas} />
-          </Route>
-          <Route component={Routes} />
-        </BrowserRouter>
-        <Footer style={{ marginTop: '500px' }} />
-
+    return (
+      <div className="app">
+        <div className="container">
+          <LoginForm />
+        </div>
       </div>
-
-    ) : (
-        <h1>Loading</h1>
-      );
-
-    return <div>{datasList}</div>;
+    )
+    // const datasList = datas.length ? (
+    //   <div>
+    //     <BrowserRouter>
+    //       <div>
+    //         <NavbarB color="light"
+    //           light expand="md">
+    //           <NavbarBrand href="/"><Link to="/"><b>ADSNL</b></Link></NavbarBrand>
+    //           <Nav color="light" className="mr-auto" navbar>
+    //             <NavItem>
+    //               <NavLink><Link to="/books"><b>Books</b></Link></NavLink>
+    //             </NavItem>
+    //             <NavItem>
+    //               <NavLink><Link to="/clothing"><b>Clothing</b></Link></NavLink>
+    //             </NavItem>
+    //             <NavItem>
+    //               <NavLink><Link to="/movies"><b>Movies</b></Link></NavLink>
+    //             </NavItem>
+    //             <NavItem>
+    //               <NavLink><Link to="/kitchen"><b>Kitchen</b></Link></NavLink>
+    //             </NavItem>
+    //             <NavItem>
+    //               <NavLink><Link to="/makeup"><b>Make up</b></Link></NavLink>
+    //             </NavItem>
+    //             <NavItem>
+    //               <NavLink><Link to="/pets"><b>Pets</b></Link></NavLink>
+    //             </NavItem>
+    //             <NavItem>
+    //               <NavLink><Link to="/dashboard"><b>Dashboard</b></Link></NavLink>
+    //             </NavItem>
+    //           </Nav>
+    //           <NavbarText><b>Login</b></NavbarText>
+    //         </NavbarB>
+    //       </div>
+    //       <Route exact path="/">
+    //         <Landing data={datas} />
+    //       </Route>
+    //       <Route component={Routes} />
+    //     </BrowserRouter>
+    //     <Footer style={{ marginTop: '500px' }} />
+    //   </div>
+    // ) : (
+    //     <h1>Loading</h1>
+    //   );
+    // return (
+    //   <div>
+    //     {datasList}
+    //   </div>
+    // )
   }
 }
 
