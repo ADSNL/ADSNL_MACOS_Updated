@@ -5,29 +5,18 @@ const querystring = require('querystring');
 var sql = require('mssql');
 var cors = require('cors');
 const session = require('express-session');
-const MySQLStore = require('mssql-session-store')(session);
+const MySQLStore = require('express-mysql-session')(session);
 const bcrypt = require('bcrypt');
+const mysql = require('mysql');
 
-let app = express();
+const app = express();
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-// var dbConfig = {
-//   server: 'adsndb.c0yzxuhp43yb.us-east-2.rds.amazonaws.com',
-//   database: 'MACOS',
-//   options: {
-//     encrypt: true,
-//     enableArithAbort: true
-//   },
-//   user: 'ADSNL',
-//   password: 'ADSNL_2020',
-//   Port: 1433
-// };
-
 var dbConfig = {
-  server: 'localhost\\SQLEXPRESS',
-  database: 'Customer',
+  server: 'adsndb.c0yzxuhp43yb.us-east-2.rds.amazonaws.com',
+  database: 'MACOS',
   options: {
     encrypt: true,
     enableArithAbort: true
@@ -37,28 +26,42 @@ var dbConfig = {
   Port: 1433
 };
 
-// const sessionStore = new MySQLStore({
-//   expiration: (1825 * 86400 * 1000),
-//   endConnectionOnClose: false
-// }, dbConfig)
+const db = mysql.createConnection({
+  host: 'localhost',
+  user: 'root',
+  password: '',
+  database: 'macos'
+});
 
-// app.use(session({
-//   key: '',
-//   secret: '',
-//   store: sessionStore,
-//   resave: false,
-//   saveUninitialized: false,
-//   cookie: {
-//     maxAge: (1825 * 86400 * 1000),
-//     httpOnly: false
-//   }
-// }));
+db.connect(function (err) {
+  if (err) {
+    console.log('DB err');
+  }
+  else {
+    console.log('Connected to MySQL sever.')
+  }
+});
+
+const sessionStore = new MySQLStore({
+  expiration: (1825 * 86400 * 1000),
+  endConnectionOnClose: false
+}, db)
+
+app.use(session({
+  key: 'fdhujfhjdshfhsldjgsdgjgjsdjgkj',
+  secret: 'fdmforeoiufjofhohojrwifjiwjwr',
+  store: sessionStore,
+  resave: false,
+  saveUninitialized: true,
+  cookie: {
+    maxAge: (1825 * 86400 * 1000),
+    httpOnly: false
+  }
+}));
 
 app.post('/login', (req, res) => {
   let username = req.body.username;
   let password = req.body.password;
-  var conn = new sql.ConnectionPool(dbConfig);
-  var req = new sql.Request(conn);
 
   username = username.toLowerCase();
 
@@ -69,49 +72,88 @@ app.post('/login', (req, res) => {
     })
     return;
   }
-  conn.connect(function (err) {
+
+  let cols = [username];
+
+  db.query('select * from macosuser where username = ? limit 1 ', cols, (err, data, fields) => {
     if (err) {
       console.log(err);
+      res.json({
+        success: false,
+        msg: "An error occured, please try again. 2"
+      })
       return;
     }
-    req.query(`select * from mascosuser where username =` + username, (err, data, fields) => {
+    console.log(data);
+    if (data && data.length === 1) {
+      bcrypt.compare(password, data[0].password, (bcryptErr, verified) => {
+        if (verified) {
+          req.session.userID = data[0].id;
+          res.json({
+            success: true,
+            username: data[0].username
+          });
+          return;
+        }
+        else {
+          res.json({
+            success: false,
+            msg: 'Invalid Password'
+          });
+        }
+      });
+    }
+    else {
+      res.json({
+        success: false,
+        msg: 'Username not found, please try again'
+      });
+    }
+  })
+});
+
+app.post('/logout', (req, res) => {
+  if (req.session.userID) {
+    req.session.destroy();
+    res.json({
+      success: true
+    });
+    return true;
+  }
+  else {
+    res.json({
+      success: false
+    });
+    return false
+  }
+});
+
+app.post('/isLoggedIn', (req, res) => {
+  if (req.session.userID) {
+    let cols = [req.session.userID];
+    db.query('SELECT * FROM macosuser WHERE id = ? limit 1', cols, (err, data, fields) => {
       if (err) {
-        res.json({
-          success: false,
-          msg: "An error occured, please try again. 2"
-        })
-        return;
+        console.log(err);
       }
-
-      console.log(data);
-
       if (data && data.length === 1) {
-        bcrypt.compare(password, data[0].password, (bcryptErr, verified) => {
-          if (verified) {
-            req.session.userID = data[0].id;
-            res.json({
-              success: true,
-              username: data[0].username
-            });
-            return;
-          }
-          else {
-            res.json({
-              success: false,
-              msg: 'Invalid Password'
-            });
-          }
+        res.json({
+          success: true,
+          username: data[0].username
         });
+        return true;
       }
       else {
         res.json({
-          success: false,
-          msg: 'Username not found, please try again'
+          success: false
         });
       }
     });
-  })
-
+  }
+  else {
+    res.json({
+      success: false
+    });
+  }
 });
 
 app.get('/api/books', (req, res) => {

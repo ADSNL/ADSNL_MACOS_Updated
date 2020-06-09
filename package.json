@@ -25,6 +25,7 @@
     "moment": "^2.24.0",
     "mssql": "^6.1.0",
     "mssql-session-store": "^1.0.0",
+    "mysql": "^2.18.1",
     "nodemon": "^2.0.2",
     "react-bootstrap": "^1.0.0-beta.17",
     "uuid": "^3.3.2"

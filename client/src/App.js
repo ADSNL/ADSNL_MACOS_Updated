@@ -131,23 +131,72 @@ class App extends Component {
 
     else {
       if (UserStore.isLoggedIn) {
-        return (
-          <div className="app">
-            <div className="container">
-              Welcome {UserStore.username}
-              <SubmitButton
-                text={'Log Out'}
-                disabled={false}
-                onClick={() => this.doLogout()}
-              />
-            </div>
+        const datas = this.state.books;
+        const clothingData = this.state.clothing;
+        const datasList = datas.length ? (
+          <div>
+            <BrowserRouter>
+              <div>
+                <NavbarB color="light"
+                  light expand="md">
+                  <NavbarBrand href="/"><Link to="/"><b>ADSNL</b></Link></NavbarBrand>
+                  <Nav color="light" className="mr-auto" navbar>
+                    <NavItem>
+                      <NavLink><Link to="/books"><b>Books</b></Link></NavLink>
+                    </NavItem>
+                    <NavItem>
+                      <NavLink><Link to="/clothing"><b>Clothing</b></Link></NavLink>
+                    </NavItem>
+                    <NavItem>
+                      <NavLink><Link to="/movies"><b>Movies</b></Link></NavLink>
+                    </NavItem>
+                    <NavItem>
+                      <NavLink><Link to="/kitchen"><b>Kitchen</b></Link></NavLink>
+                    </NavItem>
+                    <NavItem>
+                      <NavLink><Link to="/makeup"><b>Make up</b></Link></NavLink>
+                    </NavItem>
+                    <NavItem>
+                      <NavLink><Link to="/pets"><b>Pets</b></Link></NavLink>
+                    </NavItem>
+                    <NavItem>
+                      <NavLink><Link to="/dashboard"><b>Dashboard</b></Link></NavLink>
+                    </NavItem>
+                  </Nav>
+                  <NavbarText><b>Login</b></NavbarText>
+                </NavbarB>
+              </div>
+              <Route exact path="/">
+                <Landing data={datas} />
+              </Route>
+              <Route component={Routes} />
+            </BrowserRouter>
+            <Footer style={{ marginTop: '500px' }} />
           </div>
-        );
+        ) : (
+            <h1>Loading</h1>
+          );
+        return (
+          <div>
+            {datasList}
+          </div>
+        )
+        // return (
+        //   <div className="app">
+        //     <div className="container">
+        //       Welcome {UserStore.username}
+        //       <SubmitButton
+        //         text={'Log Out'}
+        //         disabled={false}
+        //         onClick={() => this.doLogout()}
+        //       />
+
+        //     </div>
+        //   </div>
+        // );
       }
     }
 
-    const datas = this.state.books;
-    const clothingData = this.state.clothing;
     return (
       <div className="app">
         <div className="container">
