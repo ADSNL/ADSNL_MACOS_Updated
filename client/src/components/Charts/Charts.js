@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { Bar, Line, Pie, Doughnut } from 'react-chartjs-2';
 import { Row, Col } from 'reactstrap';
+import FormGroup from '@material-ui/core/FormGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
 
 class Chart extends Component {
     constructor(props) {
@@ -61,6 +64,13 @@ class Chart extends Component {
     }
 
     render() {
+
+        // const[checked, setChecked] = React.useState(true);
+
+        // const handleChange = (event) => {
+        //     setChecked(event.target.checked);
+        // };    
+
         return (
             <div>
                 <Row>
@@ -79,6 +89,44 @@ class Chart extends Component {
                                 }
                             }}
                         />
+                        <FormGroup row>
+                            <FormControlLabel
+                                control={
+                                    <Checkbox
+                                        defaultChecked
+                                        //checked={state.checkedB}
+                                        //onChange={handleChange}
+                                        name="checkedB"
+                                        color="primary"
+                                    />
+                                }
+                                label="2000"
+                            />
+                            <FormControlLabel
+                                control={
+                                    <Checkbox
+                                        defaultChecked
+                                        //checked={state.checkedB}
+                                        //onChange={handleChange}
+                                        name="checkedB"
+                                        color="primary"
+                                    />
+                                }
+                                label="2001"
+                            />
+                            <FormControlLabel
+                                control={
+                                    <Checkbox
+                                        defaultChecked
+                                        //checked={state.checkedB}
+                                        //onChange={handleChange}
+                                        name="checkedB"
+                                        color="primary"
+                                    />
+                                }
+                                label="2002"
+                            />
+                        </FormGroup>
                     </Col>
                 </Row>
             </div>
