@@ -10,6 +10,10 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+var Users = require('./routes/Users');
+
+app.use('/users', Users);
+
 var dbConfig = {
   server: 'adsndb.c0yzxuhp43yb.us-east-2.rds.amazonaws.com',
   database: 'MACOS',
