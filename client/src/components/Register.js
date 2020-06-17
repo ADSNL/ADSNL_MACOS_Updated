@@ -30,7 +30,7 @@ class Register extends Component {
         }
 
         register(newUser).then(res => {
-            this.props.history.push(`/login`)
+            this.props.history.push(`/`)
         })
     }
 
@@ -85,12 +85,13 @@ class Register extends Component {
                                     onChange={this.onChange}
                                 />
                             </div>
-                            <button
-                                type="submit"
-                                className="btn btn-lg btn-primary btn-block"
-                            >
-                                Register!
-              </button>
+                            <button type="submit" className="btn btn-lg btn-primary btn-block">Register!</button>
+                            <div className="form-group">
+                                <h2 class="displaty-4 lead text-center mt-4">
+                                    Already have an Account ?
+                                    <a href="/">Sign In Now</a>
+                                </h2>
+                            </div>
                         </form>
                     </div>
                 </div>

@@ -5,14 +5,14 @@ class Navbar extends Component {
     logout(e) {
         e.preventDefault()
         localStorage.removeItem('usertoken')
-        this.props.history.push(`/login`)
+        this.props.history.push(`/`)
     }
 
     render() {
         const loginRegLink = (
             <ul className="navbar-nav">
                 <li className="nav-item">
-                    <Link to="/login" className="nav-link">Login</Link>
+                    <Link to="/" className="nav-link">Login</Link>
                 </li>
                 <li className="nav-item">
                     <Link to="/register" className="nav-link">Register</Link>
@@ -21,9 +21,6 @@ class Navbar extends Component {
         )
         const userLink = (
             <ul className="navbar-nav">
-                <li className="nav-item">
-                    <Link to="/profile" className="nav-link">User</Link>
-                </li>
                 <li className="nav-item">
                     <a href="" onClick={this.logout.bind(this)} className="nav-link">Logout</a>
                 </li>

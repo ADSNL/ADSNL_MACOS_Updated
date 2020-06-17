@@ -25,7 +25,7 @@ class Login extends Component {
 
         login(user).then(res => {
             if (res) {
-                this.props.history.push(`/`)
+                this.props.history.push(`/home`)
             }
         })
     }
@@ -58,12 +58,13 @@ class Login extends Component {
                                     onChange={this.onChange}
                                 />
                             </div>
-                            <button
-                                type="submit"
-                                className="btn btn-lg btn-primary btn-block"
-                            >
-                                Sign in
-                  </button>
+                            <button type="submit" className="btn btn-lg btn-primary btn-block">Sign in</button>
+                            <div className="form-group">
+                                <h2 class="displaty-4 lead text-center mt-4">
+                                    Don't have an Account ?
+                                    <a href="/register">Sign Up Now</a>
+                                </h2>
+                            </div>
                         </form>
                     </div>
                 </div>

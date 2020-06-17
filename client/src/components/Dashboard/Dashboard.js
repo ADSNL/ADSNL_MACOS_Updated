@@ -133,7 +133,7 @@ export default function PersistentDrawerLeft() {
         </div>
         <Divider />
         <List>
-          <Link to="/" >
+          <Link to="/home" >
             <ListItem>
               <ListItemIcon><HomeRoundedIcon /></ListItemIcon>
               <ListItemText style={{ color: '#000000' }} primary="Home" />
