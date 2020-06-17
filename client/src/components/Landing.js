@@ -27,6 +27,7 @@ import {
 } from "react-router-dom";
 
 import Routes from './routing/Routes'
+import Profile from './Profile'
 
 import {
     Collapse,
