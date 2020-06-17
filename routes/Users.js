@@ -21,25 +21,28 @@ users.post('/register', (req, res) => {
 
     User.findOne({
         where: {
-            email
+            email: req.body.email
         }
     })
         .then(user => {
+            console.log(user);
             if (!user) {
                 bcrypt.hash(req.body.password, 10, (err, hash) => {
-                    userData.password = hash;
+                    userData.password = hash
                     User.create(userData)
                         .then(user => {
-                            res.json({ status: user.email + ' registered.' });
+                            res.json({ status: req.body.email + ' Registered!' })
                         })
                         .catch(err => {
-                            res.send("Error : " + err);
+                            res.send('Error with email: ' + err)
                         })
                 })
+            } else {
+                res.json({ error: 'User already exists' })
             }
-            else {
-                res.send({ error: "User already exists." })
-            }
+        })
+        .catch(err => {
+            res.send('Catch error: ' + err)
         })
 });
 
