@@ -113,7 +113,6 @@ class Landing extends Component {
                                     <NavLink><Link to="/dashboard"><b>Dashboard</b></Link></NavLink>
                                 </NavItem>
                             </Nav>
-                            <NavbarText><b>Login</b></NavbarText>
                         </NavbarB>
                     </div>
                     <Route exact path="/">
@@ -121,6 +120,7 @@ class Landing extends Component {
                     </Route>
                     <Route component={Routes} />
                 </BrowserRouter>
+                <Footer style={{ marginTop: '500px' }} />
             </div>
         ) : (
                 <h1>Loading</h1>
