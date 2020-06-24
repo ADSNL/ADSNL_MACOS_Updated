@@ -10,6 +10,7 @@ export const register = newUser => {
         })
         .then(res => {
             console.log("Registered...")
+            alert("Regitration Sucessfull");
         })
 }
 
@@ -20,7 +21,7 @@ export const login = user => {
             password: user.password
         })
         .then(res => {
-            localStorage.setItem('usertoken', res.data)
+            localStorage.setItem('usertoken', res.data);
             return res.data
         })
         .catch(err => {

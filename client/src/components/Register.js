@@ -87,7 +87,7 @@ class Register extends Component {
                             </div>
                             <button type="submit" className="btn btn-lg btn-primary btn-block">Register!</button>
                             <div className="form-group">
-                                <h2 class="displaty-4 lead text-center mt-4">
+                                <h2 className="displaty-4 lead text-center mt-4">
                                     Already have an Account ?
                                     <a href="/">Sign In Now</a>
                                 </h2>
