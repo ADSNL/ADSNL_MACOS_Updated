@@ -284,7 +284,7 @@ class TileView extends Component {
                 </FormGroup>
               </Col>
               <Col>
-                <Button className="search-btn">Submit</Button>
+                <Button id="searchBtn" className="search-btn btn-primary">Submit</Button>
               </Col>
             </Row>
           </Form>
