@@ -22,15 +22,16 @@ class Chart extends Component {
                         ]
                     }
                 ]
-            }
+            },
+            backGroundData: {}
         }
     }
 
     componentDidMount() {
-        this.getClothing();
+        this.getchartData();
     }
 
-    getClothing = async () => {
+    getchartData = async () => {
         await fetch("http://localhost:5000/api/chartData")
             .then(res => {
                 return res.json();
@@ -40,27 +41,55 @@ class Chart extends Component {
                 let chartData = this.state.chartData;
                 let _label = [];
                 let _data = [];
+                let BGData = [];
 
                 data.forEach(i => {
                     _label.push(i.year);
                     _data.push(i.order_count);
+                    BGData.push({
+                        'Year': i.year,
+                        'Count': i.order_count,
+                        'display': true
+                    });
                 });
 
                 chartData.labels = _label;
                 chartData.datasets[0].data = _data;
 
                 this.setState({
-                    chartData: chartData
+                    chartData: chartData,
+                    backGroundData: BGData
                 });
             })
             .catch(err => err);
     };
 
-    static defaultProps = {
-        displayTitle: true,
-        displayLegend: true,
-        legendPosition: 'right',
-        location: 'City'
+    handleCheckbox = (event, isChecked) => {
+        let BGData = this.state.backGroundData;
+
+        BGData.forEach(i => {
+            if(i.Year == event.target.attributes.name.nodeValue){
+                i.display = isChecked;
+            }
+        });
+
+        let chartData = this.state.chartData;
+        let _label = [];
+        let _data = [];
+
+        BGData.forEach(i => {
+            if(i.display == true){
+                _label.push(i.Year);
+                _data.push(i.Count);
+            }
+        });
+
+        chartData.labels = _label;
+        chartData.datasets[0].data = _data;
+
+        this.setState({
+            chartData: chartData
+        });        
     }
 
     render() {
@@ -95,8 +124,8 @@ class Chart extends Component {
                                     <Checkbox
                                         defaultChecked
                                         //checked={state.checkedB}
-                                        //onChange={handleChange}
-                                        name="checkedB"
+                                        onChange={this.handleCheckbox}
+                                        name="2000"
                                         color="primary"
                                     />
                                 }
@@ -107,8 +136,8 @@ class Chart extends Component {
                                     <Checkbox
                                         defaultChecked
                                         //checked={state.checkedB}
-                                        //onChange={handleChange}
-                                        name="checkedB"
+                                        onChange={this.handleCheckbox}
+                                        name="2001"
                                         color="primary"
                                     />
                                 }
@@ -119,8 +148,8 @@ class Chart extends Component {
                                     <Checkbox
                                         defaultChecked
                                         //checked={state.checkedB}
-                                        //onChange={handleChange}
-                                        name="checkedB"
+                                        onChange={this.handleCheckbox}
+                                        name="2002"
                                         color="primary"
                                     />
                                 }
