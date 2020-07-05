@@ -102,7 +102,7 @@ export default function PersistentDrawerLeft() {
           [classes.appBarShift]: open,
         })}
       >
-        <Toolbar>
+        {/* <Toolbar>
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -115,7 +115,7 @@ export default function PersistentDrawerLeft() {
           <Typography variant="h6" noWrap>
             Customer Dashboard
           </Typography>
-        </Toolbar>
+        </Toolbar> */}
       </AppBar>
       <Drawer
         className={classes.drawer}
