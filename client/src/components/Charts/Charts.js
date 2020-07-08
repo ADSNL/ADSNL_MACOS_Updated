@@ -68,7 +68,7 @@ class Chart extends Component {
         let BGData = this.state.backGroundData;
 
         BGData.forEach(i => {
-            if(i.Year == event.target.attributes.name.nodeValue){
+            if (i.Year == event.target.attributes.name.nodeValue) {
                 i.display = isChecked;
             }
         });
@@ -78,7 +78,7 @@ class Chart extends Component {
         let _data = [];
 
         BGData.forEach(i => {
-            if(i.display == true){
+            if (i.display == true) {
                 _label.push(i.Year);
                 _data.push(i.Count);
             }
@@ -89,7 +89,7 @@ class Chart extends Component {
 
         this.setState({
             chartData: chartData
-        });        
+        });
     }
 
     render() {
@@ -108,8 +108,8 @@ class Chart extends Component {
                             data={this.state.chartData}
                             options={{
                                 title: {
-                                    display: this.props.displayTitle,
-                                    text: 'Total Item purchased per year',
+                                    display: true,
+                                    text: 'Total Items purchased per year',
                                     fontSize: 25
                                 },
                                 legend: {
@@ -118,7 +118,27 @@ class Chart extends Component {
                                 }
                             }}
                         />
-                        <FormGroup row>
+                    </Col>
+                    <Col sm="6">
+                        <Pie
+                            data={this.state.chartData}
+                            options={{
+                                title: {
+                                    display: true,
+                                    text: 'Total Items purchased per year',
+                                    fontSize: 25
+                                },
+                                legend: {
+                                    display: this.props.displayLegend,
+                                    position: this.props.legendPosition
+                                }
+                            }}
+                        />
+                    </Col>
+                </Row>
+                <Row>
+                    <Col>
+                        <FormGroup row style={{ alignItems: 'center', justifyContent: 'center' }}>
                             <FormControlLabel
                                 control={
                                     <Checkbox
