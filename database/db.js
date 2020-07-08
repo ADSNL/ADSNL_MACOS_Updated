@@ -1,9 +1,10 @@
 const Sequelize = require('sequelize')
 const db = {}
-const sequelize = new Sequelize('macos_login', 'root', '', {
-    host: 'localhost',
+const sequelize = new Sequelize('macos_login', 'ADSNL', 'ADSNL_2020', {
+    host: 'mysql-macoslog.c0yzxuhp43yb.us-east-2.rds.amazonaws.com',
     dialect: 'mysql',
     operatorsAliases: false,
+    port: 3306,
 
     pool: {
         max: 5,
