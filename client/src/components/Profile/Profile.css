@@ -2,3 +2,8 @@
     margin-top: 1rem;
     margin-bottom: 1rem;
 }
+
+.card-img {
+    width: 10rem;
+    height: 10rem;
+}

@@ -71,6 +71,28 @@ app.get('/api/clothing', (req, res) => {
   });
 });
 
+app.get('/api/customer', (req, res) => {
+  var conn = new sql.ConnectionPool(dbConfig);
+  var req = new sql.Request(conn);
+  conn.connect(function (err) {
+    if (err) {
+      console.log(err);
+      return;
+    }
+    req.query('select top 10 * from Customer_Master', (err, recordset) => {
+      if (err) {
+        console.log(err);
+        return;
+      } else {
+        const data = recordset;
+
+        res.send(data.recordset);
+      }
+      conn.close(recordset);
+    });
+  });
+});
+
 app.get('/api/viewBooks', (req, res) => {
 
   let startRange = req.query.startRange;
