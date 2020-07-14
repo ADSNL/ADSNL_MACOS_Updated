@@ -4,6 +4,7 @@ import { Switch, Route } from 'react-router-dom';
 import TileView from '../TileView/TileView';
 import Dashboard from '../Dashboard/Dashboard';
 import Navbar from '../BaseLayout/Navbar/Navbar';
+import Profile from '../Profile/Profile';
 
 const Routes = () => {
     return (
@@ -29,6 +30,9 @@ const Routes = () => {
             </Route>
             <Route path="/dashboard" component={Navbar}>
                 <Dashboard />
+            </Route>
+            <Route path="/profile" component={Profile}>
+                <Profile />
             </Route>
         </Switch>
     )
