@@ -79,7 +79,7 @@ app.get('/api/customer', (req, res) => {
       console.log(err);
       return;
     }
-    req.query('select top 10 * from Customer_Master', (err, recordset) => {
+    req.query('select * from Customer_Master where customer_id = 5562', (err, recordset) => {
       if (err) {
         console.log(err);
         return;
