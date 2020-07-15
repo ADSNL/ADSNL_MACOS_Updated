@@ -6,7 +6,7 @@ class Navbar extends Component {
     logout(e) {
         e.preventDefault()
         localStorage.removeItem('usertoken')
-        this.props.history.push(`/`)
+        this.props.history.push(`/login`)
     }
 
     render() {
