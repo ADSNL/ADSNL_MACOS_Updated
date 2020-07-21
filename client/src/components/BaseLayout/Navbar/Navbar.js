@@ -37,7 +37,7 @@ const Navbar = (props) => {
             <div>
                 <NavbarB color="light"
                     light expand="md">
-                    <NavbarBrand href="/home"><Link to="/home"><b>ADSNL</b></Link ></NavbarBrand>
+                    <NavbarBrand href="/"><Link to="/"><b>ADSNL</b></Link ></NavbarBrand>
                     <NavbarToggler onClick={toggle} />
                     <Collapse isOpen={isOpen} navbar>
                         <Nav color="light" className="mr-auto" navbar>

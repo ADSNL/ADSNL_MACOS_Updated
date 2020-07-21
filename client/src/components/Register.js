@@ -89,7 +89,7 @@ class Register extends Component {
                             <div className="form-group">
                                 <h2 className="displaty-4 lead text-center mt-4">
                                     Already have an Account ?
-                                    <a href="/">Sign In Now</a>
+                                    <a href="/login">Sign In Now</a>
                                 </h2>
                             </div>
                         </form>

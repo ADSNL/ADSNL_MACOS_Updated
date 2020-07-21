@@ -12,10 +12,10 @@ class App extends Component {
       <Router>
         <div className="App">
           <Navbar />
-          <Route exact path="/home" component={Landing} />
+          <Route exact path="/" component={Landing} />
           <div className="container">
             <Route exact path="/register" component={Register} />
-            <Route exact path="/" component={Login} />
+            <Route exact path="/login" component={Login} />
           </div>
         </div>
       </Router>
