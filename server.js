@@ -72,6 +72,8 @@ app.get('/api/clothing', (req, res) => {
 });
 
 app.get('/api/customer', (req, res) => {
+  let first_name = req.query.firstname;
+  console.log(first_name);
   var conn = new sql.ConnectionPool(dbConfig);
   var req = new sql.Request(conn);
   conn.connect(function (err) {

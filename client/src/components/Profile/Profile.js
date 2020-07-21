@@ -3,18 +3,24 @@ import {
     Card, CardImg, CardText, CardBody,
     CardTitle, CardSubtitle, Button
 } from 'reactstrap';
+import {
+    Row, Container, Pagination, PaginationItem, PaginationLink,
+    Col, FormGroup, Form, Input
+} from 'reactstrap';
 import './Profile.css';
 
 export default class Profile extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            customerData: []
+            customerData: [],
+            firstName: ''
         };
     }
 
-    getCustomerData = async () => {
-        await fetch("http://localhost:5000/api/customer")
+    getCustomerData = async (e) => {
+        e.preventDefault();
+        await fetch("http://localhost:5000/api/customer/?firstname=" + this.firstName)
             .then(res => {
                 return res.json();
             })
@@ -27,8 +33,9 @@ export default class Profile extends Component {
             .catch(err => err);
     };
 
-    componentDidMount() {
-        this.getCustomerData();
+    handleChange = (e) => {
+        this.firstName = e.target.value;
+        console.log(this.firstName);
     }
 
     render() {
@@ -36,16 +43,24 @@ export default class Profile extends Component {
         return (
             <div className="container">
                 <h1>Customer Profile</h1>
-                <Card className="main-content">
-                    <CardImg top width="100%" className="card-img"
-                        src="https://www.pinclipart.com/picdir/middle/181-1814767_person-svg-png-icon-free-download-profile-icon.png"
-                        alt="Card image cap" />
-                    <CardBody>
-                        <CardTitle>{this.state.customerData.Customer_ID}</CardTitle>
-                        <CardSubtitle>Card subtitle</CardSubtitle>
-                        <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
-                    </CardBody>
-                </Card>
+                <Container>
+                    <Form action="" onSubmit={this.getCustomerData} >
+                        <Row>
+                            <Col>
+                                <FormGroup>
+                                    <Input type="text" name="search"
+                                        placeholder="Search..."
+                                        className="search-input"
+                                        autoComplete="on"
+                                        onChange={this.handleChange} />
+                                </FormGroup>
+                            </Col>
+                            <Col>
+                                <Button id="searchBtn" className="search-btn btn-primary">Submit</Button>
+                            </Col>
+                        </Row>
+                    </Form>
+                </Container>
             </div>
         )
     }
