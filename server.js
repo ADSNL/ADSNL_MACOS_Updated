@@ -81,13 +81,13 @@ app.get('/api/customer', (req, res) => {
       console.log(err);
       return;
     }
-    req.query('select * from Customer_Master where customer_id = 5562', (err, recordset) => {
+    req.query(`select distinct * from Customer_Master where Customer_FName = '` + first_name + `'`, (err, recordset) => {
       if (err) {
         console.log(err);
         return;
       } else {
         const data = recordset;
-
+        console.log(data.recordset)
         res.send(data.recordset);
       }
       conn.close(recordset);
