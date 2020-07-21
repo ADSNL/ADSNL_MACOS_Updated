@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import './Profile.css';
 import {
     Card, CardImg, CardText, CardBody,
     CardTitle, CardSubtitle, Button

@@ -112,9 +112,6 @@ class Landing extends Component {
                                 <NavItem>
                                     <NavLink><Link to="/dashboard"><b>Dashboard</b></Link></NavLink>
                                 </NavItem>
-                                <NavItem>
-                                    <NavLink><Link to="/profile"><b>Profile</b></Link></NavLink>
-                                </NavItem>
                             </Nav>
                         </NavbarB>
                     </div>
