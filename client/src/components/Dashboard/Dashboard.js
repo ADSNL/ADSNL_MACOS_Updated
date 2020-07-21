@@ -140,6 +140,15 @@ export default function PersistentDrawerLeft() {
             </ListItem>
           </Link>
         </List>
+        <Divider />
+        <List>
+          <Link to="/profile" >
+            <ListItem>
+              <ListItemIcon><HomeRoundedIcon /></ListItemIcon>
+              <ListItemText style={{ color: '#000000' }} primary="Profile" />
+            </ListItem>
+          </Link>
+        </List>
       </Drawer>
       <main
         className={clsx(classes.content, {

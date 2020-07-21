@@ -3,6 +3,7 @@ import {
     Card, CardImg, CardText, CardBody,
     CardTitle, CardSubtitle, Button
 } from 'reactstrap';
+import './Profile.css';
 
 export default class Profile extends Component {
     constructor(props) {
@@ -34,7 +35,7 @@ export default class Profile extends Component {
         let customer = this.state.customerData;
         return (
             <div className="container">
-                {/* <CustomerDetail customer={this.state.customerData} /> */}
+                <h1>Customer Profile</h1>
                 <Card className="main-content">
                     <CardImg top width="100%" className="card-img"
                         src="https://www.pinclipart.com/picdir/middle/181-1814767_person-svg-png-icon-free-download-profile-icon.png"
