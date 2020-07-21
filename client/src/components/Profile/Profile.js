@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import './Profile.css';
-import CustomerDetail from './CustomerDetail';
 import {
     Card, CardImg, CardText, CardBody,
     CardTitle, CardSubtitle, Button
