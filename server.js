@@ -73,7 +73,7 @@ app.get('/api/clothing', (req, res) => {
 
 app.get('/api/customer', (req, res) => {
   let first_name = req.query.firstname;
-  console.log(first_name);
+  let last_name = req.query.lastname;
   var conn = new sql.ConnectionPool(dbConfig);
   var req = new sql.Request(conn);
   conn.connect(function (err) {
@@ -81,13 +81,12 @@ app.get('/api/customer', (req, res) => {
       console.log(err);
       return;
     }
-    req.query(`select distinct * from Customer_Master where Customer_FName = '` + first_name + `'`, (err, recordset) => {
+    req.query(`select distinct * from Customer_Master where Customer_FName like '%` + first_name + `%' and Customer_LName like '%` + last_name + `%'`, (err, recordset) => {
       if (err) {
         console.log(err);
         return;
       } else {
         const data = recordset;
-        console.log(data.recordset)
         res.send(data.recordset);
       }
       conn.close(recordset);

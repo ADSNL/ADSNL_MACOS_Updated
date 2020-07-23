@@ -14,13 +14,22 @@ export default class Profile extends Component {
         super(props)
         this.state = {
             customerData: [],
-            firstName: ''
+            name: '',
+            firstName: '',
+            lastName: ''
         };
+    }
+
+    handleChange = (e) => {
+        this.name = e.target.value;
+        this.name = this.name.split(" ");
+        this.firstName = this.name[0];
+        this.lastName = this.name[1];
     }
 
     getCustomerData = async (e) => {
         e.preventDefault();
-        await fetch("http://localhost:5000/api/customer/?firstname=" + this.firstName)
+        await fetch("http://localhost:5000/api/customer/?firstname=" + this.firstName + "&lastname=" + this.lastName)
             .then(res => {
                 return res.json();
             })
@@ -32,11 +41,6 @@ export default class Profile extends Component {
             })
             .catch(err => err);
     };
-
-    handleChange = (e) => {
-        this.firstName = e.target.value;
-        console.log(this.firstName);
-    }
 
     render() {
         let customer = this.state.customerData;
