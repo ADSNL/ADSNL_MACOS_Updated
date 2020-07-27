@@ -4,6 +4,7 @@ import { Row, Col } from 'reactstrap';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
+import Profile from '../Profile/Profile';
 
 class Chart extends Component {
     constructor(props) {
@@ -102,6 +103,11 @@ class Chart extends Component {
 
         return (
             <div>
+                <Row>
+                    <Col>
+                        <Profile />
+                    </Col>
+                </Row>
                 <Row>
                     <Col sm="6">
                         <Line

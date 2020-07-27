@@ -46,7 +46,6 @@ export default class Profile extends Component {
         let customer = this.state.customerData;
         return (
             <div className="container">
-                <h1>Customer Profile</h1>
                 <Container>
                     <Form action="" onSubmit={this.getCustomerData} >
                         <Row>
