@@ -50,7 +50,7 @@ export default class Profile extends Component {
             customerTiles.push(
                 <Card>
                     <Row>
-                        <Col>
+                        <Col sm="4">
                             <CardImg top width="50" height="100%"
                                 src="https://img.favpng.com/3/7/23/login-google-account-computer-icons-user-png-favpng-ZwgqcU6LVRjJucQ9udYpX00qa.jpg"
                                 alt="Card image cap" />
