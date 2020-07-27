@@ -81,7 +81,9 @@ app.get('/api/customer', (req, res) => {
       console.log(err);
       return;
     }
-    req.query(`select distinct * from Customer_Master where Customer_FName like '%` + first_name + `%' and Customer_LName like '%` + last_name + `%'`, (err, recordset) => {
+    req.query(`select top 10 Customer_ID as ID, Customer_FName as FName, Customer_LName as LName, 
+    Sex as Gender, Birth_Date as DOB, Zip_Code as Zip, City, State, Street_Name as StreetName, 
+    Street_Number as Street, Street_Type as Avenue from Customer_Master where Customer_FName like '%` + first_name + `%' and Customer_LName like '%` + last_name + `%'`, (err, recordset) => {
       if (err) {
         console.log(err);
         return;

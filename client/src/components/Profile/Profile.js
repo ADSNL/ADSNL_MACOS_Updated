@@ -37,13 +37,28 @@ export default class Profile extends Component {
                 this.setState({
                     customerData: data
                 });
-                console.log(this.state.customerData);
             })
             .catch(err => err);
     };
 
     render() {
         let customer = this.state.customerData;
+        console.log(customer);
+        const customerTiles = [];
+
+        for (let i = 0; i < customer.length; i++) {
+            customerTiles.push(
+                <Card>
+                    <CardImg top width="50" height="200" src="https://img.favpng.com/3/7/23/login-google-account-computer-icons-user-png-favpng-ZwgqcU6LVRjJucQ9udYpX00qa.jpg" alt="Card image cap" />
+                    <CardBody>
+                        <CardTitle>Title</CardTitle>
+                        <CardSubtitle>Card subtitle</CardSubtitle>
+                        <CardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CardText>
+                        <Button>Button</Button>
+                    </CardBody>
+                </Card>
+            )
+        }
         return (
             <div className="container">
                 <Container>
@@ -63,6 +78,13 @@ export default class Profile extends Component {
                             </Col>
                         </Row>
                     </Form>
+                </Container>
+                <Container>
+                    <Row>
+                        {
+                            (customerTiles.length == 0 || customerTiles == undefined) ? "" : customerTiles
+                        }
+                    </Row>
                 </Container>
             </div>
         )
