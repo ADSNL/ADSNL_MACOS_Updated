@@ -4,7 +4,7 @@ import {
     CardTitle, CardSubtitle, Button
 } from 'reactstrap';
 import {
-    Row, Container, Pagination, PaginationItem, PaginationLink,
+    Row, Container,
     Col, FormGroup, Form, Input
 } from 'reactstrap';
 import './Profile.css';
@@ -49,13 +49,21 @@ export default class Profile extends Component {
         for (let i = 0; i < customer.length; i++) {
             customerTiles.push(
                 <Card>
-                    <CardImg top width="50" height="200" src="https://img.favpng.com/3/7/23/login-google-account-computer-icons-user-png-favpng-ZwgqcU6LVRjJucQ9udYpX00qa.jpg" alt="Card image cap" />
-                    <CardBody>
-                        <CardTitle>Title</CardTitle>
-                        <CardSubtitle>Card subtitle</CardSubtitle>
-                        <CardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CardText>
-                        <Button>Button</Button>
-                    </CardBody>
+                    <Row>
+                        <Col>
+                            <CardImg top width="50" height="100%"
+                                src="https://img.favpng.com/3/7/23/login-google-account-computer-icons-user-png-favpng-ZwgqcU6LVRjJucQ9udYpX00qa.jpg"
+                                alt="Card image cap" />
+                        </Col>
+                        <Col>
+                            <CardBody>
+                                <CardTitle>{customer[i].FName} {customer[i].LName}</CardTitle>
+                                <CardSubtitle>Card subtitle</CardSubtitle>
+                                <CardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CardText>
+                                <Button>Button</Button>
+                            </CardBody>
+                        </Col>
+                    </Row>
                 </Card>
             )
         }
