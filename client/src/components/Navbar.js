@@ -12,7 +12,7 @@ class Navbar extends Component {
 
     render() {
         const loginRegLink = (
-            <ul className="navbar-nav login-nav">
+            <ul className="navbar-nav">
                 <li className="nav-item">
                     <Link to="/" className="navbar-brand">ADSNL</Link>
                 </li>
