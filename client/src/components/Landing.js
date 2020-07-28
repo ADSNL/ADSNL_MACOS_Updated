@@ -87,7 +87,7 @@ class Landing extends Component {
             <div>
                 <BrowserRouter>
                     <div>
-                        <NavbarB color="light"
+                        {/* <NavbarB color="light"
                             light expand="md">
                             <NavbarBrand href="/"><Link to="/"><b>ADSNL</b></Link></NavbarBrand>
                             <Nav color="light" className="mr-auto" navbar>
@@ -113,7 +113,7 @@ class Landing extends Component {
                                     <NavLink><Link to="/dashboard"><b>Dashboard</b></Link></NavLink>
                                 </NavItem>
                             </Nav>
-                        </NavbarB>
+                        </NavbarB> */}
                     </div>
                     <Route exact path="/">
                         <LandingPage data={datas} />
