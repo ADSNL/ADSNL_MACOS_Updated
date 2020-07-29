@@ -69,7 +69,33 @@ export default class Profile extends Component {
         }
         return (
             <div className="container">
-                <Container>
+                <Row>
+                    <Col>
+                        <a href="" className="profile-cards">
+                            <Card body outline color="secondary">
+                                <CardTitle>Special Title Treatment</CardTitle>
+                                <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
+                            </Card>
+                        </a>
+                    </Col>
+                    <Col>
+                        <a href="">
+                            <Card body outline color="secondary" className="profile-cards">
+                                <CardTitle>Special Title Treatment</CardTitle>
+                                <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
+                            </Card>
+                        </a>
+                    </Col>
+                    <Col>
+                        <a href="">
+                            <Card body outline color="secondary" className="profile-cards">
+                                <CardTitle>Special Title Treatment</CardTitle>
+                                <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
+                            </Card>
+                        </a>
+                    </Col>
+                </Row>
+                {/* <Container>
                     <Form action="" onSubmit={this.getCustomerData} >
                         <Row>
                             <Col>
@@ -86,7 +112,7 @@ export default class Profile extends Component {
                             </Col>
                         </Row>
                     </Form>
-                </Container>
+                </Container> */}
                 <Container>
                     <Row>
                         {
