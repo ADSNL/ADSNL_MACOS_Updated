@@ -33,6 +33,9 @@ const Routes = () => {
             <Route path="/dashboard" component={Navbar}>
                 <Dashboard />
             </Route>
+            <Route path="/profile" component={Navbar}>
+                <Profile />
+            </Route>
             {/* <Route path="/login" component={Navbar}>
                 <Login />
             </Route>
