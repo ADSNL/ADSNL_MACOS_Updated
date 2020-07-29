@@ -71,26 +71,26 @@ export default class Profile extends Component {
             <div className="container">
                 <Row>
                     <Col>
-                        <a href="" className="profile-cards">
-                            <Card body outline color="secondary">
-                                <CardTitle>Special Title Treatment</CardTitle>
-                                <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
+                        <a href="">
+                            <Card body outline color="secondary" className="profile-cards">
+                                <CardTitle className="card-title">Your Orders</CardTitle>
+                                <CardText>Track, return, or buy things again</CardText>
                             </Card>
                         </a>
                     </Col>
                     <Col>
                         <a href="">
                             <Card body outline color="secondary" className="profile-cards">
-                                <CardTitle>Special Title Treatment</CardTitle>
-                                <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
+                                <CardTitle className="card-title">Customer Details</CardTitle>
+                                <CardText>Edit login, name, and mobile number</CardText>
                             </Card>
                         </a>
                     </Col>
                     <Col>
                         <a href="">
                             <Card body outline color="secondary" className="profile-cards">
-                                <CardTitle>Special Title Treatment</CardTitle>
-                                <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
+                                <CardTitle className="card-title">Your Addresses</CardTitle>
+                                <CardText>Edit addresses for orders and gifts</CardText>
                             </Card>
                         </a>
                     </Col>

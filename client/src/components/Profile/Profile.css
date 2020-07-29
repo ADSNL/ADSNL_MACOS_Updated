@@ -16,4 +16,11 @@
 
 .profile-cards {
     margin-bottom: 3rem;
+    align-content: center;
+    align-items: center;
+}
+
+.card-title {
+    text-decoration: none;
+    font-size: 1.1rem;
 }
