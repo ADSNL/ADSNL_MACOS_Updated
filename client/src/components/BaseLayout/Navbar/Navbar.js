@@ -62,7 +62,9 @@ const Navbar = (props) => {
                             </NavItem>
                             <NavItem>
                                 <NavLink href="/components/"><b>Pets</b></NavLink >
-                            </NavItem></Nav> <NavbarText><b>Login</b></NavbarText></Collapse>
+                            </NavItem>
+                        </Nav>
+                    </Collapse>
                 </NavbarB>
             </div>
             {/* <Switch>

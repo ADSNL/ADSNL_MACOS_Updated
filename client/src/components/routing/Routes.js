@@ -5,6 +5,8 @@ import TileView from '../TileView/TileView';
 import Dashboard from '../Dashboard/Dashboard';
 import Navbar from '../BaseLayout/Navbar/Navbar';
 import Profile from '../Profile/Profile';
+import Login from '../Login';
+import Register from '../Register';
 
 const Routes = () => {
     return (
@@ -31,9 +33,12 @@ const Routes = () => {
             <Route path="/dashboard" component={Navbar}>
                 <Dashboard />
             </Route>
-            <Route path="/profile" component={Navbar}>
-                <Profile />
+            {/* <Route path="/login" component={Navbar}>
+                <Login />
             </Route>
+            <Route path="/register" component={Navbar}>
+                <Register />
+            </Route> */}
         </Switch>
     )
 }

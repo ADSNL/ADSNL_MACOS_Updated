@@ -14,7 +14,7 @@ class Navbar extends Component {
         const loginRegLink = (
             <ul className="navbar-nav">
                 <li className="nav-item">
-                    <Link to="/" className="navbar-brand">ADSNL</Link>
+                    <Link to="/" className="nav-link">ADSNL</Link>
                 </li>
                 <li className="nav-item">
                     <Link to="/books" className="nav-link">Books</Link>
@@ -33,9 +33,6 @@ class Navbar extends Component {
                 </li>
                 <li className="nav-item">
                     <Link to="/pets" className="nav-link">Pets</Link>
-                </li>
-                <li className="nav-item">
-                    <Link to="/dashboard" className="nav-link">Dashboard</Link>
                 </li>
                 <li className="nav-item">
                     <Link to="/login" className="nav-link">Login</Link>
@@ -48,7 +45,7 @@ class Navbar extends Component {
         const userLink = (
             <ul className="navbar-nav">
                 <li className="nav-item">
-                    <Link to="/" className="navbar-brand">ADSNL</Link>
+                    <Link to="/" className="nav-link">ADSNL</Link>
                 </li>
                 <li className="nav-item">
                     <Link to="/books" className="nav-link">Books</Link>
@@ -71,7 +68,6 @@ class Navbar extends Component {
                 <li className="nav-item">
                     <Link to="/dashboard" className="nav-link">Dashboard</Link>
                 </li>
-                <li className="nav-item"></li>
                 <li className="nav-item">
                     <a href="" onClick={this.logout.bind(this)} className="nav-link login-nav">Logout</a>
                 </li>

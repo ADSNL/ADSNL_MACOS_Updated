@@ -86,8 +86,8 @@ class Landing extends Component {
         const datasList = datas.length ? (
             <div>
                 <BrowserRouter>
-                    <div>
-                        {/* <NavbarB color="light"
+                    {/* <div>
+                        <NavbarB color="light"
                             light expand="md">
                             <NavbarBrand href="/"><Link to="/"><b>ADSNL</b></Link></NavbarBrand>
                             <Nav color="light" className="mr-auto" navbar>
@@ -113,12 +113,12 @@ class Landing extends Component {
                                     <NavLink><Link to="/dashboard"><b>Dashboard</b></Link></NavLink>
                                 </NavItem>
                             </Nav>
-                        </NavbarB> */}
-                    </div>
+                        </NavbarB>
+                    </div> */}
                     <Route exact path="/">
                         <LandingPage data={datas} />
                     </Route>
-                    <Route component={Routes} />
+                    {/* <Route component={Routes} /> */}
                 </BrowserRouter>
                 <Footer style={{ marginTop: '500px' }} />
             </div>
