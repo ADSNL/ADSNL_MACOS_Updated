@@ -59,10 +59,12 @@ export default class CustomerDetailComponent extends Component {
                         </Col>
                         <Col>
                             <CardBody>
-                                <CardTitle>{customer[i].FName} {customer[i].LName}</CardTitle>
-                                <CardSubtitle>Card subtitle</CardSubtitle>
-                                <CardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CardText>
-                                <Button>Button</Button>
+                                <CardTitle><b>Customer Name :</b> {customer[i].FName} {customer[i].LName}</CardTitle>
+                                <CardTitle><b>Customer ID : </b>{customer[i].ID}</CardTitle>
+                                <CardTitle><b>Gender : </b>{customer[i].Gender}</CardTitle>
+                                <CardTitle><b>Date of Birth : </b> {customer[i].DOB}</CardTitle>
+                                <CardTitle><b>Address : </b> {customer[i].Street} {customer[i].StreetName} Ave {customer[i].City} {customer[i].State} {customer[i].Zip}</CardTitle>
+                                <Button id="order-details">Button</Button>
                             </CardBody>
                         </Col>
                     </Row>
