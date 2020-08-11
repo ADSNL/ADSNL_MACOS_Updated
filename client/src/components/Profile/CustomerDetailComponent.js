@@ -9,6 +9,7 @@ import {
     Row, Container,
     Col, FormGroup, Form, Input
 } from 'reactstrap';
+import './Profile.css';
 
 export default class CustomerDetailComponent extends Component {
     constructor(props) {
@@ -49,7 +50,7 @@ export default class CustomerDetailComponent extends Component {
 
         for (let i = 0; i < customer.length; i++) {
             customerTiles.push(
-                <Card>
+                <Card className="customer-details">
                     <Row>
                         <Col sm="4">
                             <CardImg top width="50" height="100%"
