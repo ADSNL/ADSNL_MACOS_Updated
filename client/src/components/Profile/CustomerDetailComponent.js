@@ -64,7 +64,7 @@ export default class CustomerDetailComponent extends Component {
                                 <CardTitle><b>Gender : </b>{customer[i].Gender}</CardTitle>
                                 <CardTitle><b>Date of Birth : </b> {customer[i].DOB}</CardTitle>
                                 <CardTitle><b>Address : </b> {customer[i].Street} {customer[i].StreetName} Ave {customer[i].City} {customer[i].State} {customer[i].Zip}</CardTitle>
-                                <Button id="order-details">Button</Button>
+                                <Button id="order-details">View Details</Button>
                             </CardBody>
                         </Col>
                     </Row>
