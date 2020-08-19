@@ -28,7 +28,7 @@
     "mssql-session-store": "^1.0.0",
     "mysql": "^2.18.1",
     "mysql2": "^2.1.0",
-    "nodemon": "^2.0.2",
+    "nodemon": "^2.0.4",
     "react-bootstrap": "^1.0.0-beta.17",
     "sequelize": "^5.21.13",
     "uuid": "^3.3.2"

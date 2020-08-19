@@ -20,7 +20,10 @@ import {CardDeck} from 'reactstrap'; //0305 test remove later
         
         <div>
             <TopSellingBooks data={props.data}/>
-            {/* <TopSellingClothing /> */}
+            {/* {console.log(props.data)} 
+            {console.log(props.clothing)} */}
+
+            <TopSellingClothing data={props.clothing}/>
          
         </div>
 

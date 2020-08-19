@@ -83,40 +83,11 @@ class Landing extends Component {
     render() {
         const datas = this.state.books;
         const clothingData = this.state.clothing;
-        const datasList = datas.length ? (
+        const datasList = datas.length && clothingData.length ? (
             <div>
                 <BrowserRouter>
-                    {/* <div>
-                        <NavbarB color="light"
-                            light expand="md">
-                            <NavbarBrand href="/"><Link to="/"><b>ADSNL</b></Link></NavbarBrand>
-                            <Nav color="light" className="mr-auto" navbar>
-                                <NavItem>
-                                    <NavLink><Link to="/books"><b>Books</b></Link></NavLink>
-                                </NavItem>
-                                <NavItem>
-                                    <NavLink><Link to="/clothing"><b>Clothing</b></Link></NavLink>
-                                </NavItem>
-                                <NavItem>
-                                    <NavLink><Link to="/movies"><b>Movies</b></Link></NavLink>
-                                </NavItem>
-                                <NavItem>
-                                    <NavLink><Link to="/kitchen"><b>Kitchen</b></Link></NavLink>
-                                </NavItem>
-                                <NavItem>
-                                    <NavLink><Link to="/makeup"><b>Make up</b></Link></NavLink>
-                                </NavItem>
-                                <NavItem>
-                                    <NavLink><Link to="/pets"><b>Pets</b></Link></NavLink>
-                                </NavItem>
-                                <NavItem>
-                                    <NavLink><Link to="/dashboard"><b>Dashboard</b></Link></NavLink>
-                                </NavItem>
-                            </Nav>
-                        </NavbarB>
-                    </div> */}
                     <Route exact path="/">
-                        <LandingPage data={datas} />
+                        <LandingPage data={datas} clothing = {clothingData} />
                     </Route>
                     {/* <Route component={Routes} /> */}
                 </BrowserRouter>
@@ -125,7 +96,16 @@ class Landing extends Component {
         ) : (
                 <h1>Loading</h1>
             );
-        return <div>{datasList}</div>;
+            
+        return( 
+        
+        <div>
+            {datasList}
+           
+
+            </div>
+            
+            )
     }
 }
 
