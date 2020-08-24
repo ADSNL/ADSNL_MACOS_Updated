@@ -81,7 +81,7 @@ app.get('/api/customer-details/:id', (req, res) => {
       console.log(err);
       return;
     }
-    req.query(`select top 10 cm.Customer_ID as ID, cm.Customer_FName as FName, cm.Customer_LName as LName, cm.Sex as Gender, cm.Birth_Date as DOB, 
+    req.query(`select top 2 cm.Customer_ID as ID, cm.Customer_FName as FName, cm.Customer_LName as LName, cm.Sex as Gender, cm.Birth_Date as DOB, 
     cm.Zip_Code as Zip, cm.City, cm.State, cm.Street_Name as StreetName, cm.Street_Number as Street, cm.Street_Type as Avenue, 
 	  om.order_id as Order_Number, om.order_date Date_Of_Order, om.order_time as Time,
 	  od.product_id as Product_ID, od.price as Price

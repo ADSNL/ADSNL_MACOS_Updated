@@ -1,22 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 export default function CusterOrderComponent({ match }) {
 
-    const [customerOrderData] = useState({});
+    const [customerOrderData, setCustomerOrderData] = useState([]);
     getCustomerOrderData();
 
     async function getCustomerOrderData() {
-        await fetch(`http://localhost:5000/api/customer-details/${match.params.id}`)
-            .then(res => {
-                return res.json();
-            })
-            .then(data => {
-                this.setState({
-                    customerOrderData: data
+        await useEffect(() => {
+            fetch(`http://localhost:5000/api/customer-details/${match.params.id}`)
+                .then(res => res.json())
+                .then(res => {
+                    setCustomerOrderData(res)
+                })
+                .catch(err => {
+                    console.log(err);
                 });
-                console.log(data);
-            })
-            .catch(err => err);
+            console.log(customerOrderData);
+
+        })
     }
 
     return (
