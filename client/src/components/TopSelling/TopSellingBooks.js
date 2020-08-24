@@ -29,7 +29,7 @@ const TopSellingBooks = props => (
           <CardImg top width="50" height="200" src="https://dictionary.cambridge.org/us/images/thumb/book_noun_001_01679.jpg?version=5.0.70" alt="Card image cap" />
           <CardBody>
             <CardTitle>{props.data[0].Title}</CardTitle>
-            <CardSubtitle> $ {props.data[0].Price}</CardSubtitle>
+            <CardSubtitle> $ {(props.data[0].Price).toFixed(2)}</CardSubtitle>
             <ProductModal buttonLabel="View Details"
               productData={props.data[0]}
               modalImg="https://dictionary.cambridge.org/us/images/thumb/book_noun_001_01679.jpg?version=5.0.70" />
@@ -40,7 +40,7 @@ const TopSellingBooks = props => (
           <CardImg top width="50" height="200" src="https://dictionary.cambridge.org/us/images/thumb/book_noun_001_01679.jpg?version=5.0.70" alt="Card image cap" />
           <CardBody>
             <CardTitle>{props.data[1].Title}</CardTitle>
-            <CardSubtitle> $ {props.data[1].Price}</CardSubtitle>
+            <CardSubtitle> $ {(props.data[1].Price).toFixed(2)}</CardSubtitle>
             <ProductModal buttonLabel="View Details"
               productData={props.data[1]}
               modalImg="https://dictionary.cambridge.org/us/images/thumb/book_noun_001_01679.jpg?version=5.0.70" />
@@ -51,7 +51,7 @@ const TopSellingBooks = props => (
           <CardImg top width="50" height="200" src="https://dictionary.cambridge.org/us/images/thumb/book_noun_001_01679.jpg?version=5.0.70" alt="Card image cap" />
           <CardBody>
             <CardTitle>{props.data[2].Title}</CardTitle>
-            <CardSubtitle> $ {props.data[2].Price}</CardSubtitle>
+            <CardSubtitle> $ {(props.data[2].Price).toFixed(2)}</CardSubtitle>
             <ProductModal buttonLabel="View Details"
               productData={props.data[2]}
               modalImg="https://dictionary.cambridge.org/us/images/thumb/book_noun_001_01679.jpg?version=5.0.70" />
@@ -62,7 +62,7 @@ const TopSellingBooks = props => (
           <CardImg top width="50" height="200" src="https://dictionary.cambridge.org/us/images/thumb/book_noun_001_01679.jpg?version=5.0.70" alt="Card image cap" />
           <CardBody>
             <CardTitle>{props.data[3].Title}</CardTitle>
-            <CardSubtitle> $ {props.data[3].Price}</CardSubtitle>
+            <CardSubtitle> $ {(props.data[3].Price).toFixed(2)}</CardSubtitle>
             <ProductModal buttonLabel="View Details"
               productData={props.data[3]}
               modalImg="https://dictionary.cambridge.org/us/images/thumb/book_noun_001_01679.jpg?version=5.0.70" />
