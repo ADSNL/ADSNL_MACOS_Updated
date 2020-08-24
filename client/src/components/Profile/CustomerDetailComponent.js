@@ -17,6 +17,12 @@ import {
 } from 'reactstrap';
 import './Profile.css';
 
+const Child = ({ match }) => (
+    <div>
+        <h3>ID : {match.params.id}</h3>
+    </div>
+)
+
 export default class CustomerDetailComponent extends Component {
     constructor(props) {
         super(props)
@@ -72,10 +78,9 @@ export default class CustomerDetailComponent extends Component {
                                     <CardTitle><b>Date of Birth : </b> {customer[i].DOB}</CardTitle>
                                     <CardTitle><b>Address : </b> {customer[i].Street} {customer[i].StreetName} Ave {customer[i].City} {customer[i].State} {customer[i].Zip}</CardTitle>
                                     {/* <Button>View Details</Button> */}
-                                    <Button id="order-details">
-                                        <Link to={`/${customer[i].ID}`}>View Details</Link>
-                                    </Button>
+                                    <Link to={`/customer-details/${customer[i].ID}`}>View Details</Link>
                                 </CardBody>
+                                <Route exact path="/customer-details/:id" component={Child}></Route>
                             </Col>
                         </Row>
                     </Card>
