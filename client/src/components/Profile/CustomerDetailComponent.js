@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import {
     BrowserRouter as Router,
     Switch,
@@ -16,12 +16,8 @@ import {
     Col, FormGroup, Form, Input
 } from 'reactstrap';
 import './Profile.css';
+import CustomerOrderComponent from './CusterOrderComponent';
 
-const Child = ({ match }) => (
-    <div>
-        <h3>ID : {match.params.id}</h3>
-    </div>
-)
 
 export default class CustomerDetailComponent extends Component {
     constructor(props) {
@@ -80,7 +76,7 @@ export default class CustomerDetailComponent extends Component {
                                     {/* <Button>View Details</Button> */}
                                     <Link to={`/customer-details/${customer[i].ID}`}>View Details</Link>
                                 </CardBody>
-                                <Route exact path="/customer-details/:id" component={Child}></Route>
+                                <Route exact path="/customer-details/:id" component={CustomerOrderComponent}></Route>
                             </Col>
                         </Row>
                     </Card>
