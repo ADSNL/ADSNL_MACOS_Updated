@@ -1,6 +1,6 @@
 /*
 Created		28/07/2020
-Modified		11/08/2020
+Modified		19/08/2020
 Project		
 Model			
 Company		
@@ -60,9 +60,9 @@ go
 Create table [Author_Director]
 (
 	[AutDir_ID] Integer Identity NOT NULL,
-	[FirstName] Varchar(25) NULL,
+	[FirstName] Varchar(50) NULL,
 	[MiddleName] Varchar(10) NULL,
-	[LastName] Varchar(25) NULL,
+	[LastName] Varchar(50) NULL,
 Primary Key ([AutDir_ID])
 ) 
 go
@@ -241,7 +241,19 @@ Primary Key ([Format_ID])
 go
 
 
+Alter table [AD_Lookup] add constraint [AD_Uniquekey] unique ([Prod_SKU],[AutDir_ID])
+go
+
+
+Alter table [Media_Lookup] add constraint [Media_Unique] unique ([Prod_SKU],[Media_ID])
+go
+
+
 Create UNIQUE Index [CompositeKey] ON [Feature_Lookup] ([Prod_SKU],[Size_ID],[Color_ID],[Format_ID])
+go
+
+
+Alter table [Type_Lookup] add constraint [Type_Unique] unique ([Prod_SKU],[Type_ID])
 go
 
 
