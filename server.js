@@ -71,6 +71,11 @@ app.get('/api/clothing', (req, res) => {
   });
 });
 
+
+app.get('/api/customer-details/:id', (req, res) => {
+  let customer_id = req.params.id
+});
+
 app.get('/api/customer', (req, res) => {
   let first_name = req.query.firstname;
   let last_name = req.query.lastname;
@@ -93,7 +98,6 @@ app.get('/api/customer', (req, res) => {
         } else {
           const data = recordset;
           res.send(data.recordset);
-          console.log(data.recordset);
         }
         conn.close(recordset);
       });
@@ -109,7 +113,6 @@ app.get('/api/customer', (req, res) => {
         } else {
           const data = recordset;
           res.send(data.recordset);
-          console.log(data.recordset);
         }
         conn.close(recordset);
       });
