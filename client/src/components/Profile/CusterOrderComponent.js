@@ -6,7 +6,6 @@ export default function CusterOrderComponent({ match }) {
     getCustomerOrderData();
 
     async function getCustomerOrderData() {
-        console.log("getting customer order data." + customerOrderData);
         await fetch(`http://localhost:5000/api/customer-details/${match.params.id}`)
             .then(res => {
                 return res.json();
@@ -15,6 +14,7 @@ export default function CusterOrderComponent({ match }) {
                 this.setState({
                     customerOrderData: data
                 });
+                console.log(data);
             })
             .catch(err => err);
     }
