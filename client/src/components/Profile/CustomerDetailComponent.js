@@ -1,4 +1,10 @@
 import React, { Component } from 'react';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+} from "react-router-dom";
 
 import {
     Card, CardImg, CardText, CardBody,
@@ -50,25 +56,30 @@ export default class CustomerDetailComponent extends Component {
 
         for (let i = 0; i < customer.length; i++) {
             customerTiles.push(
-                <Card className="customer-details">
-                    <Row>
-                        <Col sm="4">
-                            <CardImg top width="50" height="100%"
-                                src="https://img.favpng.com/3/7/23/login-google-account-computer-icons-user-png-favpng-ZwgqcU6LVRjJucQ9udYpX00qa.jpg"
-                                alt="Card image cap" />
-                        </Col>
-                        <Col>
-                            <CardBody>
-                                <CardTitle><b>Customer Name :</b> {customer[i].FName} {customer[i].LName}</CardTitle>
-                                <CardTitle><b>Customer ID : </b>{customer[i].ID}</CardTitle>
-                                <CardTitle><b>Gender : </b>{customer[i].Gender}</CardTitle>
-                                <CardTitle><b>Date of Birth : </b> {customer[i].DOB}</CardTitle>
-                                <CardTitle><b>Address : </b> {customer[i].Street} {customer[i].StreetName} Ave {customer[i].City} {customer[i].State} {customer[i].Zip}</CardTitle>
-                                <Button id="order-details">View Details</Button>
-                            </CardBody>
-                        </Col>
-                    </Row>
-                </Card>
+                <Router>
+                    <Card className="customer-details">
+                        <Row>
+                            <Col sm="4">
+                                <CardImg top width="50" height="100%"
+                                    src="https://img.favpng.com/3/7/23/login-google-account-computer-icons-user-png-favpng-ZwgqcU6LVRjJucQ9udYpX00qa.jpg"
+                                    alt="Card image cap" />
+                            </Col>
+                            <Col>
+                                <CardBody>
+                                    <CardTitle><b>Customer Name :</b> {customer[i].FName} {customer[i].LName}</CardTitle>
+                                    <CardTitle><b>Customer ID : </b>{customer[i].ID}</CardTitle>
+                                    <CardTitle><b>Gender : </b>{customer[i].Gender}</CardTitle>
+                                    <CardTitle><b>Date of Birth : </b> {customer[i].DOB}</CardTitle>
+                                    <CardTitle><b>Address : </b> {customer[i].Street} {customer[i].StreetName} Ave {customer[i].City} {customer[i].State} {customer[i].Zip}</CardTitle>
+                                    {/* <Button>View Details</Button> */}
+                                    <Button id="order-details">
+                                        <Link to={`/${customer[i].ID}`}>View Details</Link>
+                                    </Button>
+                                </CardBody>
+                            </Col>
+                        </Row>
+                    </Card>
+                </Router>
             )
         }
 
