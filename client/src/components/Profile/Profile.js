@@ -12,6 +12,7 @@ import {
 } from 'reactstrap';
 
 import CustomerDetailComponent from './CustomerDetailComponent';
+import CustomerOrderDetailComponent from './CustomerOrderDetailComponent';
 import './Profile.css';
 
 export default function Profile() {
@@ -71,7 +72,7 @@ export default function Profile() {
     )
 
     function CustomerOrder() {
-        return <h1>Orders</h1>;
+        return <CustomerOrderDetailComponent />;
     }
 
     function CustomerDetails() {
