@@ -16,7 +16,7 @@ const TopSellingClothing = props => (
         <div className="container">
             <CardDeck>
                 <Card>
-                    <CardImg top width="50" height="200" src="https://cdn.shopify.com/s/files/1/2143/3217/products/500_d31b0b14-cf17-4c44-8501-9f640df27ac5_grande.png?v=1583268433" alt="Card image cap" />
+                    <CardImg top width="50" height="200" src="https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=975&q=80" alt="Card image cap" />
                     <CardBody>
 
                         {/* <CardTitle onClick={activateLasers}><b>{props.clothing[0].Clothing_Name}</b></CardTitle> */}
@@ -29,7 +29,7 @@ const TopSellingClothing = props => (
                 </Card>
 
                 <Card>
-                    <CardImg top width="50" height="200" src="https://cdn.shopify.com/s/files/1/2143/3217/products/500_d31b0b14-cf17-4c44-8501-9f640df27ac5_grande.png?v=1583268433" alt="Card image cap" />
+                    <CardImg top width="50" height="200" src="https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=975&q=80" alt="Card image cap" />
                     <CardBody>
                         <CardTitle><b>{props.data[1].Clothing_Name}</b></CardTitle>
                         <CardSubtitle> $ {(props.data[1].Price).toFixed(2)}</CardSubtitle>
@@ -39,7 +39,7 @@ const TopSellingClothing = props => (
                 </Card>
 
                 <Card>
-                    <CardImg top width="50" height="200" src="https://cdn.shopify.com/s/files/1/2143/3217/products/500_d31b0b14-cf17-4c44-8501-9f640df27ac5_grande.png?v=1583268433" alt="Card image cap" />
+                    <CardImg top width="50" height="200" src="https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=975&q=80" alt="Card image cap" />
                     <CardBody>
                         <CardTitle><b>{props.data[2].Clothing_Name}</b></CardTitle>
                         <CardSubtitle> $ {(props.data[2].Price).toFixed(2)}</CardSubtitle>
@@ -49,7 +49,7 @@ const TopSellingClothing = props => (
                 </Card>
 
                 <Card>
-                    <CardImg top width="50" height="200" src="https://cdn.shopify.com/s/files/1/2143/3217/products/500_d31b0b14-cf17-4c44-8501-9f640df27ac5_grande.png?v=1583268433" alt="Card image cap" />
+                    <CardImg top width="50" height="200" src="https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=975&q=80" alt="Card image cap" />
                     <CardBody>
                         <CardTitle><b>{props.data[3].Clothing_Name}</b></CardTitle>
                         <CardSubtitle> $ {(props.data[3].Price).toFixed(2)}</CardSubtitle>
