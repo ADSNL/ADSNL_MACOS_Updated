@@ -25,7 +25,7 @@ import {CardDeck} from 'reactstrap'; //0305 test remove later
             {console.log(props.clothing)} */}
 
             <TopSellingClothing data={props.clothing}/>
-            {/* <TopSellingMovies data={props.movies} /> */}
+            <TopSellingMovies data={props.movies} />
          
         </div>
 

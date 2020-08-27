@@ -20,7 +20,18 @@ const TopSellingMovies = props => (
                     <CardBody>
 
                         {/* <CardTitle onClick={activateLasers}><b>{props.clothing[0].Clothing_Name}</b></CardTitle> */}
-                        <CardTitle><b>{props.data[0].Movies_Title}</b></CardTitle>
+                        <CardTitle><b>{props.data[0].Movie_Title}</b></CardTitle>
+
+                        {/* <CardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CardText> */}
+                        <Button>Add to Cart</Button>
+                    </CardBody>
+                </Card>
+                <Card>
+                    <CardImg top width="50" height="200" src="https://cdn.shopify.com/s/files/1/2143/3217/products/500_d31b0b14-cf17-4c44-8501-9f640df27ac5_grande.png?v=1583268433" alt="Card image cap" />
+                    <CardBody>
+
+                        {/* <CardTitle onClick={activateLasers}><b>{props.clothing[0].Clothing_Name}</b></CardTitle> */}
+                        <CardTitle><b>{props.data[1].Movie_Title}</b></CardTitle>
 
                         {/* <CardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CardText> */}
                         <Button>Add to Cart</Button>
@@ -30,8 +41,10 @@ const TopSellingMovies = props => (
                 <Card>
                     <CardImg top width="50" height="200" src="https://cdn.shopify.com/s/files/1/2143/3217/products/500_d31b0b14-cf17-4c44-8501-9f640df27ac5_grande.png?v=1583268433" alt="Card image cap" />
                     <CardBody>
-                        <CardTitle><b>{props.data[1].Clothing_Name}</b></CardTitle>
-                       
+
+                        {/* <CardTitle onClick={activateLasers}><b>{props.clothing[0].Clothing_Name}</b></CardTitle> */}
+                        <CardTitle><b>{props.data[2].Movie_Title}</b></CardTitle>
+
                         {/* <CardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CardText> */}
                         <Button>Add to Cart</Button>
                     </CardBody>
@@ -40,18 +53,10 @@ const TopSellingMovies = props => (
                 <Card>
                     <CardImg top width="50" height="200" src="https://cdn.shopify.com/s/files/1/2143/3217/products/500_d31b0b14-cf17-4c44-8501-9f640df27ac5_grande.png?v=1583268433" alt="Card image cap" />
                     <CardBody>
-                        <CardTitle><b>{props.data[2].Clothing_Name}</b></CardTitle>
-                       
-                        {/* <CardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CardText> */}
-                        <Button>Add to Cart</Button>
-                    </CardBody>
-                </Card>
 
-                <Card>
-                    <CardImg top width="50" height="200" src="https://cdn.shopify.com/s/files/1/2143/3217/products/500_d31b0b14-cf17-4c44-8501-9f640df27ac5_grande.png?v=1583268433" alt="Card image cap" />
-                    <CardBody>
-                        <CardTitle><b>{props.data[3].Clothing_Name}</b></CardTitle>
-                        
+                        {/* <CardTitle onClick={activateLasers}><b>{props.clothing[0].Clothing_Name}</b></CardTitle> */}
+                        <CardTitle><b>{props.data[3].Movie_Title}</b></CardTitle>
+
                         {/* <CardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CardText> */}
                         <Button>Add to Cart</Button>
                     </CardBody>

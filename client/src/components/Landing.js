@@ -82,7 +82,7 @@ class Landing extends Component {
             })
             .then(data => {
                 this.setState({
-                    clothing: data
+                    movies: data
                 });
             })
             .catch(err => err);
@@ -99,7 +99,7 @@ class Landing extends Component {
         const datas = this.state.books;
         const clothingData = this.state.clothing;
         const moviesData = this.state.movies;
-        const datasList = datas.length && clothingData.length ? (
+        const datasList = datas.length && clothingData.length && moviesData.length ? (
             <div>
                 <BrowserRouter>
                     <Route exact path="/">
