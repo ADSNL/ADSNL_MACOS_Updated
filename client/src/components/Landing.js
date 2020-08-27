@@ -45,7 +45,8 @@ class Landing extends Component {
         super(props);
         this.state = {
             books: [],
-            clothing: []
+            clothing: [],
+            movies: []
         };
     }
 
@@ -74,20 +75,35 @@ class Landing extends Component {
             })
             .catch(err => err);
     };
+    getMovies = async () => {
+        fetch("http://localhost:5000/api/movies")
+            .then(res => {
+                return res.json()
+            })
+            .then(data => {
+                this.setState({
+                    clothing: data
+                });
+            })
+            .catch(err => err);
+    };
 
     componentDidMount() {
         this.getBooks();
         this.getClothing();
+        this.getMovies();
     }
 
     render() {
+        {console.log(this.state.movies)}
         const datas = this.state.books;
         const clothingData = this.state.clothing;
+        const moviesData = this.state.movies;
         const datasList = datas.length && clothingData.length ? (
             <div>
                 <BrowserRouter>
                     <Route exact path="/">
-                        <LandingPage data={datas} clothing = {clothingData} />
+                        <LandingPage data={datas} clothing = {clothingData} movies = {moviesData}/>
                     </Route>
                     {/* <Route component={Routes} /> */}
                 </BrowserRouter>

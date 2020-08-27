@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "../../App.css";
 import TopSellingBooks from "../TopSelling/TopSellingBooks";
 import TopSellingClothing from "../TopSelling/TopSellingClothing";
+import TopSellingMovies from "../TopSelling/TopSellingMovies"
 // import ProductModal from "./components/ProductModal";
 // import Footer from './components/BaseLayout/Footer/Footer'
 // import Navbar from './components/BaseLayout/Navbar/Navbar'
@@ -24,6 +25,7 @@ import {CardDeck} from 'reactstrap'; //0305 test remove later
             {console.log(props.clothing)} */}
 
             <TopSellingClothing data={props.clothing}/>
+            {/* <TopSellingMovies data={props.movies} /> */}
          
         </div>
 
