@@ -33,13 +33,13 @@ export default class CustomerOrderDetailComponent extends Component {
 
         order_heading.push(
             <Row>
-                <Col>Customer ID</Col>
-                <Col>First Name</Col>
-                <Col>Last Name</Col>
-                <Col>City</Col>
-                <Col>Order ID</Col>
-                <Col>Order Date</Col>
-                <Col>Time</Col>
+                <Col><strong>Customer ID</strong></Col>
+                <Col><strong>First Name</strong></Col>
+                <Col><strong>Last Name</strong></Col>
+                <Col><strong>City</strong></Col>
+                <Col><strong>Order ID</strong></Col>
+                <Col><strong>Order Date</strong></Col>
+                <Col><strong>Time</strong></Col>
             </Row>
         );
 
