@@ -102,6 +102,35 @@ app.get('/api/customer-details/:id', (req, res) => {
   });
 });
 
+app.get('/api/customer/order', (req, res) => {
+  var conn = new sql.ConnectionPool(dbConfig);
+  var req = new sql.Request(conn);
+  conn.connect(function (err) {
+    if (err) {
+      console.log(err);
+      return;
+    }
+    req.query(`select top 2 cm.Customer_ID as ID, cm.Customer_FName as FName, cm.Customer_LName as LName,
+	  om.order_id as Order_Number, om.order_date Date_Of_Order, om.order_time as Time,
+	  od.product_id as Product_ID, od.price as Price
+	  from Customer_Master as cm
+	  join Order_Master as om
+	  on cm.Customer_ID = om.customer_id 
+	  join Order_Detail as od
+	  on om.order_id = od.order_id`, (err, recordset) => {
+      if (err) {
+        console.log(err);
+        return;
+      } else {
+        const data = recordset;
+        res.send(data.recordset);
+        console.log(data.recordset);
+      }
+      conn.close(recordset);
+    });
+  });
+});
+
 app.get('/api/customer', (req, res) => {
   let first_name = req.query.firstname;
   let last_name = req.query.lastname;
