@@ -53,7 +53,6 @@ export default class CustomerDetailComponent extends Component {
 
     render() {
         let customer = this.state.customerData;
-        console.log(customer);
         const customerTiles = [];
 
         for (let i = 0; i < customer.length; i++) {
