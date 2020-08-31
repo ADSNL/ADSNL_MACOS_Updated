@@ -1,6 +1,6 @@
 /*
 Created		28/07/2020
-Modified		19/08/2020
+Modified		26/08/2020
 Project		
 Model			
 Company		
@@ -120,7 +120,7 @@ go
 Create table [Type]
 (
 	[Type_ID] Integer Identity NOT NULL,
-	[Type_Name] Varchar(20) NOT NULL,
+	[Type_Name] Varchar(50) NOT NULL,
 Primary Key ([Type_ID])
 ) 
 go

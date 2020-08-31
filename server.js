@@ -71,9 +71,7 @@ app.get('/api/clothing', (req, res) => {
   });
 });
 
-
-app.get('/api/customer-details/:id', (req, res) => {
-  let customer_id = req.params.id;
+app.get('/api/movies', (req, res) => {
   var conn = new sql.ConnectionPool(dbConfig);
   var req = new sql.Request(conn);
   conn.connect(function (err) {
@@ -81,50 +79,14 @@ app.get('/api/customer-details/:id', (req, res) => {
       console.log(err);
       return;
     }
-    req.query(`select top 2 cm.Customer_ID as ID, cm.Customer_FName as FName, cm.Customer_LName as LName, cm.Sex as Gender, cm.Birth_Date as DOB, 
-    cm.Zip_Code as Zip, cm.City, cm.State, cm.Street_Name as StreetName, cm.Street_Number as Street, cm.Street_Type as Avenue, 
-	  om.order_id as Order_Number, om.order_date Date_Of_Order, om.order_time as Time,
-	  od.product_id as Product_ID, od.price as Price
-	  from Customer_Master as cm
-	  join Order_Master as om
-	  on cm.Customer_ID = om.customer_id 
-	  join Order_Detail as od
-	  on om.order_id = od.order_id and cm.Customer_ID =` + customer_id, (err, recordset) => {
+    req.query('SELECT Top 4 * FROM Movies', (err, recordset) => {
       if (err) {
         console.log(err);
         return;
       } else {
         const data = recordset;
-        res.send(data.recordset);
-      }
-      conn.close(recordset);
-    });
-  });
-});
 
-app.get('/api/customer/order', (req, res) => {
-  var conn = new sql.ConnectionPool(dbConfig);
-  var req = new sql.Request(conn);
-  conn.connect(function (err) {
-    if (err) {
-      console.log(err);
-      return;
-    }
-    req.query(`select top 2 cm.Customer_ID as ID, cm.Customer_FName as FName, cm.Customer_LName as LName,
-	  om.order_id as Order_Number, om.order_date Date_Of_Order, om.order_time as Time,
-	  od.product_id as Product_ID, od.price as Price
-	  from Customer_Master as cm
-	  join Order_Master as om
-	  on cm.Customer_ID = om.customer_id 
-	  join Order_Detail as od
-	  on om.order_id = od.order_id`, (err, recordset) => {
-      if (err) {
-        console.log(err);
-        return;
-      } else {
-        const data = recordset;
         res.send(data.recordset);
-        console.log(data.recordset);
       }
       conn.close(recordset);
     });
@@ -134,6 +96,7 @@ app.get('/api/customer/order', (req, res) => {
 app.get('/api/customer', (req, res) => {
   let first_name = req.query.firstname;
   let last_name = req.query.lastname;
+  console.log(last_name);
   var conn = new sql.ConnectionPool(dbConfig);
   var req = new sql.Request(conn);
   conn.connect(function (err) {
@@ -152,6 +115,7 @@ app.get('/api/customer', (req, res) => {
         } else {
           const data = recordset;
           res.send(data.recordset);
+          console.log(data.recordset);
         }
         conn.close(recordset);
       });
@@ -167,6 +131,7 @@ app.get('/api/customer', (req, res) => {
         } else {
           const data = recordset;
           res.send(data.recordset);
+          console.log(data.recordset);
         }
         conn.close(recordset);
       });
