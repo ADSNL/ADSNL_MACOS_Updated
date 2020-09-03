@@ -1,6 +1,6 @@
 /*
 Created		28/07/2020
-Modified		26/08/2020
+Modified		27/08/2020
 Project		
 Model			
 Company		
@@ -24,7 +24,7 @@ Create table [Product_Info]
 	[Prod_ASIN] Varchar(10) NULL,
 	[Prod_ISBN_10] Varchar(12) NULL,
 	[Prod_ISBN_13] Varchar(15) NULL,
-	[Prod_Volume] Varchar(10) NULL,
+	[Prod_Volume] Varchar(15) NULL,
 	[Prod_Dimension] Varchar(20) NULL,
 	[Prod_UPC] Varchar(15) NULL,
 	[Prod_Stock] Integer NULL,
