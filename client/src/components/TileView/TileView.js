@@ -175,7 +175,7 @@ class TileView extends Component {
 
   paginationRange(data) {
     this.setState({
-      totalPage: TotalPage,
+      //totalPage: TotalPage,
       data: data,
       totalItems: data[0].CatCount
     });
