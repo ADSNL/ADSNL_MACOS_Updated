@@ -1,6 +1,6 @@
 /*
 Created		28/07/2020
-Modified		27/08/2020
+Modified		08/09/2020
 Project		
 Model			
 Company		
@@ -105,7 +105,8 @@ Create table [Feature_Lookup]
 	[Size_ID] Integer NULL,
 	[Color_ID] Integer NULL,
 	[Format_ID] Integer NULL,
-	[Stock] Integer NULL
+	[Stock] Integer NULL,
+	[Feature_Price] Decimal(10,2) NULL
 ) 
 go
 
