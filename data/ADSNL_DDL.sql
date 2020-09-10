@@ -130,7 +130,8 @@ Create table [Type_Lookup]
 (
 	[Prod_SKU] Integer NOT NULL,
 	[Type_ID] Integer NOT NULL,
-	[Stock] Integer NULL
+	[Stock] Integer NULL,
+	[Type_Price] Decimal(10,2) NULL
 ) 
 go
 
