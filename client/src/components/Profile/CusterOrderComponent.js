@@ -3,9 +3,9 @@ import React, { useState, useEffect } from 'react';
 export default function CusterOrderComponent({ match }) {
 
     const [customerOrderData, setCustomerOrderData] = useState([]);
-    getCustomerOrderData();
+    GetCustomerOrderData();
 
-    async function getCustomerOrderData() {
+    async function GetCustomerOrderData() {
         await useEffect(() => {
             fetch(`http://localhost:5000/api/customer-details/${match.params.id}`)
                 .then(res => res.json())

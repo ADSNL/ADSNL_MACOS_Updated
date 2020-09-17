@@ -93,6 +93,28 @@ app.get('/api/movies', (req, res) => {
   });
 });
 
+app.get('/api/moviesdetails', (req, res) => {
+  var conn = new sql.ConnectionPool(dbConfig);
+  var req = new sql.Request(conn);
+  conn.connect(function (err) {
+    if (err) {
+      console.log(err);
+      return;
+    }
+    req.query('SELECT Top 4 * FROM Movies INNER JOIN Movie_Genres ON Movies.Movie_Genre_ID = Movie_Genres.Movie_Genre_ID', (err, recordset) => {
+      if (err) {
+        console.log(err);
+        return;
+      } else {
+        const data = recordset;
+
+        res.send(data.recordset);
+      }
+      conn.close(recordset);
+    });
+  });
+});
+
 app.get('/api/customer/order', (req, res) => {
   var conn = new sql.ConnectionPool(dbConfig);
   var req = new sql.Request(conn);
