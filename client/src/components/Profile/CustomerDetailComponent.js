@@ -7,8 +7,8 @@ import {
 } from "react-router-dom";
 
 import {
-    Card, CardImg, CardText, CardBody,
-    CardTitle, CardSubtitle, Button
+    Card, CardImg, CardText, CardBody, CardHeader,
+    CardTitle, CardSubtitle, Button, CardFooter
 } from 'reactstrap';
 
 import {
@@ -57,61 +57,107 @@ export default class CustomerDetailComponent extends Component {
 
         for (let i = 0; i < customer.length; i++) {
             customerTiles.push(
-                <Router>
-                    <Card className="customer-details">
+                <Card>
+                    <CardHeader tag="h3">Customer Summary</CardHeader>
+                    <Row>
+                        <Col sm="8">
+                            <div className="customer-info p-4 pl-5">
+                                <Row>
+                                    <Col><p class="h4 font-weight-bold">Customer Name:</p></Col>
+                                    <Col><p class="h4">{customer[i].FName} {customer[i].LName}</p></Col>
+                                </Row>
+                                <Row>
+                                    <Col><p class="h4 font-weight-bold">Address</p></Col>
+                                    <Col><p class="h4">{customer[i].Street} {customer[i].StreetName} Ave, {customer[i].State} {customer[i].Zip}</p></Col>
+                                </Row>
+                                <Row>
+                                    <Col><p class="h4 font-weight-bold">City</p></Col>
+                                    <Col><p class="h4">{customer[i].City}</p></Col>
+                                </Row>
+                                <Row>
+                                    <Col><p class="h4 font-weight-bold">Gender</p></Col>
+                                    <Col><p class="h4">{customer[i].Gender}</p></Col>
+                                </Row>
+                                <Row>
+                                    <Col><p class="h4 font-weight-bold">Age</p></Col>
+                                    <Col><p class="h4">24</p></Col>
+                                </Row>
+                                <Row>
+                                    <Col><p class="h4 font-weight-bold">Income Type</p></Col>
+                                    <Col><p class="h4">$45000</p></Col>
+                                </Row>
+                            </div>
+                        </Col>
+                        <Col>
+                            <CardBody>
+                                <Row>
+                                    <Col><p class="h4 font-weight-bold">Date:</p></Col>
+                                    <Col><p class="h4">1993/01/21</p></Col>
+                                </Row>
+                                <Row>
+                                    <Col><p class="h4 font-weight-bold">Customer ID</p></Col>
+                                    <Col><p class="h4">{customer[i].ID}</p></Col>
+                                </Row>
+                                <Row>
+                                    <Col><p class="h4 font-weight-bold">Education Degree Type</p></Col>
+                                    <Col><p class="h4">{customer[i].Degree}</p></Col>
+                                </Row>
+                                <Row>
+                                    <Col><p class="h4 font-weight-bold">Martial Status</p></Col>
+
+                                    <Col><p class="h4">{customer[i].Martial_Status}</p></Col>
+                                </Row>
+                            </CardBody>
+                        </Col>
+                    </Row>
+                    <CardHeader tag="h3">Payment Information</CardHeader>
+                    <CardBody className="p-4 pl-5">
                         <Row>
-                            <Col sm="4">
-                                <CardImg top width="50" height="100%"
-                                    src="https://img.favpng.com/3/7/23/login-google-account-computer-icons-user-png-favpng-ZwgqcU6LVRjJucQ9udYpX00qa.jpg"
-                                    alt="Card image cap" />
-                            </Col>
-                            <Col>
-                                <CardBody>
-                                    <CardTitle><b>Customer Name :</b> {customer[i].FName} {customer[i].LName}</CardTitle>
-                                    <CardTitle><b>Customer ID : </b>{customer[i].ID}</CardTitle>
-                                    <CardTitle><b>Gender : </b>{customer[i].Gender}</CardTitle>
-                                    <CardTitle><b>Date of Birth : </b> {customer[i].DOB}</CardTitle>
-                                    <CardTitle><b>Address : </b> {customer[i].Street} {customer[i].StreetName} Ave {customer[i].City} {customer[i].State} {customer[i].Zip}</CardTitle>
-                                    {/* <Button>View Details</Button> */}
-                                    <Link to={`/customer-details/${customer[i].ID}`}>View Details</Link>
-                                </CardBody>
-                                <Route exact path="/customer-details/:id" component={CustomerOrderComponent}></Route>
-                            </Col>
+                            <Col><p class="h4 font-weight-bold">Bank Name:</p></Col>
+                            <Col><p class="h4">Bank of America</p></Col>
                         </Row>
-                    </Card>
-                </Router>
+                        <Row>
+                            <Col><p class="h4 font-weight-bold">Credit Card Number</p></Col>
+                            <Col><p class="h4">*************111</p></Col>
+                        </Row>
+                        <Row>
+                            <Col><p class="h4 font-weight-bold">Credit Card Type</p></Col>
+                            <Col><p class="h4">Discover</p></Col>
+                        </Row>
+                    </CardBody>
+                    <CardHeader tag="h3">Order Details</CardHeader>
+                    <CardBody className="p-4 pl-5">
+                        <Row>
+                            <Col><p class="h4 font-weight-bold">Bank Name:</p></Col>
+                            <Col><p class="h4">Bank of America</p></Col>
+                        </Row>
+                    </CardBody>
+                </Card>
             )
         }
 
         return (
-            <div>
-                <Container>
-                    <Form action="" onSubmit={this.getCustomerData} >
-                        <Row>
-                            <Col>
-                                <FormGroup>
-                                    <Input type="text" name="search"
-                                        placeholder="Search..."
-                                        className="search-input"
-                                        autoComplete="on"
-                                        onChange={this.handleChange} />
-                                </FormGroup>
-                            </Col>
-                            <Col>
-                                <Button id="searchBtn" className="search-btn btn-primary">Submit</Button>
-                            </Col>
-                        </Row>
-                    </Form>
-                </Container>
-
-                <Container>
+            <div className="customer-summary">
+                <Form action="" onSubmit={this.getCustomerData} >
                     <Row>
-                        {
-                            (customerTiles.length == 0 || customerTiles == undefined) ? "" : customerTiles
-                        }
+                        <Col>
+                            <FormGroup>
+                                <Input type="text" name="search"
+                                    placeholder="Search..."
+                                    className="search-input"
+                                    autoComplete="on"
+                                    onChange={this.handleChange} />
+                            </FormGroup>
+                        </Col>
+                        <Col>
+                            <Button id="searchBtn" className="search-btn btn-primary">Submit</Button>
+                        </Col>
                     </Row>
-                </Container>
-            </div>
+                </Form>
+                {
+                    (customerTiles.length == 0 || customerTiles == undefined) ? "" : customerTiles
+                }
+            </div >
         );
     }
 }
