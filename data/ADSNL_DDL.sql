@@ -1,6 +1,6 @@
 /*
 Created		28/07/2020
-Modified		08/09/2020
+Modified		28/09/2020
 Project		
 Model			
 Company		
@@ -21,7 +21,7 @@ Create table [Product_Info]
 	[Prod_Name] Varchar(200) NULL,
 	[Prod_Price] Decimal(10,2) NULL,
 	[Prod_Model_Number] Varchar(20) NULL,
-	[Prod_ASIN] Varchar(10) NULL,
+	[Prod_ASIN] Varchar(20) NULL,
 	[Prod_ISBN_10] Varchar(12) NULL,
 	[Prod_ISBN_13] Varchar(15) NULL,
 	[Prod_Volume] Varchar(15) NULL,
