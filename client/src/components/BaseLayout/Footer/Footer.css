@@ -1,15 +1,10 @@
 .footer {
-    height: 3em;
-    background-color: black;
-    color: #FFF;
-    width: 100vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Quicksand', sans-serif;
-    font-weight: lighter;
-    position: relative;
+    position: fixed;
     left: 0;
     bottom: 0;
-    right: 0;
+    width: 100%;
+    background-color: black;
+    font-family: 'Quicksand', sans-serif;
+    color: #FFF;
+    text-align: center;
 }

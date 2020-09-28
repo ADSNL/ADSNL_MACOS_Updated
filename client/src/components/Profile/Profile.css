@@ -1,0 +1,34 @@
+.main-content {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.card-img {
+    width: 15rem;
+    height: 15rem;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 50%;
+    border: 2px solid black;
+    margin-top: 1rem;
+}
+
+.profile-cards {
+    margin-bottom: 3rem;
+    align-content: center;
+    align-items: center;
+}
+
+.card-title {
+    text-decoration: none;
+    font-size: 1.1rem;
+}
+
+.customer-details {
+    margin-top: 1rem;
+}
+
+.order-details {
+    margin-top: 1.5rem;
+}

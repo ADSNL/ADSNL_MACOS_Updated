@@ -1,58 +1,58 @@
 import React from 'react';
+
+
 //import './Footer.css';
 import {
     Card, Button, CardImg, CardTitle, CardDeck,
     CardSubtitle, CardBody, Breadcrumb, BreadcrumbItem
 } from 'reactstrap';
 
-const TopSellingClothing = () => (
+const TopSellingClothing = props => (
     <div>
+        {/* {console.log(props.data[0])} */}
         <Breadcrumb tag="nav" listTag="div">
-            <BreadcrumbItem className="container" tag="a" href="#"><b>Top Selling Cloths</b></BreadcrumbItem>
+            <BreadcrumbItem className="container" tag="a" href="#"><b>Top Selling Clothes</b></BreadcrumbItem>
         </Breadcrumb>
         <div className="container">
             <CardDeck>
                 <Card>
-                    <CardImg top width="50" height="200" src="https://cdn.shopify.com/s/files/1/2143/3217/products/500_dfd0333e-0632-42d0-a891-f065d5ef1d5d_1024x1024.png?v=1568080856" alt="Card image cap" />
+                    <CardImg top width="50" height="200" src="https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=975&q=80" alt="Card image cap" />
                     <CardBody>
-                        <CardTitle><b>Book 1</b></CardTitle>
-                        <CardSubtitle>$ 39.99</CardSubtitle>
+
+                        {/* <CardTitle onClick={activateLasers}><b>{props.clothing[0].Clothing_Name}</b></CardTitle> */}
+                        <CardTitle><b>{props.data[0].Clothing_Name}</b></CardTitle>
+
+                        <CardSubtitle> $ {(props.data[0].Price).toFixed(2)}</CardSubtitle>
                         {/* <CardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CardText> */}
                         <Button>Add to Cart</Button>
                     </CardBody>
                 </Card>
+
                 <Card>
-                    <CardImg top width="50" height="200" src="https://cdn.shopify.com/s/files/1/2143/3217/products/500_dfd0333e-0632-42d0-a891-f065d5ef1d5d_1024x1024.png?v=1568080856" alt="Card image cap" />
+                    <CardImg top width="50" height="200" src="https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=975&q=80" alt="Card image cap" />
                     <CardBody>
-                        <CardTitle><b>Book 2</b></CardTitle>
-                        <CardSubtitle>$ 39.99</CardSubtitle>
+                        <CardTitle><b>{props.data[1].Clothing_Name}</b></CardTitle>
+                        <CardSubtitle> $ {(props.data[1].Price).toFixed(2)}</CardSubtitle>
                         {/* <CardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CardText> */}
                         <Button>Add to Cart</Button>
                     </CardBody>
                 </Card>
+
                 <Card>
-                    <CardImg top width="50" height="200" src="https://cdn.shopify.com/s/files/1/2143/3217/products/500_dfd0333e-0632-42d0-a891-f065d5ef1d5d_1024x1024.png?v=1568080856" alt="Card image cap" />
+                    <CardImg top width="50" height="200" src="https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=975&q=80" alt="Card image cap" />
                     <CardBody>
-                        <CardTitle><b>Book 3</b></CardTitle>
-                        <CardSubtitle>$ 39.99</CardSubtitle>
+                        <CardTitle><b>{props.data[2].Clothing_Name}</b></CardTitle>
+                        <CardSubtitle> $ {(props.data[2].Price).toFixed(2)}</CardSubtitle>
                         {/* <CardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CardText> */}
                         <Button>Add to Cart</Button>
                     </CardBody>
                 </Card>
+
                 <Card>
-                    <CardImg top width="50" height="200" src="https://cdn.shopify.com/s/files/1/2143/3217/products/500_dfd0333e-0632-42d0-a891-f065d5ef1d5d_1024x1024.png?v=1568080856" alt="Card image cap" />
+                    <CardImg top width="50" height="200" src="https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=975&q=80" alt="Card image cap" />
                     <CardBody>
-                        <CardTitle><b>Book 4</b></CardTitle>
-                        <CardSubtitle>$ 39.99</CardSubtitle>
-                        {/* <CardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CardText> */}
-                        <Button>Add to Cart</Button>
-                    </CardBody>
-                </Card>
-                <Card>
-                    <CardImg top width="50" height="200" src="https://cdn.shopify.com/s/files/1/2143/3217/products/500_dfd0333e-0632-42d0-a891-f065d5ef1d5d_1024x1024.png?v=1568080856" alt="Card image cap" />
-                    <CardBody>
-                        <CardTitle><b>Book 5</b></CardTitle>
-                        <CardSubtitle>$ 39.99</CardSubtitle>
+                        <CardTitle><b>{props.data[3].Clothing_Name}</b></CardTitle>
+                        <CardSubtitle> $ {(props.data[3].Price).toFixed(2)}</CardSubtitle>
                         {/* <CardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CardText> */}
                         <Button>Add to Cart</Button>
                     </CardBody>
