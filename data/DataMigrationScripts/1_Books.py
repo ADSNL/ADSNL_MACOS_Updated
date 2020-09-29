@@ -43,5 +43,5 @@ for row in oldBooks:
                        row[0], Pub_ID, Genre_ID, row[3], row[4], row[5])
     count = count + 1
 
-conn_new.commit()
+conn.conn_new.commit()
 print(str(count) + ' rows interted successfully!')
