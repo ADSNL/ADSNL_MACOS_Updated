@@ -1,19 +1,7 @@
 import pyodbc
-
-conn_new = pyodbc.connect('Driver={SQL Server};'
-                          'Server=.\SQLEXPRESS;'
-                          'Database=ADSNL;'
-                          'Trusted_Connection=yes;')
-
-conn_old = pyodbc.connect('Driver={SQL Server};'
-                          'Server=adsndb.c0yzxuhp43yb.us-east-2.rds.amazonaws.com;'
-                          'Database=MACOS;'
-                          'UID=ADSNL;'
-                          'PWD=ADSNL_2020;'
-                          'Trusted_Connection=no;')
-
-cursor_new = conn_new.cursor()
-cursor_old = conn_old.cursor()
+import connections as conn
+cursor_new = conn.conn_new.cursor()
+cursor_old =  conn.conn_old.cursor()
 oldPets = cursor_old.execute('Select P.Pets_ID, P.ASIN, P.Item_Model_Number, P.Pets_Dimensions, p.Pets_Category_ID, PC.Pets_Category_Name, P.Pets_Supplier_ID, PS.Pets_Supplier_Name From Pets as P join Pets_Categories as PC on P.Pets_Category_ID = PC.Pets_Category_ID join Pets_Suppliers as PS on P.Pets_Supplier_ID = PS.Pets_Supplier_ID')
 
 count = 0
@@ -53,5 +41,5 @@ for row in oldPets:
                        row[0], K_Cat_ID, k_Suplier_ID, ASIN, ModelNum, Dimension)
     count = count + 1
 
-conn_new.commit()
+conn.conn_new.commit()
 print(str(count) + ' rows interted successfully!')

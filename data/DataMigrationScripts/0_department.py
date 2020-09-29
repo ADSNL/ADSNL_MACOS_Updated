@@ -1,4 +1,5 @@
 import pyodbc
+
 conn_new = pyodbc.connect('Driver={SQL Server};'
                           'Server=.\SQLEXPRESS;'
                           'Database=ADSNL;'
