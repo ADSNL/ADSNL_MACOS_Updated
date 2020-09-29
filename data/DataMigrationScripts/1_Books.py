@@ -1,18 +1,10 @@
 import pyodbc
-conn_new = pyodbc.connect('Driver={SQL Server};'
-                          'Server=.\SQLEXPRESS;'
-                          'Database=ADSNL;'
-                          'Trusted_Connection=yes;')
+import connections as conn
 
-conn_old = pyodbc.connect('Driver={SQL Server};'
-                          'Server=adsndb.c0yzxuhp43yb.us-east-2.rds.amazonaws.com;'
-                          'Database=MACOS;'
-                          'UID=ADSNL;'
-                          'PWD=ADSNL_2020;'
-                          'Trusted_Connection=no;')
 
-cursor_new = conn_new.cursor()
-cursor_old = conn_old.cursor()
+
+cursor_new = conn.conn_new.cursor()
+cursor_old =  conn.conn_old.cursor()
 
 oldBooks = cursor_old.execute('Select Book_ID, Books.Book_Genre_ID, Books.Book_Publisher_ID, Book_Title, ISBN_10, ISBN_13, Book_Genre_Name, Book_Publisher_Name from Books join Book_Genres on Books.Book_Genre_ID = Book_Genres.Book_Genre_ID join Book_Publishers on Books.Book_Publisher_ID = Book_Publishers.Book_Publisher_ID')
 count = 0
