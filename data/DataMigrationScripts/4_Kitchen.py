@@ -1,19 +1,8 @@
 import pyodbc
+import connections as conn
 
-conn_new = pyodbc.connect('Driver={SQL Server};'
-                          'Server=.\SQLEXPRESS;'
-                          'Database=ADSNL;'
-                          'Trusted_Connection=yes;')
-
-conn_old = pyodbc.connect('Driver={SQL Server};'
-                          'Server=adsndb.c0yzxuhp43yb.us-east-2.rds.amazonaws.com;'
-                          'Database=MACOS;'
-                          'UID=ADSNL;'
-                          'PWD=ADSNL_2020;'
-                          'Trusted_Connection=no;')
-
-cursor_new = conn_new.cursor()
-cursor_old = conn_old.cursor()
+cursor_new = conn.conn_new.cursor()
+cursor_old =  conn.conn_old.cursor()
 
 oldKitchen = cursor_old.execute('SELECT K.Kitchen_Product_ID, K.Kitchen_Category_ID, K.Kitchen_Manufacturer_ID, K.Kitchen_Product_Name, K.ASIN, KC.Kitchen_Category_Name, KM.Kitchen_Manufacturer_Name FROM Kitchen AS K JOIN Kitchen_Categories AS KC on K.Kitchen_Category_ID = KC.Kitchen_Category_ID JOIN Kitchen_Manufacturers AS KM ON K.Kitchen_Manufacturer_ID = KM.Kitchen_Manufacturer_ID')
 
@@ -53,5 +42,5 @@ for row in oldKitchen:
                        row[0], K_Cat_ID, k_Brand_ID, Name, ASIN)
     count = count + 1
 
-conn_new.commit()
+conn.conn_new.commit()
 print(str(count) + ' rows interted successfully!')

@@ -76,7 +76,7 @@ class Landing extends Component {
             .catch(err => err);
     };
     getMovies = async () => {
-        fetch("http://localhost:5000/api/movies")
+        fetch("http://localhost:5000/api/moviesdetails")
             .then(res => {
                 return res.json()
             })
