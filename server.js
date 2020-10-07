@@ -153,7 +153,7 @@ app.get('/api/customer', (req, res) => {
     }
 
     if (last_name == "undefined" || last_name == '') {
-      req.query(`select top 10 Customer_ID as ID, Customer_FName as FName, Customer_LName as LName, 
+      req.query(`select top 1 Customer_ID as ID, Customer_FName as FName, Customer_LName as LName, 
     Sex as Gender, Birth_Date as DOB, Zip_Code as Zip, City, State, Street_Name as StreetName, 
     Street_Number as Street, Street_Type as Avenue from Customer_Master where Customer_FName like '%` + first_name + `%'`, (err, recordset) => {
         if (err) {
@@ -169,7 +169,7 @@ app.get('/api/customer', (req, res) => {
     }
 
     else {
-      req.query(`select top 10 Customer_ID as ID, Customer_FName as FName, Customer_LName as LName, Income_Type as Income,
+      req.query(`select top 1 Customer_ID as ID, Customer_FName as FName, Customer_LName as LName, Income_Type as Income,
     Sex as Gender, Birth_Date as DOB, Zip_Code as Zip, City, State, Street_Name as StreetName, Degree_Type as Degree, Marital_Status_Type as Martial_Status,
     Street_Number as Street, Street_Type as Avenue from Customer_Master where Customer_FName like '%` + first_name + `%' and Customer_LName like '%` + last_name + `%'`, (err, recordset) => {
         if (err) {

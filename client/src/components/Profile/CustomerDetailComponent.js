@@ -128,8 +128,24 @@ export default class CustomerDetailComponent extends Component {
                     <CardHeader tag="h3">Order Details</CardHeader>
                     <CardBody className="p-4 pl-5">
                         <Row>
-                            <Col><p class="h4 font-weight-bold">Bank Name:</p></Col>
-                            <Col><p class="h4">Bank of America</p></Col>
+                            <Col><p class="h4 font-weight-bold">Order ID</p></Col>
+                            <Col><p class="h4">123456789</p></Col>
+                        </Row>
+                        <Row>
+                            <Col><p class="h4 font-weight-bold">Product SKU</p></Col>
+                            <Col><p class="h4">123456789</p></Col>
+                        </Row>
+                        <Row>
+                            <Col><p class="h4 font-weight-bold">Category Name</p></Col>
+                            <Col><p class="h4">Books</p></Col>
+                        </Row>
+                        <Row>
+                            <Col><p class="h4 font-weight-bold">Cumulative Spend</p></Col>
+                            <Col><p class="h4">$1000</p></Col>
+                        </Row>
+                        <Row>
+                            <Col><p class="h4 font-weight-bold">Order ID</p></Col>
+                            <Col><p class="h4">123456789</p></Col>
                         </Row>
                     </CardBody>
                 </Card>
