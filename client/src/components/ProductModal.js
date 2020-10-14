@@ -32,7 +32,7 @@ const ProductModal = (props) => {
               </Media>
               <p>Title : {props.productData.Title}</p>
               <p>Product ID : {props.productData.Number}</p>
-              <p>Price: ${props.productData.Price}</p>
+              <p>Price: ${(props.productData.Price).toFixed(2)}</p>
             </Media>
           </Media>
         </ModalBody>
