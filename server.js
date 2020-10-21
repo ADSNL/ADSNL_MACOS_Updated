@@ -27,6 +27,18 @@ var dbConfig = {
   Port: 1433
 };
 
+// var dbConfig = {
+//   server: 'tcp:ADSNL01-5820\MSSQLSERVER,1433',
+//   database: 'ADSNL',
+//   options: {
+//     encrypt: true,
+//     enableArithAbort: true
+//   },
+//   user: 'ADSN',
+//   password: 'ADSNL_2020',
+//   Port: 1433
+// };
+
 app.get('/api/books', (req, res) => {
   var conn = new sql.ConnectionPool(dbConfig);
   var req = new sql.Request(conn);
