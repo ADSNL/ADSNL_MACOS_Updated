@@ -29,7 +29,7 @@ var dbConfig = {
 
 // var dbConfig = {
 //   server: 'tcp:ADSNL01-5820\MSSQLSERVER,1433',
-//   database: 'ADSNL',
+//   database: 'Customer_2',
 //   options: {
 //     encrypt: true,
 //     enableArithAbort: true
@@ -47,7 +47,7 @@ app.get('/api/books', (req, res) => {
       console.log(err);
       return;
     }
-    req.query('SELECT TOP 4 Books.Book_ID,Books.Book_Title as Title,Books.ISBN_10 as Number,ISBN_13,Book_Genre_ID,Book_Publisher_ID,min(Unit_Price) as Price FROM  Books JOIN dbo.Book_Media_Lookup ON Books.Book_ID=Book_Media_Lookup.Book_ID GROUP BY Books.Book_ID,Book_Title,ISBN_10,ISBN_13,Book_Genre_ID,Book_Publisher_ID    ', (err, recordset) => {
+    req.query('SELECT TOP 4 Books.Book_ID,Books.Book_Title as Title,Books.ISBN_10 as Number,ISBN_13,Book_Genre_ID,Book_Publisher_ID,min(Unit_Price) as Price FROM  Books JOIN dbo.Book_Media_Lookup ON Books.Book_ID=Book_Media_Lookup.Book_ID GROUP BY Books.Book_ID,Book_Title,ISBN_10,ISBN_13,Book_Genre_ID,Book_Publisher_ID', (err, recordset) => {
       if (err) {
         console.log(err);
         return;
