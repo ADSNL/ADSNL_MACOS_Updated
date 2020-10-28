@@ -78,3 +78,14 @@ select M.Number, M.Title, M.Price, M.CatCount
 		where pi.Dept_ID = 3
 	) as M
 	--WHERE M.RowNum BETWEEN `+ startRange + `and ` + endRange
+
+
+--query to get pets for category page
+select P.Number, P.Title, P.Price, P.CatCount
+ from (
+	select pi.Prod_SKU as Number, pi.Prod_Model_Number as Title, pi.Prod_Price as Price,
+		(select count(*) from Product_Info where Dept_ID = 6) as CatCount
+	from Product_Info as pi
+	where Dept_ID = 6
+ ) as P
+ --WHERE P.RowNum BETWEEN `+ startRange + `and ` + endRange
