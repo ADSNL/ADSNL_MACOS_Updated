@@ -150,8 +150,9 @@ Create table [Customer_Master]
 	[City] Varchar(25) NULL,
 	[State] Varchar(2) NULL,
 	[Street_Number] Integer NULL,
-	[Street_Name] Varchar(1) NULL,
+	[Street_Name] Varchar(25) NULL,
 	[Marital_Status_Type] Integer NULL,
+	[Income] Decimal(10,2) NULL,
 Primary Key ([Customer_ID])
 ) 
 go
