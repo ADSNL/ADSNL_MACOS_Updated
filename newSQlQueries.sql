@@ -89,3 +89,5 @@ select P.Number, P.Title, P.Price, P.CatCount
 	where Dept_ID = 6
  ) as P
  --WHERE P.RowNum BETWEEN `+ startRange + `and ` + endRange
+
+--query to get search results

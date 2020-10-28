@@ -20,7 +20,7 @@ const TopSellingBooks = props => (
         props.data.map((item, index) => {
           <Cards key={index} data={item} />
         })
-      }
+      } 
     </CardDeck>
     </div> */}
     <div className="container">

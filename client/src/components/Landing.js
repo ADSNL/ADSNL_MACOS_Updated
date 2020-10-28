@@ -95,15 +95,15 @@ class Landing extends Component {
     }
 
     render() {
-        {console.log(this.state.movies)}
         const datas = this.state.books;
+        { console.log(datas.length) }
         const clothingData = this.state.clothing;
         const moviesData = this.state.movies;
         const datasList = datas.length && clothingData.length && moviesData.length ? (
             <div>
                 <BrowserRouter>
                     <Route exact path="/">
-                        <LandingPage data={datas} clothing = {clothingData} movies = {moviesData}/>
+                        <LandingPage data={datas} clothing={clothingData} movies={moviesData} />
                     </Route>
                     {/* <Route component={Routes} /> */}
                 </BrowserRouter>
@@ -112,16 +112,12 @@ class Landing extends Component {
         ) : (
                 <h1>Loading</h1>
             );
-            
-        return( 
-        
-        <div>
-            {datasList}
-           
 
+        return (
+            <div>
+                {datasList}
             </div>
-            
-            )
+        )
     }
 }
 
