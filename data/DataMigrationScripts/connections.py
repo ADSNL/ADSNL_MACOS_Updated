@@ -2,7 +2,7 @@ import pyodbc
 
 
 conn_new = pyodbc.connect('Driver={SQL Server};'
-                          'Server=.\SQLEXPRESS;'
+                          'Server=ADSNL01-5820;'
                           'Database=ADSNL;'
                           'Trusted_Connection=yes;')
 
@@ -13,4 +13,7 @@ conn_old = pyodbc.connect('Driver={SQL Server};'
                           'PWD=ADSNL_2020;'
                           'Trusted_Connection=no;')
 
-
+conn_old_local = pyodbc.connect('Driver={SQL Server};'
+                          'Server=ADSNL01-5820;'
+                          'Database=MACOS_4mil;'
+                          'Trusted_Connection=yes;')
