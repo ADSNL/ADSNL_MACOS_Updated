@@ -1,19 +1,8 @@
 import pyodbc
+import connections as conn
 
-conn_new = pyodbc.connect('Driver={SQL Server};'
-                          'Server=.\SQLEXPRESS;'
-                          'Database=ADSNL;'
-                          'Trusted_Connection=yes;')
-
-conn_old = pyodbc.connect('Driver={SQL Server};'
-                          'Server=adsndb.c0yzxuhp43yb.us-east-2.rds.amazonaws.com;'
-                          'Database=MACOS;'
-                          'UID=ADSNL;'
-                          'PWD=ADSNL_2020;'
-                          'Trusted_Connection=no;')
-
-cursor_new = conn_new.cursor()
-cursor_old = conn_old.cursor()
+cursor_new = conn.conn_new.cursor()
+cursor_old =  conn.conn_old.cursor()
 
 Color = cursor_old.execute('SELECT CL.Makeup_ID, C.Makeup_Color_Name, CL.Price FROM Makeup_Colors_Lookup AS CL JOIN Makeup_Colors AS C on CL.Makeup_Color_ID = C.Makeup_Color_ID')
 ColorCount = 0
@@ -48,4 +37,4 @@ for row in Color:
     ColorCount = ColorCount + 1
 
 print(str(ColorCount) + ' colors interted successfully!')
-conn_new.commit()
+conn.conn_new.commit()

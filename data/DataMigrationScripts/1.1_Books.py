@@ -1,19 +1,8 @@
 import pyodbc
+import connections as conn
 
-conn_new = pyodbc.connect('Driver={SQL Server};'
-                          'Server=.\SQLEXPRESS;'
-                          'Database=ADSNL;'
-                          'Trusted_Connection=yes;')
-
-conn_old = pyodbc.connect('Driver={SQL Server};'
-                          'Server=adsndb.c0yzxuhp43yb.us-east-2.rds.amazonaws.com;'
-                          'Database=MACOS;'
-                          'UID=ADSNL;'
-                          'PWD=ADSNL_2020;'
-                          'Trusted_Connection=no;')
-
-cursor_new = conn_new.cursor()
-cursor_old = conn_old.cursor()
+cursor_new = conn.conn_new.cursor()
+cursor_old =  conn.conn_old.cursor()
 
 AuthCount = 0
 Author = cursor_old.execute('SELECT Book_ID, Book_Author_First_Name, Book_Author_Middle_Name, Book_Author_Last_Name from Book_Authors_Lookup join Book_Authors on Book_Authors_Lookup.Book_Author_ID = Book_Authors.Book_Author_ID')
@@ -75,4 +64,4 @@ for row in Media:
 
 print(str(MediaCount) + ' media records interted successfully!')
 
-conn_new.commit()    
+conn.conn_new.commit()

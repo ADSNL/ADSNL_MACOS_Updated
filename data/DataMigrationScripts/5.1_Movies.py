@@ -1,19 +1,7 @@
 import pyodbc
-
-conn_new = pyodbc.connect('Driver={SQL Server};'
-                          'Server=.\SQLEXPRESS;'
-                          'Database=ADSNL;'
-                          'Trusted_Connection=yes;')
-
-conn_old = pyodbc.connect('Driver={SQL Server};'
-                          'Server=adsndb.c0yzxuhp43yb.us-east-2.rds.amazonaws.com;'
-                          'Database=MACOS;'
-                          'UID=ADSNL;'
-                          'PWD=ADSNL_2020;'
-                          'Trusted_Connection=no;')
-
-cursor_new = conn_new.cursor()
-cursor_old = conn_old.cursor()
+import connections as conn
+cursor_new = conn.conn_new.cursor()
+cursor_old =  conn.conn_old.cursor()
 
 FormatCount = 0
 Format = cursor_old.execute('Select MFL.Movie_ID, MFL.Movie_Format_ID, MFL.Price, MF.Movie_Formats_Name From Movie_Formats_Lookup as MFL join Movie_Formats as MF on MFL.Movie_Format_ID = MF.Movie_Format_ID')
@@ -82,4 +70,4 @@ for row in Director:
 
 print(str(DirectorCount) + ' directors interted successfully!')
 
-conn_new.commit()
+conn.conn_new.commit()

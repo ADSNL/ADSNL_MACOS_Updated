@@ -1,19 +1,8 @@
 import pyodbc
+import connections as conn
 
-conn_new = pyodbc.connect('Driver={SQL Server};'
-                          'Server=.\SQLEXPRESS;'
-                          'Database=ADSNL;'
-                          'Trusted_Connection=yes;')
-
-conn_old = pyodbc.connect('Driver={SQL Server};'
-                          'Server=adsndb.c0yzxuhp43yb.us-east-2.rds.amazonaws.com;'
-                          'Database=MACOS;'
-                          'UID=ADSNL;'
-                          'PWD=ADSNL_2020;'
-                          'Trusted_Connection=no;')
-
-cursor_new = conn_new.cursor()
-cursor_old = conn_old.cursor()
+cursor_new = conn.conn_new.cursor()
+cursor_old =  conn.conn_old.cursor()
 
 oldClothings = cursor_old.execute('Select C.Clothing_ID, C.Clothing_Name, C.Clothing_Brand_ID, C.ASIN, C.Item_Model_Number, C.Price, CB.Clothing_Brand_Name From Clothing as C join Clothing_Brands as CB on C.Clothing_Brand_ID = CB.Clothing_Brand_ID Order by C.Clothing_ID')
 count = 0
@@ -36,5 +25,5 @@ for row in oldClothings:
                        row[0], Clothing_Brand_ID, row[1], row[3], row[4])
     count = count + 1
 
-conn_new.commit()
+conn.conn_new.commit()
 print(str(count) + ' rows interted successfully!')
