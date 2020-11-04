@@ -96,7 +96,6 @@ class Landing extends Component {
 
     render() {
         const datas = this.state.books;
-        { console.log(this.state.books) }
         const clothingData = this.state.clothing;
         const moviesData = this.state.movies;
         const datasList = datas.length && clothingData.length && moviesData.length ? (

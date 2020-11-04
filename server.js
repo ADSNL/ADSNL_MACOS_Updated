@@ -97,31 +97,7 @@ app.get('/api/clothing', (req, res) => {
   });
 });
 
-app.get('/api/movies', (req, res) => {
-  var conn = new sql.ConnectionPool(dbConfig);
-  var req = new sql.Request(conn);
-  conn.connect(function (err) {
-    if (err) {
-      console.log(err);
-      return;
-    }
-    req.query(`select top 4 pi.Prod_SKU as Movie_Genre_Name, pi.Prod_Name as Movie_Title
-                  from Product_Info as pi
-                  where Dept_ID = 5`, (err, recordset) => {
-      if (err) {
-        console.log(err);
-        return;
-      } else {
-        const data = recordset;
-
-        res.send(data.recordset);
-      }
-      conn.close(recordset);
-    });
-  });
-});
-
-// app.get('/api/moviesdetails', (req, res) => {
+// app.get('/api/movies', (req, res) => {
 //   var conn = new sql.ConnectionPool(dbConfig);
 //   var req = new sql.Request(conn);
 //   conn.connect(function (err) {
@@ -129,7 +105,9 @@ app.get('/api/movies', (req, res) => {
 //       console.log(err);
 //       return;
 //     }
-//     req.query('SELECT Top 4 * FROM Movies INNER JOIN Movie_Genres ON Movies.Movie_Genre_ID = Movie_Genres.Movie_Genre_ID', (err, recordset) => {
+//     req.query(`select top 4 pi.Prod_SKU as Movie_Genre_Name, pi.Prod_Name as Movie_Title
+//                   from Product_Info as pi
+//                   where Dept_ID = 5`, (err, recordset) => {
 //       if (err) {
 //         console.log(err);
 //         return;
@@ -142,6 +120,32 @@ app.get('/api/movies', (req, res) => {
 //     });
 //   });
 // });
+
+app.get('/api/moviesdetails', (req, res) => {
+  var conn = new sql.ConnectionPool(dbConfig);
+  var req = new sql.Request(conn);
+  conn.connect(function (err) {
+    if (err) {
+      console.log(err);
+      return;
+    }
+    req.query(`select top 4 pi.Prod_SKU as SKU, pi.Prod_Name as Movie_Title, fl.Feature_Price as Price, b.Brand_Name as Movie_Genre_Name
+                from Product_Info as pi join Feature_Lookup as fl
+                on pi.Prod_SKU = fl.Prod_SKU join Brand as b
+                on pi.Brand_ID = b.Brand_ID
+                where pi.Dept_ID = 5`, (err, recordset) => {
+      if (err) {
+        console.log(err);
+        return;
+      } else {
+        const data = recordset;
+
+        res.send(data.recordset);
+      }
+      conn.close(recordset);
+    });
+  });
+});
 
 // app.get('/api/customer/order', (req, res) => {
 //   var conn = new sql.ConnectionPool(dbConfig);
