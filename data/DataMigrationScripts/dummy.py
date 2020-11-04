@@ -3,7 +3,7 @@ import connections as conn
 cursor_new = conn.conn_new.cursor()
 cursor_old =  conn.conn_old.cursor()
 
-oldClothings = cursor_old.execute('Select C.Clothing_ID, C.Price From Clothing As C')
+oldClothings = cursor_old.execute('Select P.Pets_ID, P.Price From Pets As P')
 count = 0
 
 for row in oldClothings:
