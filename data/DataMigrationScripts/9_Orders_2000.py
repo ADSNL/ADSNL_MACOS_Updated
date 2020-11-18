@@ -30,4 +30,4 @@ for row in rows:
 
 cursor_new.commit()
 print(count,"Master Orders added successfully!")
-print(count,"detailscount Details added successfully!") 
+print(count,"details count Details added successfully!")
