@@ -4,13 +4,41 @@ import './Navbar.css';
 import Routes from './routing/Routes';
 
 class Navbar extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            navigationLinks: []
+        }
+    }
+
+    getNavigationLinks = () => {
+        console.log("GETTING LINKS");
+        fetch("http://localhost:5000/api/navlinks")
+            .then(res => {
+                return res.json();
+            })
+            .then(data => {
+                this.setState({
+                    navigationLinks: data
+                });
+                console.log(data);
+            })
+            .catch(err => err);
+    }
+
     logout(e) {
         e.preventDefault()
         localStorage.removeItem('usertoken')
         this.props.history.push(`/login`)
     }
 
+    componentDidMount() {
+        this.getNavigationLinks();
+    }
+
     render() {
+        { console.log(this.state.navigationLinks); }
+        const data = this.state.navigationLinks;
         const loginRegLink = (
             <ul className="navbar-nav">
                 <li className="nav-item">
@@ -40,7 +68,7 @@ class Navbar extends Component {
                 <li className="nav-item">
                     <Link to="/register" className="nav-link">Register</Link>
                 </li>
-            </ul>
+            </ul >
         )
         const userLink = (
             <ul className="navbar-nav">
