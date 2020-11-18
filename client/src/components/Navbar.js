@@ -12,7 +12,6 @@ class Navbar extends Component {
     }
 
     getNavigationLinks = () => {
-        console.log("GETTING LINKS");
         fetch("http://localhost:5000/api/navlinks")
             .then(res => {
                 return res.json();
