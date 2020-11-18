@@ -21,7 +21,6 @@ class Navbar extends Component {
                 this.setState({
                     navigationLinks: data
                 });
-                console.log(data);
             })
             .catch(err => err);
     }
