@@ -103,7 +103,9 @@ class Navbar extends Component {
             )
         }
         else {
-            <p></p>
+            return (
+                <p>No products found.</p>
+            );
         }
 
         return (
