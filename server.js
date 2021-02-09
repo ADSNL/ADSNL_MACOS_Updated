@@ -167,7 +167,7 @@ app.get('/api/moviesdetails', (req, res) => {
       conn.close(recordset);
     });
   });
-});
+}); 
 
 // app.get('/api/customer/order', (req, res) => {
 //   var conn = new sql.ConnectionPool(dbConfig);
@@ -252,12 +252,12 @@ app.get('/api/viewBooks', (req, res) => {
       console.log(err);
       return;
     }
-    req.query(`SELECT BD.Book_ID, BD.Title, BD.Number, BD.ISBN_13, BD.Book_Genre_ID, BD.Book_Publisher_ID, BD.Price,
-    (SELECT COUNT(DISTINCT Books.Book_ID) FROM Books JOIN dbo.Book_Media_Lookup ON Books.Book_ID = Book_Media_Lookup.Book_ID) AS CatCount
-    FROM (
-        SELECT Books.Book_ID,Book_Title as Title,ISBN_10 as Number,ISBN_13,Book_Genre_ID,Book_Publisher_ID,min(Unit_Price) as Price, ROW_NUMBER() OVER (ORDER BY Books.Book_ID) AS RowNum
-        FROM  Books JOIN dbo.Book_Media_Lookup ON Books.Book_ID=Book_Media_Lookup.Book_ID GROUP BY Books.Book_ID,Book_Title,ISBN_10,ISBN_13,Book_Genre_ID,Book_Publisher_ID
-    ) AS BD
+    req.query(`select BD.ID, BD.Title, BD.Number, BD.Prod_ISBN_13, BD.Price,
+      (select count(distinct Product_Info.Prod_SKU) from Product_Info join dbo.Media_Lookup 
+      on Product_Info.Prod_SKU = Media_Lookup.Prod_SKU where Product_Info.Dept_ID = 1) as CatCount
+      from (select Product_Info.Prod_SKU as ID, Product_Info.Prod_Name as Title, Product_Info.Prod_ISBN_10 as Number, 
+        Product_Info.Prod_ISBN_13, Media_Lookup.Media_Price as Price, ROW_NUMBER() over (order by Product_Info.Prod_SKU) as RowNum
+        from Product_Info join dbo.Media_Lookup on Product_Info.Prod_SKU = Media_Lookup.Prod_SKU where Product_Info.Dept_ID = 1) as BD
     WHERE BD.RowNum BETWEEN `+ startRange + `and ` + endRange, (err, recordset) => {
       if (err) {
         console.log(err);
@@ -283,11 +283,13 @@ app.get('/api/viewClothing', (req, res) => {
       console.log(err);
       return;
     }
-    req.query(`SELECT C.Number, C.Title, C.Price, C.CatCount
-    FROM (
-        SELECT Clothing_ID as Number, Clothing_Name as Title, Price, (SElECT Count(*) FROM Clothing) AS CatCount, ROW_NUMBER() OVER (ORDER BY Clothing.Clothing_ID) AS RowNum
-        FROM Clothing
-    ) AS C
+    req.query(`select C.Number, C.Title, C.Price, C.CatCount
+    from (
+      select Product_Info.Prod_SKU as Number, Product_Info.Prod_Name as Title, Product_Info.Prod_Price as Price,
+      (select count(*) from Product_Info where Product_Info.Dept_ID = 2) as CatCount, 
+      ROW_NUMBER() OVER (order by Product_Info.Prod_SKU) as RowNum
+      from Product_Info where Product_Info.Dept_ID = 2
+    ) as C
     WHERE C.RowNum BETWEEN `+ startRange + `and ` + endRange, (err, recordset) => {
       if (err) {
         console.log(err);
@@ -314,11 +316,14 @@ app.get('/api/viewMovies', (req, res) => {
       console.log(err);
       return;
     }
-    req.query(`SELECT M.Number, M.Title, M.Price, M.CatCount
-    FROM (
-        SELECT Movie_ID as Number, Movie_Title as Title, 25 as Price, (SElECT Count(*) FROM Movies) AS CatCount, ROW_NUMBER() OVER (ORDER BY Movie_ID) AS RowNum
-        FROM Movies
-    ) AS M
+    req.query(`select M.Number, M.Title, M.Price, M.CatCount
+    from (
+      select Product_Info.Prod_SKU as Number, Product_Info.Prod_Name as Title, fl.Feature_Price as Price, 
+      (select count(*) from Product_Info where Product_Info.Dept_ID = 5) as CatCount, 
+      ROW_NUMBER() over (order by Product_Info.Prod_SKU) as RowNum
+      from Product_Info join Feature_Lookup as fl on Product_Info.Prod_SKU = fl.Prod_SKU
+      where Product_Info.Dept_ID = 5
+    ) as M
     WHERE M.RowNum BETWEEN `+ startRange + `and ` + endRange, (err, recordset) => {
       if (err) {
         console.log(err);
@@ -345,11 +350,14 @@ app.get('/api/viewKitchen', (req, res) => {
       console.log(err);
       return;
     }
-    req.query(`SELECT K.Number, K.Title, K.Price, K.CatCount
-    FROM (
-        SELECT K.Kitchen_Product_ID as Number, K.Kitchen_Product_Name as Title, KT.Price as Price, (SElECT Count(DISTINCT K.Kitchen_Product_ID) FROM Kitchen AS K JOIN Kitchen_Types_Lookup AS KT ON K.Kitchen_Product_ID = KT.Kitchen_Product_ID) AS CatCount, ROW_NUMBER() OVER (ORDER BY k.Kitchen_Product_ID) AS RowNum
-        FROM Kitchen AS K JOIN Kitchen_Types_Lookup AS KT ON K.Kitchen_Product_ID = KT.Kitchen_Product_ID
-    ) AS K
+    req.query(`select K.Number, K.Title, K.Price, K.CatCount
+    from (
+      select Product_Info.Prod_SKU as Number, Product_Info.Prod_Name as Title, tl.Type_Price as Price,
+      (select count(distinct Product_Info.Prod_SKU) from Product_Info where Product_Info.Dept_ID = 4) as CatCount,
+      ROW_NUMBER() over (order by Product_Info.Prod_SKU) as RowNum
+      from Product_Info join Type_Lookup as tl on Product_Info.Prod_SKU = tl.Prod_SKU
+      where Product_Info.Dept_ID = 4
+    ) as K
     WHERE K.RowNum BETWEEN `+ startRange + `and ` + endRange, (err, recordset) => {
       if (err) {
         console.log(err);
@@ -376,11 +384,13 @@ app.get('/api/viewMakeUp', (req, res) => {
       console.log(err);
       return;
     }
-    req.query(`SELECT M.Number, M.Title, M.Price, M.CatCount
-    FROM (
-        SELECT Makeup_ID as Number, Makeup_Name as Title, 29 as Price, (SElECT Count(*) FROM Makeup) AS CatCount, ROW_NUMBER() OVER (ORDER BY Makeup_ID) AS RowNum
-        FROM Makeup
-    ) AS M
+    req.query(`select M.Number, M.Title, M.Price, M.CatCount
+    from (
+      select Product_Info.Prod_SKU as Number, Product_Info.Prod_Name as Title, fl.Feature_Price as Price,
+      (select count(*) from Product_Info where Product_Info.Dept_ID = 3) as CatCount, 
+      ROW_NUMBER() over (order by Product_Info.Prod_SKU) as RowNum
+      from Product_Info join Feature_Lookup as fl on Product_Info.Prod_SKU = fl.Prod_SKU where Product_Info.Dept_ID = 3
+    ) as M
     WHERE M.RowNum BETWEEN `+ startRange + `and ` + endRange, (err, recordset) => {
       if (err) {
         console.log(err);

@@ -20,7 +20,7 @@ class TileView extends Component {
       totalItems: 0,
       searchTerm: '',
       searchResults: []
-    };
+    }; 
   }
 
   componentDidMount() {

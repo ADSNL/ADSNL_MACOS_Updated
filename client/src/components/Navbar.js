@@ -48,19 +48,19 @@ class Navbar extends Component {
                         <Link to={'/' + data[0].Dept_Name} className="nav-link">{data[0].Dept_Name}</Link>
                     </li>
                     <li className="nav-item">
-                        <Link to="/clothing" className="nav-link">{data[1].Dept_Name}</Link>
+                        <Link to={'/' + data[1].Dept_Name} className="nav-link">{data[1].Dept_Name}</Link>
                     </li>
                     <li className="nav-item">
-                        <Link to="/movies" className="nav-link">{data[2].Dept_Name}</Link>
+                        <Link to={'/' + data[2].Dept_Name} className="nav-link">{data[2].Dept_Name}</Link>
                     </li>
                     <li className="nav-item">
-                        <Link to="/kitchen" className="nav-link">{data[3].Dept_Name}</Link>
+                        <Link to={'/' + data[3].Dept_Name} className="nav-link">{data[3].Dept_Name}</Link>
                     </li>
                     <li className="nav-item">
-                        <Link to="/makeup" className="nav-link">{data[4].Dept_Name}</Link>
+                        <Link to={'/' + data[4].Dept_Name} className="nav-link">{data[4].Dept_Name}</Link>
                     </li>
                     <li className="nav-item">
-                        <Link to="/pets" className="nav-link">{data[5].Dept_Name}</Link>
+                        <Link to={'/' + data[5].Dept_Name} className="nav-link">{data[5].Dept_Name}</Link>
                     </li>
                     <li className="nav-item">
                         <Link to="/login" className="nav-link">Login</Link>
@@ -76,22 +76,22 @@ class Navbar extends Component {
                         <Link to="/" className="nav-link">ADSNL</Link>
                     </li>
                     <li className="nav-item">
-                        <Link to="/books" className="nav-link">{data[0].Dept_Name}</Link>
+                        <Link to={'/' + data[0].Dept_Name} className="nav-link">{data[0].Dept_Name}</Link>
                     </li>
                     <li className="nav-item">
-                        <Link to="/clothing" className="nav-link">{data[1].Dept_Name}</Link>
+                        <Link to={'/' + data[1].Dept_Name} className="nav-link">{data[1].Dept_Name}</Link>
                     </li>
                     <li className="nav-item">
-                        <Link to="/movies" className="nav-link">{data[2].Dept_Name}</Link>
+                        <Link to={'/' + data[2].Dept_Name} className="nav-link">{data[2].Dept_Name}</Link>
                     </li>
                     <li className="nav-item">
-                        <Link to="/kitchen" className="nav-link">{data[3].Dept_Name}</Link>
+                        <Link to={'/' + data[3].Dept_Name} className="nav-link">{data[3].Dept_Name}</Link>
                     </li>
                     <li className="nav-item">
-                        <Link to="/makeup" className="nav-link">{data[4].Dept_Name}</Link>
+                        <Link to={'/' + data[4].Dept_Name} className="nav-link">{data[4].Dept_Name}</Link>
                     </li>
                     <li className="nav-item">
-                        <Link to="/pets" className="nav-link">{data[5].Dept_Name}</Link>
+                        <Link to={'/' + data[5].Dept_Name} className="nav-link">{data[5].Dept_Name}</Link>
                     </li>
                     <li className="nav-item">
                         <Link to="/dashboard" className="nav-link">Dashboard</Link>
