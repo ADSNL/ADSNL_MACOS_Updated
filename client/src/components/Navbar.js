@@ -63,6 +63,9 @@ class Navbar extends Component {
                         <Link to={'/' + data[5].Dept_Name} className="nav-link">{data[5].Dept_Name}</Link>
                     </li>
                     <li className="nav-item">
+                        <Link to="/dashboard" className="nav-link">Dashboard</Link>
+                    </li>
+                    <li className="nav-item">
                         <Link to="/login" className="nav-link">Login</Link>
                     </li>
                     <li className="nav-item">
