@@ -15,18 +15,6 @@ var Users = require('./routes/Users');
 
 app.use('/users', Users);
 
-// var dbConfig = {
-//   server: 'adsndb.c0yzxuhp43yb.us-east-2.rds.amazonaws.com',
-//   database: 'MACOS',
-//   options: {
-//     encrypt: true,
-//     enableArithAbort: true
-//   },
-//   user: 'ADSNL',
-//   password: 'ADSNL_2020',
-//   Port: 1433
-// };
-
 var dbConfig = {
   server: 'ADSNL01-5820',
   Port: 1433,
