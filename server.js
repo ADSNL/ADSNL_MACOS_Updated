@@ -183,50 +183,50 @@ app.get('/api/moviesdetails', (req, res) => {
 
 // });
 
-// app.get('/api/customer', (req, res) => {
-//   let first_name = req.query.firstname;
-//   let last_name = req.query.lastname;
-//   var conn = new sql.ConnectionPool(dbConfig);
-//   var req = new sql.Request(conn);
-//   conn.connect(function (err) {
-//     if (err) {
-//       console.log(err);
-//       return;
-//     }
+app.get('/api/customer', (req, res) => {
+  let first_name = req.query.firstname;
+  let last_name = req.query.lastname;
+  var conn = new sql.ConnectionPool(dbConfig);
+  var req = new sql.Request(conn);
+  conn.connect(function (err) {
+    if (err) {
+      console.log(err);
+      return;
+    }
 
-//     if (last_name == "undefined" || last_name == '') {
-//       req.query(`select top 10 Customer_ID as ID, Customer_FName as FName, Customer_LName as LName, 
-//     Sex as Gender, Birth_Date as DOB, Zip_Code as Zip, City, State, Street_Name as StreetName, 
-//     Street_Number as Street, Street_Type as Avenue from Customer_Master where Customer_FName like '%` + first_name + `%'`, (err, recordset) => {
-//         if (err) {
-//           console.log(err);
-//           return;
-//         } else {
-//           const data = recordset;
-//           res.send(data.recordset);
-//           console.log(data.recordset);
-//         }
-//         conn.close(recordset);
-//       });
-//     }
+    if (last_name == "undefined" || last_name == '') {
+      req.query(`select top 1 Customer_ID as ID, Customer_FName as FName, Customer_LName as LName, 
+    Sex as Gender, Birth_Date as DOB, Zip_Code as Zip, City, State, Street_Name as StreetName, 
+    Street_Number as Street from Customer_Master where Customer_FName like '%` + first_name + `%'`, (err, recordset) => {
+        if (err) {
+          console.log(err);
+          return;
+        } else {
+          const data = recordset;
+          res.send(data.recordset);
+          console.log(data.recordset);
+        }
+        conn.close(recordset);
+      });
+    }
 
-//     else {
-//       req.query(`select top 10 Customer_ID as ID, Customer_FName as FName, Customer_LName as LName, 
-//     Sex as Gender, Birth_Date as DOB, Zip_Code as Zip, City, State, Street_Name as StreetName, 
-//     Street_Number as Street, Street_Type as Avenue from Customer_Master where Customer_FName like '%` + first_name + `%' and Customer_LName like '%` + last_name + `%'`, (err, recordset) => {
-//         if (err) {
-//           console.log(err);
-//           return;
-//         } else {
-//           const data = recordset;
-//           res.send(data.recordset);
-//           console.log(data.recordset);
-//         }
-//         conn.close(recordset);
-//       });
-//     }
-//   });
-// });
+    else {
+      req.query(`select top 1 Customer_ID as ID, Customer_FName as FName, Customer_LName as LName, 
+    Sex as Gender, Birth_Date as DOB, Zip_Code as Zip, City, State, Street_Name as StreetName, 
+    Street_Number as Street from Customer_Master where Customer_FName like '%` + first_name + `%' and Customer_LName like '%` + last_name + `%'`, (err, recordset) => {
+        if (err) {
+          console.log(err);
+          return;
+        } else {
+          const data = recordset;
+          res.send(data.recordset);
+          console.log(data.recordset);
+        }
+        conn.close(recordset);
+      });
+    }
+  });
+});
 
 app.get('/api/viewBooks', (req, res) => {
 

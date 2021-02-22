@@ -57,6 +57,7 @@ export default class CustomerDetailComponent extends Component {
 
         for (let i = 0; i < customer.length; i++) {
             customerTiles.push(
+            <Container>
                 <Card>
                     <CardHeader tag="h3">Customer Summary</CardHeader>
                     <Row>
@@ -149,9 +150,10 @@ export default class CustomerDetailComponent extends Component {
                         </Row>
                     </CardBody>
                 </Card>
+            </Container>
             )
         }
-
+ 
         return (
             <div className="customer-summary">
                 <Form action="" onSubmit={this.getCustomerData} >
