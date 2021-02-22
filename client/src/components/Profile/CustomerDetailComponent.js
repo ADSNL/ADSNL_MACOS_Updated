@@ -62,7 +62,7 @@ export default class CustomerDetailComponent extends Component {
                     <CardHeader tag="h3">Customer Summary</CardHeader>
                     <Row>
                         <Col sm="8">
-                            <div className="customer-info p-4 pl-5">
+                            <div className="customer-info p-4 pl-5 pt-4">
                                 <Row>
                                     <Col><p class="h4 font-weight-bold">Customer Name:</p></Col>
                                     <Col><p class="h4">{customer[i].FName} {customer[i].LName}</p></Col>
@@ -84,8 +84,8 @@ export default class CustomerDetailComponent extends Component {
                                     <Col><p class="h4">24</p></Col>
                                 </Row>
                                 <Row>
-                                    <Col><p class="h4 font-weight-bold">Income Type</p></Col>
-                                    <Col><p class="h4">$45000</p></Col>
+                                    <Col><p class="h4 font-weight-bold">Income </p></Col>
+                                    <Col><p class="h4">${customer[i].Income}</p></Col>
                                 </Row>
                             </div>
                         </Col>
