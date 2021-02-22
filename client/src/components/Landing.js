@@ -95,7 +95,6 @@ class Landing extends Component {
     }
 
     render() {
-        {console.log(this.state.movies)}
         const datas = this.state.books;
         const clothingData = this.state.clothing;
         const moviesData = this.state.movies;
@@ -103,7 +102,7 @@ class Landing extends Component {
             <div>
                 <BrowserRouter>
                     <Route exact path="/">
-                        <LandingPage data={datas} clothing = {clothingData} movies = {moviesData}/>
+                        <LandingPage data={datas} clothing={clothingData} movies={moviesData} />
                     </Route>
                     {/* <Route component={Routes} /> */}
                 </BrowserRouter>
@@ -112,16 +111,12 @@ class Landing extends Component {
         ) : (
                 <h1>Loading</h1>
             );
-            
-        return( 
-        
-        <div>
-            {datasList}
-           
 
+        return (
+            <div>
+                {datasList}
             </div>
-            
-            )
+        )
     }
 }
 
