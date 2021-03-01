@@ -24,6 +24,7 @@ export default class CustomerDetailComponent extends Component {
         super(props)
         this.state = {
             customerData: [],
+            customerOrderData: [],
             name: '',
             firstName: '',
             lastName: ''
@@ -46,6 +47,20 @@ export default class CustomerDetailComponent extends Component {
             .then(data => {
                 this.setState({
                     customerData: data
+                });
+            })
+            .catch(err => err);
+    };
+
+    getCustomerOrderData = async (e) => {
+        e.preventDefault();
+        await fetch("http://localhost:5000/api/customer/order")
+            .then(res => {
+                return res.json();
+            })
+            .then(data => {
+                this.setState({
+                    customerOrderData: data
                 });
             })
             .catch(err => err);
@@ -106,7 +121,7 @@ export default class CustomerDetailComponent extends Component {
                                 <Row>
                                     <Col><p class="h4 font-weight-bold">Martial Status</p></Col>
 
-                                    <Col><p class="h4">{customer[i].Martial_Status}</p></Col>
+                                    <Col><p class="h4">{customer[i].Marital_Status_Type}</p></Col>
                                 </Row>
                             </CardBody>
                         </Col>
