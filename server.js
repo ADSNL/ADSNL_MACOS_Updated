@@ -4,7 +4,6 @@ const url = require('url');
 const querystring = require('querystring');
 var sql = require('mssql');
 var cors = require('cors');
-var currentCustomerID = "";
 
 let app = express();
 
@@ -518,7 +517,6 @@ app.get('/api/customer', (req, res) => {
       console.log(err);
       return;
     }
-
     if (last_name == "undefined" || last_name == '') {
       req.query(`select top 1 Customer_ID as ID, Customer_FName as FName, Customer_LName as LName, 
     Sex as Gender, Birth_Date as DOB, Zip_Code as Zip, City, State, Street_Name as StreetName, Income, Marital_Status_Type,
@@ -528,13 +526,25 @@ app.get('/api/customer', (req, res) => {
           return;
         } else {
           const data = recordset;
-          res.send(data.recordset);
-          console.log(data);
+          req.query(`select cm.Customer_ID, om.Order_ID, om.Order_DateTime, cm.Customer_FName as FName, cm.Customer_LName as LName, 
+                      od.OrderDetails_ID, od.Prod_SKU, od.Price, od.Product_Media_ID
+                      from Customer_Master as cm join Order_Master as om
+                      on cm.Customer_ID = om.Customer_ID
+                      join Order_Details as od
+                      on od.Order_ID = om.Order_ID
+          where cm.Customer_ID =` + data.recordset[0].ID, (err, order_data) => {
+            if (err) {
+              console.log(err);
+              return;
+            } else {
+              const customer_data = data.recordset.concat(order_data.recordset);
+              console.log(customer_data);
+              res.send(customer_data);
+            }
+          });
         }
-        conn.close(recordset);
       });
     }
-
     else {
       req.query(`select top 1 Customer_ID as ID, Customer_FName as FName, Customer_LName as LName, 
     Sex as Gender, Birth_Date as DOB, Zip_Code as Zip, City, State, Street_Name as StreetName, Income, Marital_Status_Type,
@@ -544,51 +554,27 @@ app.get('/api/customer', (req, res) => {
           return;
         } else {
           const data = recordset;
-          res.send(data.recordset);
-          console.log(data.recordset);
-          setCustomerID(data.recordset[0].ID);
+          req.query(`select cm.Customer_ID, om.Order_ID, om.Order_DateTime, cm.Customer_FName as FName, cm.Customer_LName as LName, 
+                      od.OrderDetails_ID, od.Prod_SKU, od.Price, od.Product_Media_ID
+                      from Customer_Master as cm join Order_Master as om
+                      on cm.Customer_ID = om.Customer_ID
+                      join Order_Details as od
+                      on od.Order_ID = om.Order_ID
+          where cm.Customer_ID =` + data.recordset[0].ID, (err, order_data) => {
+            if (err) {
+              console.log(err);
+              return;
+            } else {
+              const customer_data = data.recordset.concat(order_data.recordset);
+              res.send(customer_data);
+              console.log(customer_data);
+            }
+          });
         }
-        conn.close(recordset);
       });
     }
   });
 });
-
-// app.get('/api/customer/order', (req, res) => {
-//   var conn = new sql.ConnectionPool(dbConfig);
-//   var req = new sql.Request(conn);
-//   var customerID = getCustomerID();
-//   conn.connect(function (err) {
-//     if (err) {
-//       console.log(err);
-//       return;
-//     }
-//     req.query(`select cm.Customer_ID as ID, cm.Customer_FName as First_Name, cm.Customer_LName as Last_Name, cm.City as City,
-//                 om.order_id as Order_ID, om.Order_DateTime as Time, od.Prod_SKU as SKU, od.Price as Price
-//                 from Customer_Master as cm join Order_Master as om
-//                 on cm.Customer_ID = om.customer_id join Order_Details as od
-//                 on om.Order_ID = od.Order_ID
-//                 where cm.Customer_ID =` + customerID, (err, recordset) => {
-//       if (err) {
-//         console.log(err);
-//         return;
-//       } else {
-//         const data = recordset;
-//         res.send(data.recordset);
-//         console.log(data.recordset);
-//       }
-//       conn.close(recordset);
-//     });
-//   });
-// });
-
-setCustomerID = (customerID) => {
-  currentCustomerID = customerID;
-}
-
-getCustomerID = () => {
-  return currentCustomerID;
-}
 
 const PORT = process.env.PORT || 5000;
 //const PORT = 6000;
