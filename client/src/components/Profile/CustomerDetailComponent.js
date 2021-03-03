@@ -45,8 +45,11 @@ export default class CustomerDetailComponent extends Component {
                 return res.json();
             })
             .then(data => {
+                console.log();
                 this.setState({
-                    customerData: data
+                    customerData: data.customer_info,
+                    customerOrderData: data.order_info
+
                 });
             })
             .catch(err => err);

@@ -537,7 +537,10 @@ app.get('/api/customer', (req, res) => {
               console.log(err);
               return;
             } else {
-              const customer_data = data.recordset.concat(order_data.recordset);
+              const customer_data = {
+                "customer_info": data.recordset,
+                "order_info": order_data.recordset
+              }
               console.log(customer_data);
               res.send(customer_data);
             }
@@ -565,9 +568,12 @@ app.get('/api/customer', (req, res) => {
               console.log(err);
               return;
             } else {
-              const customer_data = data.recordset.concat(order_data.recordset);
-              res.send(customer_data);
+              const customer_data = {
+                "customer_info": data.recordset,
+                "order_info": order_data.recordset
+              }
               console.log(customer_data);
+              res.send(customer_data);
             }
           });
         }
