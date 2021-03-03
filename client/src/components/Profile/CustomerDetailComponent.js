@@ -16,8 +16,6 @@ import {
     Col, FormGroup, Form, Input
 } from 'reactstrap';
 import './Profile.css';
-import CustomerOrderComponent from './CusterOrderComponent';
-
 
 export default class CustomerDetailComponent extends Component {
     constructor(props) {
@@ -50,20 +48,6 @@ export default class CustomerDetailComponent extends Component {
                     customerData: data.customer_info,
                     customerOrderData: data.order_info
 
-                });
-            })
-            .catch(err => err);
-    };
-
-    getCustomerOrderData = async (e) => {
-        e.preventDefault();
-        await fetch("http://localhost:5000/api/customer/order")
-            .then(res => {
-                return res.json();
-            })
-            .then(data => {
-                this.setState({
-                    customerOrderData: data
                 });
             })
             .catch(err => err);
