@@ -588,6 +588,32 @@ app.get('/api/customer', (req, res) => {
   });
 });
 
+app.get('/api/customer/order', (req, res) => {
+  var conn = new sql.ConnectionPool(dbConfig);
+  var req = new sql.Request(conn);
+  conn.connect(function (err) {
+    if (err) {
+      console.log(err);
+      return;
+    }
+    req.query(`select top 10 cm.Customer_ID as ID, cm.Customer_FName as First_Name, cm.Customer_LName as Last_Name, cm.City as City,
+		              om.order_id as Order_ID, om.order_date as Order_Date, om.order_time as Time
+              from Customer_Master as cm 
+              join Order_Master as om
+              on cm.Customer_ID = om.customer_id`, (err, recordset) => {
+      if (err) {
+        console.log(err);
+        return;
+      } else {
+        const data = recordset;
+        res.send(data.recordset);
+      }
+      conn.close(recordset);
+    });
+  });
+
+});
+
 const PORT = process.env.PORT || 5000;
 //const PORT = 6000;
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
