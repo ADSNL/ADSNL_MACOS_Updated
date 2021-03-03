@@ -47,7 +47,6 @@ export default class CustomerDetailComponent extends Component {
                 this.setState({
                     customerData: data.customer_info,
                     customerOrderData: data.order_info
-
                 });
             })
             .catch(err => err);
@@ -55,7 +54,9 @@ export default class CustomerDetailComponent extends Component {
 
     render() {
         let customer = this.state.customerData;
+        let order = this.state.customerOrderData;
         const customerTiles = [];
+        const orderTiles = [];
 
         for (let i = 0; i < customer.length; i++) {
             customerTiles.push(
@@ -128,34 +129,47 @@ export default class CustomerDetailComponent extends Component {
                             <Col><p class="h4">Discover</p></Col>
                         </Row>
                     </CardBody>
-                    <CardHeader tag="h3">Order Details</CardHeader>
-                    <CardBody className="p-4 pl-5">
-                        <Row>
-                            <Col><p class="h4 font-weight-bold">Order ID</p></Col>
-                            <Col><p class="h4">123456789</p></Col>
-                        </Row>
-                        <Row>
-                            <Col><p class="h4 font-weight-bold">Product SKU</p></Col>
-                            <Col><p class="h4">123456789</p></Col>
-                        </Row>
-                        <Row>
-                            <Col><p class="h4 font-weight-bold">Category Name</p></Col>
-                            <Col><p class="h4">Books</p></Col>
-                        </Row>
-                        <Row>
-                            <Col><p class="h4 font-weight-bold">Cumulative Spend</p></Col>
-                            <Col><p class="h4">$1000</p></Col>
-                        </Row>
-                        <Row>
-                            <Col><p class="h4 font-weight-bold">Order ID</p></Col>
-                            <Col><p class="h4">123456789</p></Col>
-                        </Row>
-                    </CardBody>
                 </Card>
             </Container>
             )
         }
- 
+
+        for (let j = 0; j < order.length; j++) {       
+                orderTiles.push(
+                    <Container>
+                        <Card>
+                            <CardHeader tag="h3">Recent Orders by {order[j].FName} {order[j].LName}</CardHeader>
+                            <CardBody className="p-4 pl-5">
+                                <Row>
+                                    <Col><p class="h4 font-weight-bold">Order ID</p></Col>
+                                    <Col><p class="h4">{order[j].Order_ID}</p></Col>
+                                </Row>
+                                <Row>
+                                    <Col><p class="h4 font-weight-bold">Product SKU</p></Col>
+                                    <Col><p class="h4">{order[j].Prod_SKU}</p></Col>
+                                </Row>
+                                <Row>
+                                    <Col><p class="h4 font-weight-bold">Product Name</p></Col>
+                                    <Col><p class="h4">{order[j].Title}</p></Col>
+                                </Row>
+                                <Row>
+                                    <Col><p class="h4 font-weight-bold">Category Name</p></Col>
+                                    <Col><p class="h4">{order[j].Dept_Name}</p></Col>
+                                </Row>
+                                <Row>
+                                    <Col><p class="h4 font-weight-bold">Price</p></Col>
+                                    <Col><p class="h4">${order[j].Price}</p></Col>
+                                </Row>
+                                <Row>
+                                    <Col><p class="h4 font-weight-bold">Order Placed at</p></Col>
+                                    <Col><p class="h4">{order[j].Order_DateTime}</p></Col>
+                                </Row>
+                            </CardBody>
+                        </Card>
+                    </Container>
+                )
+        }
+
         return (
             <div className="customer-summary">
                 <Form action="" onSubmit={this.getCustomerData} >
@@ -177,7 +191,10 @@ export default class CustomerDetailComponent extends Component {
                 {
                     (customerTiles.length == 0 || customerTiles == undefined) ? "" : customerTiles
                 }
-            </div >
+                {
+                    (orderTiles.length == 0 || orderTiles == undefined) ? "" : orderTiles 
+                }
+            </div>
         );
     }
 }
