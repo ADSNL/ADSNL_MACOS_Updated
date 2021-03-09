@@ -526,17 +526,17 @@ app.get('/api/customer', (req, res) => {
           return;
         } else {
           const data = recordset;
-          req.query(`select cm.Customer_ID, om.Order_ID, om.Order_DateTime, cm.Customer_FName as FName, cm.Customer_LName as LName, 
-                      od.OrderDetails_ID, od.Prod_SKU, od.Price, od.Product_Media_ID, pi.Prod_Name as Title, d.Dept_Name
-                      from Customer_Master as cm join Order_Master as om
-                      on cm.Customer_ID = om.Customer_ID
-                      join Order_Details as od
-                      on od.Order_ID = om.Order_ID
-                      join Product_Info as pi 
-					            on od.Prod_SKU = pi.Prod_SKU
-					            join Department as d
-					            on pi.Dept_ID = d.Dept_ID
-          where cm.Customer_ID =` + data.recordset[0].ID, (err, order_data) => {
+          req.query(`select cm.Customer_ID, om.Order_ID, convert(varchar, Order_DateTime, 107) as Order_DateTime, cm.Customer_FName as FName, cm.Customer_LName as LName, 
+                        od.OrderDetails_ID, od.Prod_SKU, od.Price, od.Product_Media_ID, pi.Prod_Name as Title, d.Dept_Name
+                        from Customer_Master as cm join Order_Master as om
+                        on cm.Customer_ID = om.Customer_ID
+                        join Order_Details as od
+                        on od.Order_ID = om.Order_ID
+                        join Product_Info as pi 
+                        on od.Prod_SKU = pi.Prod_SKU
+                        join Department as d
+                        on pi.Dept_ID = d.Dept_ID
+                    where cm.Customer_ID =` + data.recordset[0].ID, (err, order_data) => {
             if (err) {
               console.log(err);
               return;
@@ -545,6 +545,7 @@ app.get('/api/customer', (req, res) => {
                 "customer_info": data.recordset,
                 "order_info": order_data.recordset
               }
+              console.log(order_data.recordset[0].Order_DateTime);
               res.send(customer_data);
             }
           });
@@ -560,17 +561,17 @@ app.get('/api/customer', (req, res) => {
           return;
         } else {
           const data = recordset;
-          req.query(`select cm.Customer_ID, om.Order_ID, om.Order_DateTime, cm.Customer_FName as FName, cm.Customer_LName as LName, 
+          req.query(`select cm.Customer_ID, om.Order_ID, convert(varchar, Order_DateTime, 107) as Order_DateTime, cm.Customer_FName as FName, cm.Customer_LName as LName, 
                       od.OrderDetails_ID, od.Prod_SKU, od.Price, od.Product_Media_ID, pi.Prod_Name as Title, d.Dept_Name
                       from Customer_Master as cm join Order_Master as om
                       on cm.Customer_ID = om.Customer_ID
                       join Order_Details as od
                       on od.Order_ID = om.Order_ID
                       join Product_Info as pi 
-					            on od.Prod_SKU = pi.Prod_SKU
-					            join Department as d
-					            on pi.Dept_ID = d.Dept_ID
-          where cm.Customer_ID =` + data.recordset[0].ID, (err, order_data) => {
+                      on od.Prod_SKU = pi.Prod_SKU
+                      join Department as d
+                      on pi.Dept_ID = d.Dept_ID
+                    where cm.Customer_ID =` + data.recordset[0].ID, (err, order_data) => {
             if (err) {
               console.log(err);
               return;
@@ -579,6 +580,7 @@ app.get('/api/customer', (req, res) => {
                 "customer_info": data.recordset,
                 "order_info": order_data.recordset
               }
+              console.log(order_data.recordset[0].Order_DateTime);
               res.send(customer_data);
             }
           });
