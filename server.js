@@ -4,6 +4,7 @@ const url = require('url');
 const querystring = require('querystring');
 var sql = require('mssql');
 var cors = require('cors');
+var mysql = require('mysql');
 
 let app = express();
 
@@ -27,12 +28,27 @@ var dbConfig = {
   password: 'ADSNL_2020'
 };
 
+var mySqlDb = mysql.createConnection({
+    host: 'ADSNL01-5820',
+    user: 'ADSNL',
+    password: 'ADSNL_2020'
+});
+
+mySqlDb.connect(function(err) {
+  if (err) {
+    console.log(err);
+  }
+  else {
+    console.log("CONNECTED TO MYSQL SERVER.");
+  }
+})
+
 sql.connect(dbConfig, (err) => {
   if (err) {
     console.log("ERROR IS HERE BC : " + err);
   }
   else {
-    console.log("Connected to the database");
+    console.log("CONNECTED TO  MSSQL SERVER.");
   }
 });
 
