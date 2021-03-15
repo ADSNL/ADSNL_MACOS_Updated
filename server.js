@@ -29,9 +29,9 @@ var dbConfig = {
 };
 
 var mySqlDb = mysql.createConnection({
-    host: 'ADSNL01-5820',
-    user: 'ADSNL',
-    password: 'ADSNL_2020'
+    host: '127.0.0.1',
+    user: 'root',
+    password: 'password'
 });
 
 mySqlDb.connect(function(err) {
