@@ -630,7 +630,27 @@ app.get('/api/customer/order', (req, res) => {
       conn.close(recordset);
     });
   });
+});
 
+app.post('/api/register', (req, res) => {
+
+  const first_name = req.body.first_name;
+  const last_name = req.body.last_name;
+  const email = req.body.email;
+  const user_password = req.body.user_password;
+
+  console.log(first_name);
+
+  mySqlDb.query('insert into users (first_name, last_name, email, user_password) values(?,?,?,?)', 
+  [first_name, last_name, email, user_password], 
+  (err, result) => {
+    if (err) {
+      console.log(err);
+    }
+    else {
+      console.log("User registered");
+    }
+  });
 });
 
 const PORT = process.env.PORT || 5000;
