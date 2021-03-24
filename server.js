@@ -639,8 +639,6 @@ app.post('/api/register', (req, res) => {
   const email = req.body.email;
   const user_password = req.body.user_password;
 
-  console.log(first_name);
-
   mySqlDb.query('insert into users (first_name, last_name, email, user_password) values(?,?,?,?)', 
   [first_name, last_name, email, user_password], 
   (err, result) => {
@@ -648,7 +646,31 @@ app.post('/api/register', (req, res) => {
       console.log(err);
     }
     else {
+      alert("Registrtation successful");
       console.log("User registered");
+      res.redirect('/api/login');
+    }
+  });
+});
+
+app.post('/api/login', (req, res) => {
+
+  const email = req.body.email;
+  const user_password = req.body.user_password;
+
+  mySqlDb.query('select * from users where email = ? and user_password = ?', 
+  [email, user_password], 
+  (err, result) => {
+    if (err) {
+      console.log(err);
+    }
+    else {
+      if (result.length > 0) {
+        console.log("logged in");
+      }
+      else {
+        res.send({message: "Invalid username password."});
+      }
     }
   });
 });
