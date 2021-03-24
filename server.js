@@ -31,7 +31,8 @@ var dbConfig = {
 var mySqlDb = mysql.createConnection({
     host: '172.20.41.61',
     user: 'ADSNL',
-    password: 'ADSNL_2020'
+    password: 'ADSNL_2020',
+    database: 'macos_login'
 });
 
 mySqlDb.connect(function(err) {
