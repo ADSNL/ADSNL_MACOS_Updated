@@ -4,7 +4,8 @@ const url = require('url');
 const querystring = require('querystring');
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
-
+const session = require('express-session');
+const cookieParser = require('cookie-parser');
 var sql = require('mssql');
 var cors = require('cors');
 var mysql = require('mysql');
@@ -12,8 +13,22 @@ var mysql = require('mysql');
 let app = express();
 
 app.use(bodyParser.json());
-app.use(cors());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cors({
+  origin: ["http://localhost:3000"],
+  methods: ["GET", "POST"],
+  credentials: true
+}));
+app.use(cookieParser());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(session({
+  key: "userId",
+  secret: "subscribe",
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    expires: 60 * 60 * 24
+  }
+}));
 
 var Users = require('./routes/Users');
 
@@ -676,7 +691,8 @@ app.post('/api/login', (req, res) => {
       if (result.length > 0) {
         bcrypt.compare(user_password, result[0].user_password, (err, response) => {
           if (response) {
-            res.send({result});
+            req.session.user = result;
+            res.send(result);
             console.log(result);
           } else {
             console.log("Invalid username password.");
@@ -690,6 +706,19 @@ app.post('/api/login', (req, res) => {
       }
     }
   });
+});
+
+app.get('/api/login', (req, res) => {
+  if (req. session.user) {
+    res.send({
+      loggedIn: true,
+      user: req.session.user
+    });
+  } else {
+    res.send({
+      loggedIn: false
+    });
+  }
 });
 
 const PORT = process.env.PORT || 5000;

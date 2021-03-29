@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Axios from 'axios';
 
 function UserLogin() {
@@ -7,6 +7,7 @@ function UserLogin() {
     const [user_password, setUserPassword] = useState('');
     const [loginStatus, setLoginStatus] = useState('');
 
+    Axios.defaults.withCredentials = true;
     const login = () => {
         Axios.post('http://localhost:5000/api/login', {
             email: email, 
@@ -20,6 +21,12 @@ function UserLogin() {
             }
         })
     }
+
+    useEffect(() => {
+        Axios.get("http://localhost:5000/api/login").then((response) => {
+        console.log(response);
+        })
+    });
 
     return(
         <div className="container">
