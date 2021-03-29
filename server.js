@@ -2,6 +2,9 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const url = require('url');
 const querystring = require('querystring');
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
+
 var sql = require('mssql');
 var cors = require('cors');
 var mysql = require('mysql');
@@ -639,17 +642,22 @@ app.post('/api/register', (req, res) => {
   const email = req.body.email;
   const user_password = req.body.user_password;
 
-  mySqlDb.query('insert into users (first_name, last_name, email, user_password) values(?,?,?,?)', 
-  [first_name, last_name, email, user_password], 
-  (err, result) => {
+  bcrypt.hash(user_password, saltRounds, (err, hash) => {
     if (err) {
       console.log(err);
     }
-    else {
-      alert("Registrtation successful");
-      console.log("User registered");
-      res.redirect('/api/login');
-    }
+
+    mySqlDb.query('insert into users (first_name, last_name, email, user_password) values(?,?,?,?)', 
+          [first_name, last_name, email, hash], 
+          (err, result) => {
+          if (err) {
+            console.log(err);
+          }
+          else {
+            console.log("User registered");
+            res.redirect('/api/login');
+          }
+      });
   });
 });
 
@@ -658,18 +666,27 @@ app.post('/api/login', (req, res) => {
   const email = req.body.email;
   const user_password = req.body.user_password;
 
-  mySqlDb.query('select * from users where email = ? and user_password = ?', 
-  [email, user_password], 
+  mySqlDb.query('select * from users where email = ?;', 
+  [email], 
   (err, result) => {
     if (err) {
       console.log(err);
     }
     else {
       if (result.length > 0) {
-        console.log("logged in");
+        bcrypt.compare(user_password, result[0].user_password, (err, response) => {
+          if (response) {
+            res.send({result});
+            console.log(result);
+          } else {
+            console.log("Invalid username password.");
+            res.send({message: "Invalid username password."});
+          }
+        });
       }
       else {
-        res.send({message: "Invalid username password."});
+        console.log("No user found with that email address.");
+        res.send({message: "No user found with that email address."});
       }
     }
   });
