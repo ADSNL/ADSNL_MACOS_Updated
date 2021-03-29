@@ -661,7 +661,7 @@ app.post('/api/register', (req, res) => {
     if (err) {
       console.log(err);
     }
-
+ 
     mySqlDb.query('insert into users (first_name, last_name, email, user_password) values(?,?,?,?)', 
           [first_name, last_name, email, hash], 
           (err, result) => {
@@ -669,6 +669,7 @@ app.post('/api/register', (req, res) => {
             console.log(err);
           }
           else {
+            alert("Registration successful.");
             console.log("User registered");
             res.redirect('/api/login');
           }
@@ -695,12 +696,14 @@ app.post('/api/login', (req, res) => {
             res.send(result);
             console.log(result);
           } else {
+            alert("Invalid username password.");
             console.log("Invalid username password.");
             res.send({message: "Invalid username password."});
           }
         });
       }
       else {
+        alert("No user found with that email address.");
         console.log("No user found with that email address.");
         res.send({message: "No user found with that email address."});
       }
